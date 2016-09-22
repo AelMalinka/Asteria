@@ -65,9 +65,11 @@ Check Character::Attack(Character &target)
 
 Check Character::Defend()
 {
+	Strength strength;
+	Endurance endurance;
 	Unarmored unarmored(Stats());
-	LightArmor lightarmor(0, get(unarmored), strength());
-	HeavyArmor heavyarmor(0, get(unarmored), strength(), endurance());
+	LightArmor lightarmor(0, get(unarmored), get(strength));
+	HeavyArmor heavyarmor(0, get(unarmored), get(strength), get(endurance));
 
 	switch(_armor)
 	{

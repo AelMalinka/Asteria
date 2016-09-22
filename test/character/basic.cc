@@ -17,12 +17,19 @@ namespace {
 		TEST_BEGIN
 			Character test(5, 10, 15, 20, 25, 30);
 
-			EXPECT_EQ(test.strength().Value(), 5);
-			EXPECT_EQ(test.agility().Value(), 10);
-			EXPECT_EQ(test.endurance().Value(), 15);
-			EXPECT_EQ(test.perception().Value(), 20);
-			EXPECT_EQ(test.magic().Value(), 25);
-			EXPECT_EQ(test.willpower().Value(), 30);
+			Strength str;
+			Agility agi;
+			Endurance end;
+			Perception per;
+			Magic mag;
+			Willpower wil;
+
+			EXPECT_EQ(test.get(str).Value(), 5);
+			EXPECT_EQ(test.get(agi).Value(), 10);
+			EXPECT_EQ(test.get(end).Value(), 15);
+			EXPECT_EQ(test.get(per).Value(), 20);
+			EXPECT_EQ(test.get(mag).Value(), 25);
+			EXPECT_EQ(test.get(wil).Value(), 30);
 		TEST_END
 	}
 
@@ -94,8 +101,9 @@ namespace {
 			Character alice(0, 0, 0, 0, 0, 0);
 			Character bob(0, 0, 0, 0, 0, 0);
 
+			Strength str;
 			Unarmored unarmored(bob.Stats());
-			LightArmor armor(0, bob.get(unarmored), bob.strength());
+			LightArmor armor(0, bob.get(unarmored), bob.get(str));
 			bob.get(armor).Raw() = 10;
 			bob.Equip(BasicLight);
 

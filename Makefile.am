@@ -7,6 +7,9 @@ AM_CXXFLAGS := -I$(srcdir)/src $(AM_CXXFLAGS)
 
 mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
+	src/Exception.hh \
+	src/Stats.hh \
+	src/Skills.hh \
 	src/Character.hh \
 	src/Item.hh \
 	src/Equipment.hh \
