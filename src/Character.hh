@@ -63,8 +63,8 @@
 					ENTROPY_HECATE_STAT_ACCESSOR(perception, Perception);
 					ENTROPY_HECATE_STAT_ACCESSOR(magic, Magic);
 					ENTROPY_HECATE_STAT_ACCESSOR(willpower, Willpower);
-					Hecate::Check Attack(Character &);
-					Hecate::Check Defend();
+					Check Attack(Character &);
+					Check Defend();
 					void Equip(const Weapon &);
 					void Equip(const Armor &);
 					void Equip(const Equipment &);
