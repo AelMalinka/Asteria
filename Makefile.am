@@ -7,12 +7,20 @@ AM_CXXFLAGS := -I$(srcdir)/src $(AM_CXXFLAGS)
 
 mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
-	src/Character.hh
+	src/Character.hh \
+	src/Item.hh \
+	src/Equipment.hh \
+	src/Armor.hh \
+	src/Weapon.hh
 
 lib_LTLIBRARIES = libasteria.la
 
 libasteria_la_SOURCES = \
-	src/Character.cc
+	src/Character.cc \
+	src/Item.cc \
+	src/Equipment.cc \
+	src/Armor.cc \
+	src/Weapon.cc
 
 check_PROGRAMS =
 
