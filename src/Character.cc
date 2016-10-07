@@ -13,7 +13,6 @@ Character::Character(const Strength &s, const Agility &a, const Endurance &e, co
 
 Check Character::Attack(Character &target)
 {
-	Check ret;
 	Melee melee(Stats());
 	Ranged ranged(Stats());
 
@@ -29,38 +28,32 @@ Check Character::Attack(Character &target)
 	if(_weapon)
 		type = _weapon->Which();
 
+	Check ret(_check(Modifier(target.Defend(), "Opponent's Defense", negative)));
+
 	switch(type)
 	{
 		case Weapon::Type::None:
-			return _check(
-				Modifier(target.Defend(), "Opponent's Defense", negative),
-				Modifier(get(unarmed), "Unarmed Skill")
-			);
+			ret.Add(Modifier(get(unarmed), "Unarmed Skill"));
+		break;
 		case Weapon::Type::Sword:
-			return _check(
-				Modifier(target.Defend(), "Opponent's Defense", negative),
-				Modifier(get(sword), "Sword Skill")
-			);
+			ret.Add(Modifier(get(sword), "Sword Skill"));
+		break;
 		case Weapon::Type::Blunt:
-			return _check(
-				Modifier(target.Defend(), "Opponent's Defense", negative),
-				Modifier(get(blunt), "Blunt Skill")
-			);
+			ret.Add(Modifier(get(blunt), "Blunt Skill"));
+		break;
 		case Weapon::Type::Bow:
-			return _check(
-				Modifier(target.Defend(), "Opponent's Defense", negative),
-				Modifier(get(bow), "Bow Skill")
-			);
+			ret.Add(Modifier(get(bow), "Bow Skill"));
+		break;
 		case Weapon::Type::Thrown:
-			return _check(
-				Modifier(target.Defend(), "Opponent's Defense", negative),
-				Modifier(get(thrown), "Thrown Skill")
-			);
+			ret.Add(Modifier(get(thrown), "Thrown Skill"));
+		break;
 		default:
 			ENTROPY_THROW(Exception("Unknown Weapon Type") <<
-				WeaponTypeInfo(_weapon->Which())
+				WeaponTypeInfo(type)
 			);
 	}
+
+	return ret;
 }
 
 Check Character::Defend()
