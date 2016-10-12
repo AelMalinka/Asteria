@@ -8,26 +8,32 @@ AM_CXXFLAGS := -I$(srcdir)/src $(AM_CXXFLAGS)
 mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
 	src/Exception.hh \
-	src/Stats.hh \
-	src/Skills.hh \
-	src/Character.hh \
-	src/Item.hh \
-	src/Equipment.hh \
-	src/Armor.hh \
-	src/Weapon.hh \
-	src/Floor.hh \
-	src/Cave.hh
+	src/Character.hh
+
+characterheadersdir = $(includedir)/Entropy/Asteria/Character
+characterheaders_HEADERS = \
+	src/Character/Stats.hh \
+	src/Character/Skills.hh \
+	src/Character/Item.hh \
+	src/Character/Equipment.hh \
+	src/Character/Armor.hh \
+	src/Character/Weapon.hh
+
+mapheadersdir = $(includedir)/Entropy/Asteria/Map
+mapheaders_HEADERS = \
+	src/Map/Floor.hh \
+	src/Map/Cave.hh
 
 lib_LTLIBRARIES = libasteria.la
 
 libasteria_la_SOURCES = \
 	src/Character.cc \
-	src/Item.cc \
-	src/Equipment.cc \
-	src/Armor.cc \
-	src/Weapon.cc \
-	src/Floor.cc \
-	src/Cave.cc
+	src/Character/Item.cc \
+	src/Character/Equipment.cc \
+	src/Character/Armor.cc \
+	src/Character/Weapon.cc \
+	src/Map/Floor.cc \
+	src/Map/Cave.cc
 
 check_PROGRAMS =
 

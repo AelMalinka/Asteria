@@ -9,11 +9,11 @@
 
 #	include "Exception.hh"
 
-#	include "Stats.hh"
-#	include "Skills.hh"
+#	include "Character/Stats.hh"
+#	include "Character/Skills.hh"
 
-#	include "Weapon.hh"
-#	include "Armor.hh"
+#	include "Character/Weapon.hh"
+#	include "Character/Armor.hh"
 
 #	include <map>
 #	include <memory>

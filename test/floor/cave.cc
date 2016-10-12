@@ -3,7 +3,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "Cave.hh"
+#include "Map/Cave.hh"
 
 using namespace std;
 using namespace testing;
