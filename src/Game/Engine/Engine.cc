@@ -5,9 +5,10 @@
 #include "Engine.hh"
 
 using namespace Entropy::Asteria;
+using namespace std;
 
 Engine::Engine()
-	: _done(false), _main(), _new(), _rend(&_main)
+	: _done(false), _main(), _new(), _expl(), _rend(&_main), _ch()
 {}
 
 void Engine::operator () ()
@@ -29,4 +30,10 @@ void Engine::New()
 void Engine::Main()
 {
 	_rend.changeMenu(&_main);
+}
+
+void Engine::NewGame(const shared_ptr<Character> &ch)
+{
+	_ch = ch;
+	_rend.changeMenu(&_expl);
 }

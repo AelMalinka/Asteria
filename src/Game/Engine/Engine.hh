@@ -7,8 +7,13 @@
 
 #	include "Renderer.hh"
 
+#	include "../../Character.hh"
+
 #	include "../Menu/Main.hh"
 #	include "../Menu/New.hh"
+#	include "../Menu/Explore.hh"
+
+#	include <memory>
 
 	namespace Entropy
 	{
@@ -22,11 +27,14 @@
 					void Done();
 					void Main();
 					void New();
+					void NewGame(const std::shared_ptr<Character> &);
 				private:
 					bool _done;
 					Menus::Main _main;
 					Menus::New _new;
+					Menus::Explore _expl;
 					Renderer _rend;
+					std::shared_ptr<Character> _ch;
 			};
 		}
 	}
