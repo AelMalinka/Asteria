@@ -11,7 +11,8 @@ AT_CLEANUP
 AT_SETUP([Game Test (Simple)])
 AT_DATA([commands], [[q
 ]])
-AT_CHECK([asteria < commands], [], [[Asteria
+AT_CHECK([asteria < commands], [], [[
+Asteria
 
 n) New Game
 q) Quit

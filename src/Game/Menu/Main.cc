@@ -13,7 +13,7 @@ using namespace std;
 
 void Main::operator () (Engine &engine)
 {
-	cout
+	cout << endl
 		<< "Asteria" << endl
 		<< endl
 		<< "n) New Game" << endl
