@@ -5,6 +5,7 @@
 #if !defined ENTROPY_ASTERIA_MAP
 #	define ENTROPY_ASTERIA_MAP
 
+#	include <vector>
 #	include "Exception.hh"
 #	include "Map/Tile.hh"
 
@@ -15,6 +16,10 @@
 			class Map
 			{
 				public:
+					Map();
+					explicit Map(const std::vector<std::vector<Tile>> &);
+					explicit Map(std::vector<std::vector<Tile>> &&);
+					Map(std::initializer_list<std::vector<Tile>>);
 					std::size_t Height() const;
 					std::size_t Width() const;
 				public:

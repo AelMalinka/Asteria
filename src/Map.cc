@@ -4,8 +4,24 @@
 
 #include "Map.hh"
 
+#include <utility>
+
 using namespace Entropy::Asteria;
 using namespace std;
+
+Map::Map() = default;
+
+Map::Map(const vector<vector<Tile>> &o)
+	: _tiles(o)
+{}
+
+Map::Map(vector<vector<Tile>> &&o)
+	: _tiles(move(o))
+{}
+
+Map::Map(initializer_list<vector<Tile>> o)
+	: _tiles(o)
+{}
 
 size_t Map::Height() const
 {
