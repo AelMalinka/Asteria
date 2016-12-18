@@ -7,6 +7,8 @@
 using namespace Entropy::Asteria;
 using namespace std;
 
+using Entropy::Hecate::Roll;
+
 Cave::Cave(const size_t height, const size_t width)
 	: Floor(height, width)
 {}

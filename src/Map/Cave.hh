@@ -14,7 +14,6 @@
 		namespace Asteria
 		{
 			using Entropy::Hecate::PercentType;
-			using Entropy::Hecate::Roll;
 
 			class Cave :
 				public Floor
