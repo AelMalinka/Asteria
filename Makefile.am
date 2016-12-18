@@ -41,7 +41,8 @@ menuheadersdir = $(includedir)/Entropy/Asteria/Game/Menu
 menuheaders_HEADERS = \
 	src/Game/Menu/Main.hh \
 	src/Game/Menu/New.hh \
-	src/Game/Menu/Explore.hh
+	src/Game/Menu/Explore.hh \
+	src/Game/Menu/Fight.hh
 
 lib_LTLIBRARIES = libasteria.la
 
@@ -61,6 +62,7 @@ libasteria_la_SOURCES = \
 	src/Game/Menu/Main.cc \
 	src/Game/Menu/New.cc \
 	src/Game/Menu/Explore.cc \
+	src/Game/Menu/Fight.cc \
 	src/Game/Main.cc
 
 bin_PROGRAMS = \

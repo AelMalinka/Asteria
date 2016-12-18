@@ -33,6 +33,7 @@
 			{
 				public:
 					Character(const Strength &, const Agility &, const Endurance &, const Perception &, const Magic &, const Willpower &);
+					bool isAlive() const;
 					Check Attack(Character &);
 					Check Defend();
 					void Equip(const Weapon &);

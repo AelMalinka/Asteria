@@ -11,6 +11,11 @@ Character::Character(const Strength &s, const Agility &a, const Endurance &e, co
 	: BaseCharacter(s, a, e, p, v, w), _weapon(), _armor(Armor::Type::None)
 {}
 
+bool Character::isAlive() const
+{
+	return true;
+}
+
 Check Character::Attack(Character &target)
 {
 	Melee melee(Stats());

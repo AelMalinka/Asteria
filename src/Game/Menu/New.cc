@@ -12,53 +12,107 @@ using namespace std;
 
 void New::operator () (Engine &engine)
 {
-	Strength str;
-	Agility agi;
-	Endurance end;
-	Perception per;
-	Magic mag;
-	Willpower wil;
-
-	// 2016-12-17 AMR TODO: stream into Stat/Skill/etc
-	int temp;
+	shared_ptr<Character> ch;
+	shared_ptr<Character> mb;
 
 	cout << endl
 		<< "New Game" << endl
 		<< endl;
 
-	cout << "Strength: " << flush;
-	cin >> temp;
-	str = temp;
-	temp = 0;
-
-	cout << "Agility: " << flush;
-	cin >> temp;
-	agi = temp;
-	temp = 0;
-
-	cout << "Endurance: " << flush;
-	cin >> temp;
-	end = temp;
-	temp = 0;
-
-	cout << "Perception: " << flush;
-	cin >> temp;
-	per = temp;
-	temp = 0;
-
-	cout << "Magic: " << flush;
-	cin >> temp;
-	mag = temp;
-	temp = 0;
-
-	cout << "Willpower: " << flush;
-	cin >> temp;
-	wil = temp;
-	temp = 0;
-
-	auto ch = make_shared<Character>(str, agi, end, per, mag, wil);
-	engine.NewGame(ch);
-
-	string t;
-	getline(cin, t);
+	{
+		Strength str;
+		Agility agi;
+		Endurance end;
+		Perception per;
+		Magic mag;
+		Willpower wil;
+		{
+			int temp = 0;
+			cout << "Your Strength: " << flush;
+			cin >> temp;
+			str = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Your Agility: " << flush;
+			cin >> temp;
+			agi = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Your Endurance: " << flush;
+			cin >> temp;
+			end = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Your Perception: " << flush;
+			cin >> temp;
+			per = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Your Magic: " << flush;
+			cin >> temp;
+			mag = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Your Willpower: " << flush;
+			cin >> temp;
+			wil = temp;
+		}
+		ch = make_shared<Character>(str, agi, end, per, mag, wil);
+	}
+	cout << endl;
+	{
+		Strength str;
+		Agility agi;
+		Endurance end;
+		Perception per;
+		Magic mag;
+		Willpower wil;
+		{
+			int temp = 0;
+			cout << "Their Strength: " << flush;
+			cin >> temp;
+			str = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Their Agility: " << flush;
+			cin >> temp;
+			agi = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Their Endurance: " << flush;
+			cin >> temp;
+			end = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Their Perception: " << flush;
+			cin >> temp;
+			per = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Their Magic: " << flush;
+			cin >> temp;
+			mag = temp;
+		}
+		{
+			int temp = 0;
+			cout << "Their Willpower: " << flush;
+			cin >> temp;
+			wil = temp;
+		}
+		mb = make_shared<Character>(str, agi, end, per, mag, wil);
+	}
+	engine.NewGame(ch, mb);
+	{
+		string t;
+		getline(cin, t);
+	}
 }

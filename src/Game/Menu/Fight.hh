@@ -2,11 +2,11 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#if !defined ENTROPY_ASTERIA_GAME_MENU_EXPLORE_INC
-#	define ENTROPY_ASTERIA_GAME_MENU_EXPLORE_INC
+#if !defined ENTROPY_ASTERIA_GAME_MENU_FIGHT_INC
+#	define ENTROPY_ASTERIA_GAME_MENU_FIGHT_INC
 
 #	include "../Engine/Menu.hh"
-#	include <cstddef>
+#	include "../../Character.hh"
 
 	namespace Entropy
 	{
@@ -14,15 +14,14 @@
 		{
 			namespace Menus
 			{
-				class Explore :
+				class Fight :
 					public Menu
 				{
 					public:
+						Fight(const std::shared_ptr<Character> &);
 						void operator () (Engine &);
 					private:
-						void _map(Engine &);
-						void _menu(Engine &);
-						void _move(Engine &, const std::size_t, const std::size_t);
+						std::shared_ptr<Character> _enemy;
 				};
 			}
 		}
