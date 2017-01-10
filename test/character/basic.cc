@@ -49,20 +49,18 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.size(), 2);
-			EXPECT_EQ(b.size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
 
-			auto i = a.begin();
-			auto j = b.begin();
+			auto i = a.Modifiers()[Untyped].begin();
+			auto j = b.Modifiers()[Untyped].begin();
 			i++; j++;
 
-			ASSERT_NE(i, a.end());
-			ASSERT_NE(j, b.end());
+			ASSERT_NE(i, a.Modifiers()[Untyped].end());
+			ASSERT_NE(j, b.Modifiers()[Untyped].end());
 
-			EXPECT_EQ((*i)->Reason(), "Unarmed Skill"s);
-			EXPECT_EQ((*j)->Reason(), "Unarmed Skill"s);
-			EXPECT_EQ((*i)->Value(), 0);
-			EXPECT_EQ((*j)->Value(), 10);
+			EXPECT_EQ(i->Value(), 0);
+			EXPECT_EQ(j->Value(), 10);
 		TEST_END
 	}
 
@@ -79,20 +77,18 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.size(), 2);
-			EXPECT_EQ(b.size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
 
-			auto i = a.begin();
-			auto j = b.begin();
+			auto i = a.Modifiers()[Untyped].begin();
+			auto j = b.Modifiers()[Untyped].begin();
 			i++; j++;
 
-			ASSERT_NE(i, a.end());
-			ASSERT_NE(j, b.end());
+			ASSERT_NE(i, a.Modifiers()[Untyped].end());
+			ASSERT_NE(j, b.Modifiers()[Untyped].end());
 
-			EXPECT_EQ((*i)->Reason(), "Unarmed Skill"s);
-			EXPECT_EQ((*j)->Reason(), "Sword Skill"s);
-			EXPECT_EQ((*i)->Value(), 0);
-			EXPECT_EQ((*j)->Value(), 10);
+			EXPECT_EQ(i->Value(), 0);
+			EXPECT_EQ(j->Value(), 10);
 		TEST_END
 	}
 
@@ -110,19 +106,17 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.size(), 2);
-			EXPECT_EQ(b.size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
 
-			auto i = a.begin();
-			auto j = b.begin();
+			auto i = a.Modifiers()[Untyped].begin();
+			auto j = b.Modifiers()[Untyped].begin();
 
-			ASSERT_NE(i, a.end());
-			ASSERT_NE(j, b.end());
+			ASSERT_NE(i, a.Modifiers()[Untyped].end());
+			ASSERT_NE(j, b.Modifiers()[Untyped].end());
 
-			EXPECT_EQ((*i)->Reason(), "Opponent's Defense"s);
-			EXPECT_EQ((*j)->Reason(), "Opponent's Defense"s);
-			EXPECT_EQ((*i)->Raw(), 10);
-			EXPECT_EQ((*j)->Raw(), 0);
+			EXPECT_EQ(i->Raw(), 10);
+			EXPECT_EQ(j->Raw(), 0);
 		TEST_END
 	}
 }

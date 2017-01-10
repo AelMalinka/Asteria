@@ -33,24 +33,24 @@ Check Character::Attack(Character &target)
 	if(_weapon)
 		type = _weapon->Which();
 
-	Check ret(_check(Modifier(target.Defend(), "Opponent's Defense", negative)));
+	Check ret(_check(Modifier(target.Defend(), negative)));
 
 	switch(type)
 	{
 		case Weapon::Type::None:
-			ret.Add(Modifier(get(unarmed), "Unarmed Skill"));
+			ret.Add(Modifier(get(unarmed)));
 		break;
 		case Weapon::Type::Sword:
-			ret.Add(Modifier(get(sword), "Sword Skill"));
+			ret.Add(Modifier(get(sword)));
 		break;
 		case Weapon::Type::Blunt:
-			ret.Add(Modifier(get(blunt), "Blunt Skill"));
+			ret.Add(Modifier(get(blunt)));
 		break;
 		case Weapon::Type::Bow:
-			ret.Add(Modifier(get(bow), "Bow Skill"));
+			ret.Add(Modifier(get(bow)));
 		break;
 		case Weapon::Type::Thrown:
-			ret.Add(Modifier(get(thrown), "Thrown Skill"));
+			ret.Add(Modifier(get(thrown)));
 		break;
 		default:
 			ENTROPY_THROW(Exception("Unknown Weapon Type") <<
@@ -72,13 +72,13 @@ Check Character::Defend()
 	switch(_armor)
 	{
 		case Armor::Type::None:
-			return _check(Modifier(get(unarmored), "Unarmored"));
+			return _check(Modifier(get(unarmored)));
 		break;
 		case Armor::Type::Light:
-			return _check(Modifier(get(lightarmor), "Light Armor"));
+			return _check(Modifier(get(lightarmor)));
 		break;
 		case Armor::Type::Heavy:
-			return _check(Modifier(get(heavyarmor), "Heavy Armor"));
+			return _check(Modifier(get(heavyarmor)));
 		break;
 		default:
 			ENTROPY_THROW(Exception("Unknown Armor Type") <<

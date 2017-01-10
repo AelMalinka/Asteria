@@ -27,6 +27,7 @@
 			using Entropy::Hecate::Check;
 			using Entropy::Hecate::Modifier;
 			using Entropy::Hecate::negative;
+			using Entropy::Hecate::Untyped;
 
 			class Character :
 				public BaseCharacter
