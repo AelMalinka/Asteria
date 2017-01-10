@@ -36,25 +36,25 @@
 				struct destruction {};
 			}
 
-			using Melee = Entropy::Hecate::Skill<detail::melee, 4, Strength, Strength, Agility>;
-			using Sword = Entropy::Hecate::Skill<detail::sword, 1, Melee>;
-			using Blunt = Entropy::Hecate::Skill<detail::blunt, 1, Melee>;
-			using Unarmed = Entropy::Hecate::Skill<detail::unarmed, 1, Melee>;
+			using Melee = Entropy::Hecate::Skill<detail::melee, Entropy::Hecate::Linear<4>, Strength, Strength, Agility>;
+			using Sword = Entropy::Hecate::Skill<detail::sword, Entropy::Hecate::Linear<1>, Melee>;
+			using Blunt = Entropy::Hecate::Skill<detail::blunt, Entropy::Hecate::Linear<1>, Melee>;
+			using Unarmed = Entropy::Hecate::Skill<detail::unarmed, Entropy::Hecate::Linear<1>, Melee>;
 
-			using Ranged = Entropy::Hecate::Skill<detail::ranged, 3, Strength, Agility, Agility>;
-			using Bow = Entropy::Hecate::Skill<detail::bow, 1, Ranged>;
-			using Thrown = Entropy::Hecate::Skill<detail::thrown, 1, Ranged>;
+			using Ranged = Entropy::Hecate::Skill<detail::ranged, Entropy::Hecate::Linear<3>, Strength, Agility, Agility>;
+			using Bow = Entropy::Hecate::Skill<detail::bow, Entropy::Hecate::Linear<1>, Ranged>;
+			using Thrown = Entropy::Hecate::Skill<detail::thrown, Entropy::Hecate::Linear<1>, Ranged>;
 
-			using Find = Entropy::Hecate::Skill<detail::find, 1, Perception>;
+			using Find = Entropy::Hecate::Skill<detail::find, Entropy::Hecate::Linear<1>, Perception>;
 
-			using Unarmored = Entropy::Hecate::Skill<detail::unarmed, 3, Agility, Agility, Endurance>;
-			using LightArmor = Entropy::Hecate::Skill<detail::light, 1, Unarmored, Strength>;
-			using HeavyArmor = Entropy::Hecate::Skill<detail::heavy, 1, Unarmored, Strength, Endurance>;
+			using Unarmored = Entropy::Hecate::Skill<detail::unarmed, Entropy::Hecate::Linear<3>, Agility, Agility, Endurance>;
+			using LightArmor = Entropy::Hecate::Skill<detail::light, Entropy::Hecate::Linear<1>, Unarmored, Strength>;
+			using HeavyArmor = Entropy::Hecate::Skill<detail::heavy, Entropy::Hecate::Linear<1>, Unarmored, Strength, Endurance>;
 
-			using Divination = Entropy::Hecate::Skill<detail::divination, 1, Magic, Perception>;
-			using Alteration = Entropy::Hecate::Skill<detail::alteration, 1, Magic, Willpower>;
-			using Healing = Entropy::Hecate::Skill<detail::healing, 1, Magic, Endurance>;
-			using Destruction = Entropy::Hecate::Skill<detail::destruction, 1, Magic, Strength>;
+			using Divination = Entropy::Hecate::Skill<detail::divination, Entropy::Hecate::Linear<1>, Magic, Perception>;
+			using Alteration = Entropy::Hecate::Skill<detail::alteration, Entropy::Hecate::Linear<1>, Magic, Willpower>;
+			using Healing = Entropy::Hecate::Skill<detail::healing, Entropy::Hecate::Linear<1>, Magic, Endurance>;
+			using Destruction = Entropy::Hecate::Skill<detail::destruction, Entropy::Hecate::Linear<1>, Magic, Strength>;
 		}
 	}
 
