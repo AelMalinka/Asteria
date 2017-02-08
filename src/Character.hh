@@ -11,6 +11,7 @@
 
 #	include "Character/Stats.hh"
 #	include "Character/Skills.hh"
+#	include "Character/Resources.hh"
 
 #	include "Character/Weapon.hh"
 #	include "Character/Armor.hh"
@@ -42,6 +43,7 @@
 					void Equip(const Equipment &);
 					void Unequip(const Equipment::Slot &);
 				private:
+					Health _health;
 					std::shared_ptr<Weapon> _weapon;
 					Armor::Type _armor;
 					std::map<Equipment::Slot, std::shared_ptr<Equipment>> _equipment;

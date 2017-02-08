@@ -8,12 +8,12 @@ using namespace Entropy::Asteria;
 using namespace std;
 
 Character::Character(const Strength &s, const Agility &a, const Endurance &e, const Perception &p, const Magic &v, const Willpower &w)
-	: BaseCharacter(s, a, e, p, v, w), _weapon(), _armor(Armor::Type::None)
+	: BaseCharacter(s, a, e, p, v, w), _health(Stats()), _weapon(), _armor(Armor::Type::None)
 {}
 
 bool Character::isAlive() const
 {
-	return true;
+	return _health.Current() > 0;
 }
 
 Check Character::Attack(Character &target)
