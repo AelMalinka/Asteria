@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Character">
+      <UniqueIdentifier>{420dbfce-c678-4bde-8753-d9c013847b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{85b4f7d7-1cb8-43f4-a02a-f1df0fed0e4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map">
+      <UniqueIdentifier>{a67b1262-bdc6-4532-9d33-01c2f9d456bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character">
+      <UniqueIdentifier>{2f4b2737-7193-4b51-a0be-1691d4261c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{fdca3860-06cd-4efe-8e57-e7eef9c7f1a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{9fab702c-1380-4417-a119-0e9017007377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Engine">
+      <UniqueIdentifier>{ab700e7d-d7d7-49a9-9a70-c837349b8034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Menu">
+      <UniqueIdentifier>{58b27264-1083-4f62-9114-47a32853fc52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Engine">
+      <UniqueIdentifier>{5456cd70-1f9e-4896-83fe-d88b8542037a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Menu">
+      <UniqueIdentifier>{d7a468d0-2b77-4e49-bab6-4ff56cc5515c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Character.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Character\Armor.cc">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Character\Equipment.cc">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Character\Item.cc">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Character\Weapon.cc">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Main.cc">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\Engine.cc">
+      <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\Renderer.cc">
+      <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Menu\Explore.cc">
+      <Filter>Source Files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Menu\Fight.cc">
+      <Filter>Source Files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Menu\Main.cc">
+      <Filter>Source Files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Menu\New.cc">
+      <Filter>Source Files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Cave.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Floor.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Object.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Tile.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Character.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Exception.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Armor.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Equipment.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Item.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Skills.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Stats.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Character\Weapon.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Main.hh">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Engine.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Menu.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Renderer.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Menu\Explore.hh">
+      <Filter>Header Files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Menu\Fight.hh">
+      <Filter>Header Files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Menu\Main.hh">
+      <Filter>Header Files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Menu\New.hh">
+      <Filter>Header Files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Cave.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Floor.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Object.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Tile.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
