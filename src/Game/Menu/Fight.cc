@@ -16,7 +16,7 @@ Fight::Fight(const shared_ptr<Character> &c)
 void Fight::operator () (Engine &engine)
 {
 	cout << endl
-		<< "Unimplemented" << endl
+		<< "a) Attack" << endl
 		<< "q) Quit" << endl;
 
 	string line;
@@ -24,4 +24,6 @@ void Fight::operator () (Engine &engine)
 
 	if(line == "q")
 		engine.Done();
+	else if(line == "a") {
+	}
 }
