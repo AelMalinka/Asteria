@@ -11,6 +11,16 @@ Character::Character(const Strength &s, const Agility &a, const Endurance &e, co
 	: BaseCharacter(s, a, e, p, v, w), _health(Stats()), _weapon(), _armor(Armor::Type::None)
 {}
 
+Health &Character::Hp()
+{
+	return _health;
+}
+
+const Health &Character::Hp() const
+{
+	return _health;
+}
+
 bool Character::isAlive() const
 {
 	return _health.Current() > 0;
@@ -57,6 +67,20 @@ Check Character::Attack(Character &target)
 				WeaponTypeInfo(type)
 			);
 	}
+
+	// 2017-02-10 AMR TODO: various weapon damages
+	// 2017-02-10 AMR TODO: armor effects?
+	// 2017-02-10 AMR TODO: cleanup
+	ret.Add(Hecate::onSuccess([this, &target](const Check::Result &res) {
+		PercentType dmg = 0;
+
+		if (res.isCritical())
+			dmg = _default_damage;
+		else
+			dmg = res.Value() * _default_damage / 100;
+
+		target.Hp().Current() -= dmg;
+	}));
 
 	return ret;
 }

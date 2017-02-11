@@ -9,6 +9,10 @@
 
 #	include "Exception.hh"
 
+#	ifndef ENTROPY_ASTERIA_DEFAULT_MAX_DAMAGE
+#		define ENTROPY_ASTERIA_DEFAULT_MAX_DAMAGE 10
+#	endif
+
 #	include "Character/Stats.hh"
 #	include "Character/Skills.hh"
 #	include "Character/Resources.hh"
@@ -29,12 +33,16 @@
 			using Entropy::Hecate::Modifier;
 			using Entropy::Hecate::negative;
 			using Entropy::Hecate::Untyped;
+			using Entropy::Hecate::PercentType;
+			using Entropy::Hecate::CostType;
 
 			class Character :
 				public BaseCharacter
 			{
 				public:
 					Character(const Strength &, const Agility &, const Endurance &, const Perception &, const Magic &, const Willpower &);
+					Health &Hp();
+					const Health &Hp() const;
 					bool isAlive() const;
 					Check Attack(Character &);
 					Check Defend();
@@ -47,6 +55,7 @@
 					std::shared_ptr<Weapon> _weapon;
 					Armor::Type _armor;
 					std::map<Equipment::Slot, std::shared_ptr<Equipment>> _equipment;
+					static constexpr PercentType _default_damage = ENTROPY_ASTERIA_DEFAULT_MAX_DAMAGE;
 			};
 		}
 	}

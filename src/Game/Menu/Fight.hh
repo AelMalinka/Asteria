@@ -22,6 +22,8 @@
 						void operator () (Engine &);
 					private:
 						std::shared_ptr<Character> _enemy;
+						std::shared_ptr<Check> _me;
+						std::shared_ptr<Check> _them;
 				};
 			}
 		}
