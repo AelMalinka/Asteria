@@ -11,10 +11,11 @@ using namespace std;
 
 struct Output
 {
-	explicit Output(bool);
+	Output(bool, Health &);
 	void operator () (const Check::Result &) const;
-private:
-	bool _is_me;
+	private:
+		bool _is_me;
+		Health &_health;
 };
 
 Fight::Fight(const shared_ptr<Character> &c)
@@ -44,13 +45,13 @@ void Fight::operator () (Engine &engine)
 		if (!_me) {
 			_me = make_shared<Check>(engine.Player()->Attack(*_enemy));
 
-			_me->Add(Output(true));
+			_me->Add(Output(true, _enemy->Hp()));
 		}
 
 		if (!_them) {
 			_them = make_shared<Check>(_enemy->Attack(*engine.Player()));
 
-			_them->Add(Output(false));
+			_them->Add(Output(false, engine.Player()->Hp()));
 		}
 
 		cout << endl;
@@ -64,14 +65,15 @@ void Fight::operator () (Engine &engine)
 	cout << endl;
 }
 
-Output::Output(bool isMe)
-	: _is_me(isMe)
+Output::Output(bool isMe, Health &h)
+	: _is_me(isMe), _health(h)
 {}
 
 void Output::operator () (const Check::Result &res) const
 {
 	cout << (_is_me ? "You " : "They ") << "Attack: " << (res.isCritical() ? "Critical " : "") << (res ? "Hit" : "Miss");
-	if (res)
-		cout << " for " << res.Value() * ENTROPY_ASTERIA_DEFAULT_MAX_DAMAGE / res.Chance() << " damage";
+	if(res) {
+		cout << " New HP: " << _health.Current();
+	}
 	cout << endl;
 }

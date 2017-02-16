@@ -77,7 +77,10 @@ Check Character::Attack(Character &target)
 		if (res.isCritical())
 			dmg = _default_damage;
 		else
-			dmg = res.Value() * _default_damage / 100;
+			dmg = res.Value() * _default_damage / res.Chance();
+
+		if(dmg == 0)
+			dmg = 1;
 
 		target.Hp().Current() -= dmg;
 	}));
