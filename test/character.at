@@ -7,3 +7,8 @@ AT_SETUP([Basic Tests])
 AT_SKIP_IF([test -z $GTEST])
 AT_CHECK([character-basic], [], [ignore], [ignore])
 AT_CLEANUP
+
+AT_SETUP([Attack Tests])
+AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([character-attack], [], [ignore], [ignore])
+AT_CLEANUP

@@ -76,6 +76,7 @@ check_PROGRAMS =
 if GTEST
 check_PROGRAMS += \
 	character-basic \
+	character-attack \
 	floor-cave \
 	map-object \
 	map-tile \
@@ -89,6 +90,10 @@ testLDFLAGS = -pthread $(AM_LDFLAGS)
 character_basic_SOURCES = test/character/basic.cc
 character_basic_LDADD = $(testLDADD)
 character_basic_LDFLAGS = $(testLDFLAGS)
+
+character_attack_SOURCES = test/character/attack.cc
+character_attack_LDADD = $(testLDADD)
+character_attack_LDFLAGS = $(testLDFLAGS)
 
 floor_cave_SOURCES = test/floor/cave.cc
 floor_cave_LDADD = $(testLDADD)
