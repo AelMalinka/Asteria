@@ -115,6 +115,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Entropy\src\Application.hh" />
     <ClInclude Include="..\..\..\Entropy\src\Exception.hh" />
+    <ClInclude Include="..\..\..\Entropy\src\Exception.impl.hh" />
     <ClInclude Include="..\..\..\Entropy\src\Log.hh" />
     <ClInclude Include="..\..\..\Entropy\src\Log\Init.hh" />
     <ClInclude Include="..\..\..\Entropy\src\Log\Logger.hh" />
@@ -130,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Entropy\src\Application.cc" />
+    <ClCompile Include="..\..\..\Entropy\src\Exception.cc" />
     <ClCompile Include="..\..\..\Entropy\src\Log\Init.cc" />
     <ClCompile Include="..\..\..\Entropy\src\Log\Logger.cc" />
     <ClCompile Include="..\..\..\Entropy\src\Log\Severity.cc" />
