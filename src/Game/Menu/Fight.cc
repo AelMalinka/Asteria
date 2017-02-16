@@ -12,10 +12,11 @@ using namespace std;
 struct Output
 {
 	Output(bool, Health &);
-	void operator () (const Check::Result &) const;
+	void operator () (const Check::Result &);
 	private:
 		bool _is_me;
 		Health &_health;
+		PercentType _old;
 };
 
 Fight::Fight(const shared_ptr<Character> &c)
@@ -66,14 +67,16 @@ void Fight::operator () (Engine &engine)
 }
 
 Output::Output(bool isMe, Health &h)
-	: _is_me(isMe), _health(h)
+	: _is_me(isMe), _health(h), _old(_health.Current())
 {}
 
-void Output::operator () (const Check::Result &res) const
+void Output::operator () (const Check::Result &res)
 {
 	cout << (_is_me ? "You " : "They ") << "Attack: " << (res.isCritical() ? "Critical " : "") << (res ? "Hit" : "Miss");
 	if(res) {
-		cout << " New HP: " << _health.Current();
+		cout << " for " << _old - _health.Current() << " damage";
 	}
 	cout << endl;
+
+	_old = _health.Current();
 }
