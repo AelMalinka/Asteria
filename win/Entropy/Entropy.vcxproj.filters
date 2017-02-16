@@ -69,6 +69,9 @@
     <ClInclude Include="..\..\..\Entropy\src\String.impl.hh">
       <Filter>Implementation Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Entropy\src\Exception.impl.hh">
+      <Filter>Implementation Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Entropy\src\Log\Init.cc">
@@ -99,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Entropy\src\Resource.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Entropy\src\Exception.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
