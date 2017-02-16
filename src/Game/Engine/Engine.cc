@@ -6,6 +6,7 @@
 #include <Entropy/Exception.hh>
 
 ENTROPY_EXCEPTION_BASE(YouHaveDied, "You Have Died");
+ENTROPY_EXCEPTION_BASE(YouHaveWon, "You Have Won");
 
 using namespace Entropy::Asteria;
 using namespace std;
@@ -58,6 +59,9 @@ void Engine::Fight(const shared_ptr<Character> &o)
 
 	if(!_ch->isAlive()) {
 		ENTROPY_THROW(YouHaveDied());
+	}
+	else {
+		ENTROPY_THROW(YouHaveWon());
 	}
 }
 
