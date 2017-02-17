@@ -12,13 +12,18 @@ using namespace Entropy::Asteria;
 using namespace std;
 
 Engine::Engine()
-	: _done(false), _main(), _new(), _expl(), _rend(&_main), _ch()
+	: _done(false), _main(), _new(), _expl(), _current(_main), _ch()
 {}
 
 void Engine::operator () ()
 {
 	while(!_done)
-		_rend(*this);
+	{
+		if(!_current)
+			ENTROPY_THROW(Exception("No current context"));
+
+		_current(*this);
+	}
 }
 
 void Engine::Done()
@@ -26,14 +31,14 @@ void Engine::Done()
 	_done = true;
 }
 
-void Engine::New()
+void Engine::StartNewGame()
 {
-	_rend.changeMenu(&_new);
+	_current = _new;
 }
 
 void Engine::Main()
 {
-	_rend.changeMenu(&_main);
+	_current = _main;
 }
 
 void Engine::NewGame(const shared_ptr<Character> &ch, const shared_ptr<Character> &mob)
@@ -46,16 +51,16 @@ void Engine::NewGame(const shared_ptr<Character> &ch, const shared_ptr<Character
 	_map[3][2].Actor() = _mob;
 	_pos = make_tuple(1, 2);
 
-	_rend.changeMenu(&_expl);
+	_current = _expl;
 }
 
-void Engine::Fight(const shared_ptr<Character> &o)
+void Engine::StartFight(const shared_ptr<Character> &o)
 {
-	Menus::Fight f(o);
-	_rend.changeMenu(&f);
+	Fight f(o);
+	_current = f;
 
 	while(o->isAlive() && _ch->isAlive() && !_done)
-		_rend(*this);
+		_current(*this);
 
 	if(!_ch->isAlive()) {
 		ENTROPY_THROW(YouHaveDied());

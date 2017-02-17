@@ -5,15 +5,13 @@
 #if !defined ENTROPY_ASTERIA_GAME_ENGINE_INC
 #	define ENTROPY_ASTERIA_GAME_ENGINE_INC
 
-#	include "Renderer.hh"
+#	include "../Character.hh"
+#	include "../Map.hh"
 
-#	include "../../Character.hh"
-#	include "../../Map.hh"
-
-#	include "../Menu/Main.hh"
-#	include "../Menu/New.hh"
-#	include "../Menu/Explore.hh"
-#	include "../Menu/Fight.hh"
+#	include "Engine/Title.hh"
+#	include "Engine/New.hh"
+#	include "Engine/Explore.hh"
+#	include "Engine/Fight.hh"
 
 #	include <memory>
 #	include <tuple>
@@ -29,9 +27,9 @@
 					void operator () ();
 					void Done();
 					void Main();
-					void New();
+					void StartNewGame();
 					void NewGame(const std::shared_ptr<Character> &, const std::shared_ptr<Character> &);
-					void Fight(const std::shared_ptr<Character> &);
+					void StartFight(const std::shared_ptr<Character> &);
 					Map &map();
 					std::tuple<std::size_t, std::size_t> &Position();
 					std::shared_ptr<Character> &Player();
@@ -39,10 +37,10 @@
 					void _generate_map();
 				private:
 					bool _done;
-					Menus::Main _main;
-					Menus::New _new;
-					Menus::Explore _expl;
-					Renderer _rend;
+					Title _main;
+					New _new;
+					Explore _expl;
+					std::function<void(Engine &)> _current;
 					std::shared_ptr<Character> _ch;
 					std::shared_ptr<Character> _mob;
 					Map _map;

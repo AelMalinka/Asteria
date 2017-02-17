@@ -3,12 +3,11 @@
 */
 
 #include "Explore.hh"
-#include "../Engine/Engine.hh"
+#include "../Engine.hh"
 
 #include <iostream>
 
 using namespace Entropy::Asteria;
-using namespace Entropy::Asteria::Menus;
 using namespace std;
 
 void Explore::operator () (Engine &engine)
@@ -70,7 +69,7 @@ void Explore::_move(Engine &engine, const size_t x, const size_t y)
 	if((get<0>(engine.Position()) != y || get<1>(engine.Position()) != x) && !engine.map()[y][x].isWall())
 	{
 		if(engine.map()[y][x].hasActor()) {
-			engine.Fight(engine.map()[y][x].Actor());
+			engine.StartFight(engine.map()[y][x].Actor());
 		}
 
 		engine.map()[get<0>(engine.Position())][get<1>(engine.Position())].Actor() = nullptr;

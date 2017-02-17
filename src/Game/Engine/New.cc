@@ -3,11 +3,10 @@
 */
 
 #include "New.hh"
-#include "../Engine/Engine.hh"
+#include "../Engine.hh"
 #include <iostream>
 
 using namespace Entropy::Asteria;
-using namespace Entropy::Asteria::Menus;
 using namespace std;
 
 void New::operator () (Engine &engine)

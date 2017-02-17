@@ -5,26 +5,23 @@
 #if !defined ENTROPY_ASTERIA_GAME_MENU_EXPLORE_INC
 #	define ENTROPY_ASTERIA_GAME_MENU_EXPLORE_INC
 
-#	include "../Engine/Menu.hh"
 #	include <cstddef>
 
 	namespace Entropy
 	{
 		namespace Asteria
 		{
-			namespace Menus
+			class Engine;
+
+			class Explore
 			{
-				class Explore :
-					public Menu
-				{
-					public:
-						void operator () (Engine &);
-					private:
-						void _map(Engine &);
-						void _menu(Engine &);
-						void _move(Engine &, const std::size_t, const std::size_t);
-				};
-			}
+				public:
+					void operator () (Engine &);
+				private:
+					void _map(Engine &);
+					void _menu(Engine &);
+					void _move(Engine &, const std::size_t, const std::size_t);
+			};
 		}
 	}
 

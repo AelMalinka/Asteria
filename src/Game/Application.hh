@@ -6,7 +6,7 @@
 #	define ENTROPY_ASTERIA_GAME_MAIN_INC
 
 #	include <Entropy/Application.hh>
-#	include "Engine/Engine.hh"
+#	include "Engine.hh"
 
 	namespace Entropy
 	{

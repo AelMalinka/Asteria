@@ -5,21 +5,17 @@
 #if !defined ENTROPY_ASTERIA_GAME_MENU_NEW_INC
 #	define ENTROPY_ASTERIA_GAME_MENU_NEW_INC
 
-#	include "../Engine/Menu.hh"
-
 	namespace Entropy
 	{
 		namespace Asteria
 		{
-			namespace Menus
+			class Engine;
+
+			class New
 			{
-				class New :
-					public Menu
-				{
-					public:
-						void operator () (Engine &);
-				};
-			}
+				public:
+					void operator () (Engine &);
+			};
 		}
 	}
 

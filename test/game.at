@@ -3,11 +3,6 @@
 
 AT_BANNER([Game Engine Tests])
 
-AT_SETUP([Renderer Tests])
-AT_SKIP_IF([test -z $GTEST])
-AT_CHECK([game-renderer], [], [ignore], [ignore])
-AT_CLEANUP
-
 AT_SETUP([Game Test (Simple)])
 AT_DATA([commands], [[q
 ]])

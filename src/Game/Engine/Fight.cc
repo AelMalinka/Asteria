@@ -3,10 +3,9 @@
 */
 
 #include "Fight.hh"
-#include "../Engine/Engine.hh"
+#include "../Engine.hh"
 
 using namespace Entropy::Asteria;
-using namespace Entropy::Asteria::Menus;
 using namespace std;
 
 struct Output

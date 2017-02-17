@@ -2,16 +2,15 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#include "Main.hh"
-#include "../Engine/Engine.hh"
+#include "Title.hh"
+#include "../Engine.hh"
 
 #include <iostream>
 
 using namespace Entropy::Asteria;
-using namespace Entropy::Asteria::Menus;
 using namespace std;
 
-void Main::operator () (Engine &engine)
+void Title::operator () (Engine &engine)
 {
 	cout << endl
 		<< "Asteria" << endl
@@ -26,7 +25,7 @@ void Main::operator () (Engine &engine)
 	if(line == "q")
 		engine.Done();
 	else if(line == "n")
-		engine.New();
+		engine.StartNewGame();
 	else
 		cout << "Invalid Response" << endl;
 }
