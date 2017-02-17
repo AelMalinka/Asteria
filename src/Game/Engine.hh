@@ -42,7 +42,6 @@
 					Explore _expl;
 					std::function<void(Engine &)> _current;
 					std::shared_ptr<Character> _ch;
-					std::shared_ptr<Character> _mob;
 					Map _map;
 					std::tuple<std::size_t, std::size_t> _pos;
 			};

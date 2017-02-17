@@ -44,11 +44,10 @@ void Engine::Main()
 void Engine::NewGame(const shared_ptr<Character> &ch, const shared_ptr<Character> &mob)
 {
 	_ch = ch;
-	_mob = mob;
 	_generate_map();
 
 	_map[1][2].Actor() = _ch;
-	_map[3][2].Actor() = _mob;
+	_map[3][2].Actor() = mob;
 	_pos = make_tuple(1, 2);
 
 	_current = _expl;
