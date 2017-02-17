@@ -65,7 +65,7 @@ void Engine::StartFight(const shared_ptr<Character> &o)
 	if(!_ch->isAlive()) {
 		ENTROPY_THROW(YouHaveDied());
 	}
-	else {
+	else if(!o->isAlive()) {
 		ENTROPY_THROW(YouHaveWon());
 	}
 }
