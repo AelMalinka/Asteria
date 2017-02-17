@@ -29,7 +29,7 @@ mapheaders_HEADERS = \
 
 gameheadersdir = $(includedir)/Entropy/Asteria/Game
 gameheaders_HEADERS = \
-	src/Game/Main.hh
+	src/Game/Application.hh
 
 engineheadersdir = $(includedir)/Entropy/Asteria/Game/Engine
 engineheaders_HEADERS = \
@@ -63,7 +63,7 @@ libasteria_la_SOURCES = \
 	src/Game/Menu/New.cc \
 	src/Game/Menu/Explore.cc \
 	src/Game/Menu/Fight.cc \
-	src/Game/Main.cc
+	src/Game/Application.cc
 
 bin_PROGRAMS = \
 	asteria

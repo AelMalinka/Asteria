@@ -59,9 +59,6 @@
     <ClCompile Include="..\..\src\Character\Weapon.cc">
       <Filter>Source Files\Character</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Game\Main.cc">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Game\Engine\Engine.cc">
       <Filter>Source Files\Game\Engine</Filter>
     </ClCompile>
@@ -92,6 +89,9 @@
     <ClCompile Include="..\..\src\Map\Tile.cc">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Game\Application.cc">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Character.hh">
@@ -120,9 +120,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Character\Weapon.hh">
       <Filter>Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Main.hh">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Game\Engine\Engine.hh">
       <Filter>Header Files\Game\Engine</Filter>
@@ -156,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Map\Tile.hh">
       <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Application.hh">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

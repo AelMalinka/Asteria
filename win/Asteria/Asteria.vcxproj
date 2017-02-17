@@ -26,7 +26,7 @@
     <ClCompile Include="..\..\src\Character\Weapon.cc" />
     <ClCompile Include="..\..\src\Game\Engine\Engine.cc" />
     <ClCompile Include="..\..\src\Game\Engine\Renderer.cc" />
-    <ClCompile Include="..\..\src\Game\Main.cc" />
+    <ClCompile Include="..\..\src\Game\Application.cc" />
     <ClCompile Include="..\..\src\Game\Menu\Explore.cc" />
     <ClCompile Include="..\..\src\Game\Menu\Fight.cc" />
     <ClCompile Include="..\..\src\Game\Menu\Main.cc" />
@@ -49,7 +49,7 @@
     <ClInclude Include="..\..\src\Game\Engine\Engine.hh" />
     <ClInclude Include="..\..\src\Game\Engine\Menu.hh" />
     <ClInclude Include="..\..\src\Game\Engine\Renderer.hh" />
-    <ClInclude Include="..\..\src\Game\Main.hh" />
+    <ClInclude Include="..\..\src\Game\Application.hh" />
     <ClInclude Include="..\..\src\Game\Menu\Explore.hh" />
     <ClInclude Include="..\..\src\Game\Menu\Fight.hh" />
     <ClInclude Include="..\..\src\Game\Menu\Main.hh" />

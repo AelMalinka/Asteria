@@ -3,7 +3,7 @@
 */
 
 #include <cstdlib>
-#include "Main.hh"
+#include "Application.hh"
 
 using namespace std;
 using namespace Entropy::Asteria;
@@ -12,7 +12,7 @@ int main(int ArgC, char *ArgV[])
 {
 	try
 	{
-		Main app(ArgC, ArgV);
+		Application app(ArgC, ArgV);
 		app();
 	}
 	catch(exception &e)

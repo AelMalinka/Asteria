@@ -2,18 +2,17 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#include "Main.hh"
+#include "Application.hh"
 
 using namespace Entropy::Asteria;
-using namespace Entropy;
 
-Main::Main() = default;
+Application::Application() = default;
 
-Main::Main(const int ArgC, char *ArgV[])
-	: Application(ArgC, ArgV)
+Application::Application(const int ArgC, char *ArgV[])
+	: Entropy::Application(ArgC, ArgV)
 {}
 
-void Main::operator () ()
+void Application::operator () ()
 {
 	_engine();
 }

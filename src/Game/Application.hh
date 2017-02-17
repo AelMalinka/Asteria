@@ -12,12 +12,12 @@
 	{
 		namespace Asteria
 		{
-			class Main :
-				public Application
+			class Application :
+				public Entropy::Application
 			{
 				public:
-					Main();
-					Main(const int, char *[]);
+					Application();
+					Application(const int, char *[]);
 					void operator () ();
 				private:
 					Engine _engine;
