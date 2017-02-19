@@ -30,14 +30,8 @@
     <Filter Include="Header Files\Game\Engine">
       <UniqueIdentifier>{ab700e7d-d7d7-49a9-9a70-c837349b8034}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Game\Menu">
-      <UniqueIdentifier>{58b27264-1083-4f62-9114-47a32853fc52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game\Engine">
       <UniqueIdentifier>{5456cd70-1f9e-4896-83fe-d88b8542037a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game\Menu">
-      <UniqueIdentifier>{d7a468d0-2b77-4e49-bab6-4ff56cc5515c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -59,24 +53,6 @@
     <ClCompile Include="..\..\src\Character\Weapon.cc">
       <Filter>Source Files\Character</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Game\Engine\Engine.cc">
-      <Filter>Source Files\Game\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Game\Engine\Renderer.cc">
-      <Filter>Source Files\Game\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Game\Menu\Explore.cc">
-      <Filter>Source Files\Game\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Game\Menu\Fight.cc">
-      <Filter>Source Files\Game\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Game\Menu\Main.cc">
-      <Filter>Source Files\Game\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Game\Menu\New.cc">
-      <Filter>Source Files\Game\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Map\Cave.cc">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
@@ -91,6 +67,21 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Game\Application.cc">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine.cc">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\Explore.cc">
+      <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\Fight.cc">
+      <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\New.cc">
+      <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Game\Engine\Title.cc">
+      <Filter>Source Files\Game\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,27 +112,6 @@
     <ClInclude Include="..\..\src\Character\Weapon.hh">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Game\Engine\Engine.hh">
-      <Filter>Header Files\Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Engine\Menu.hh">
-      <Filter>Header Files\Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Engine\Renderer.hh">
-      <Filter>Header Files\Game\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Menu\Explore.hh">
-      <Filter>Header Files\Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Menu\Fight.hh">
-      <Filter>Header Files\Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Menu\Main.hh">
-      <Filter>Header Files\Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Game\Menu\New.hh">
-      <Filter>Header Files\Game\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Map\Cave.hh">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
@@ -156,6 +126,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Game\Application.hh">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine.hh">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Explore.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Fight.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\New.hh">
+      <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Game\Engine\Title.hh">
+      <Filter>Header Files\Game\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
