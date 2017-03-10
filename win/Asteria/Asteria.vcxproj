@@ -18,47 +18,8 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\Character.cc" />
-    <ClCompile Include="..\..\src\Character\Armor.cc" />
-    <ClCompile Include="..\..\src\Character\Equipment.cc" />
-    <ClCompile Include="..\..\src\Character\Item.cc" />
-    <ClCompile Include="..\..\src\Character\Weapon.cc" />
-    <ClCompile Include="..\..\src\Game\Application.cc" />
-    <ClCompile Include="..\..\src\Game\Engine.cc" />
-    <ClCompile Include="..\..\src\Game\Engine\Explore.cc" />
-    <ClCompile Include="..\..\src\Game\Engine\Fight.cc" />
-    <ClCompile Include="..\..\src\Game\Engine\New.cc" />
-    <ClCompile Include="..\..\src\Game\Engine\Title.cc" />
-    <ClCompile Include="..\..\src\Map.cc" />
-    <ClCompile Include="..\..\src\Map\Cave.cc" />
-    <ClCompile Include="..\..\src\Map\Floor.cc" />
-    <ClCompile Include="..\..\src\Map\Object.cc" />
-    <ClCompile Include="..\..\src\Map\Tile.cc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\Character.hh" />
-    <ClInclude Include="..\..\src\Character\Armor.hh" />
-    <ClInclude Include="..\..\src\Character\Equipment.hh" />
-    <ClInclude Include="..\..\src\Character\Item.hh" />
-    <ClInclude Include="..\..\src\Character\Skills.hh" />
-    <ClInclude Include="..\..\src\Character\Stats.hh" />
-    <ClInclude Include="..\..\src\Character\Weapon.hh" />
-    <ClInclude Include="..\..\src\Exception.hh" />
-    <ClInclude Include="..\..\src\Game\Application.hh" />
-    <ClInclude Include="..\..\src\Game\Engine.hh" />
-    <ClInclude Include="..\..\src\Game\Engine\Explore.hh" />
-    <ClInclude Include="..\..\src\Game\Engine\Fight.hh" />
-    <ClInclude Include="..\..\src\Game\Engine\New.hh" />
-    <ClInclude Include="..\..\src\Game\Engine\Title.hh" />
-    <ClInclude Include="..\..\src\Map.hh" />
-    <ClInclude Include="..\..\src\Map\Cave.hh" />
-    <ClInclude Include="..\..\src\Map\Floor.hh" />
-    <ClInclude Include="..\..\src\Map\Object.hh" />
-    <ClInclude Include="..\..\src\Map\Tile.hh" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{81800385-7143-4C6B-A293-88AD3CD0CA8F}</ProjectGuid>
+    <ProjectGuid>{58F7C734-261B-4783-8E41-5EA9ADE830C5}</ProjectGuid>
     <RootNamespace>Asteria</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -67,27 +28,27 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>NotSet</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -113,21 +74,19 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\googletest-release-1.8.0\googletest\include;..\Entropy\include;..\..\..\Hecate\external\pcg-cpp\include;..\Hecate\include;..\..\src</AdditionalIncludeDirectories>
-      <DisableSpecificWarnings>4146</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
+      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\external\pcg-cpp\include;..\..\..\Hecate\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>Entropy.lib;Hecate.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(IntDir)</AdditionalLibraryDirectories>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
+      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\external\pcg-cpp\include;..\..\..\Hecate\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,10 +96,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\googletest-release-1.8.0\googletest\include;..\Entropy\include;..\..\..\Hecate\external\pcg-cpp\include;..\Hecate\include;..\..\src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
-      <DisableSpecificWarnings>4146</DisableSpecificWarnings>
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
+      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\external\pcg-cpp\include;..\..\..\Hecate\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -154,12 +112,55 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
+      <PreprocessorDefinitions>PCG_LITTLE_ENDIAN=1</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\..\boost_1_63_0;..\..\..\..\libpng;..\..\..\..\libpng\build;..\..\..\Entropy\win\include;..\..\external\pcg-cpp\include;..\..\..\Hecate\win\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\Character.cc" />
+    <ClCompile Include="..\..\src\Character\Armor.cc" />
+    <ClCompile Include="..\..\src\Character\Equipment.cc" />
+    <ClCompile Include="..\..\src\Character\Item.cc" />
+    <ClCompile Include="..\..\src\Character\Weapon.cc" />
+    <ClCompile Include="..\..\src\Game\Application.cc" />
+    <ClCompile Include="..\..\src\Game\Engine.cc" />
+    <ClCompile Include="..\..\src\Game\Engine\Explore.cc" />
+    <ClCompile Include="..\..\src\Game\Engine\Fight.cc" />
+    <ClCompile Include="..\..\src\Game\Engine\New.cc" />
+    <ClCompile Include="..\..\src\Game\Engine\Title.cc" />
+    <ClCompile Include="..\..\src\Map.cc" />
+    <ClCompile Include="..\..\src\Map\Cave.cc" />
+    <ClCompile Include="..\..\src\Map\Floor.cc" />
+    <ClCompile Include="..\..\src\Map\Object.cc" />
+    <ClCompile Include="..\..\src\Map\Tile.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\Character.hh" />
+    <ClInclude Include="..\..\src\Character\Armor.hh" />
+    <ClInclude Include="..\..\src\Character\Equipment.hh" />
+    <ClInclude Include="..\..\src\Character\Item.hh" />
+    <ClInclude Include="..\..\src\Character\Resources.hh" />
+    <ClInclude Include="..\..\src\Character\Skills.hh" />
+    <ClInclude Include="..\..\src\Character\Stats.hh" />
+    <ClInclude Include="..\..\src\Character\Weapon.hh" />
+    <ClInclude Include="..\..\src\Exception.hh" />
+    <ClInclude Include="..\..\src\Game\Application.hh" />
+    <ClInclude Include="..\..\src\Game\Engine.hh" />
+    <ClInclude Include="..\..\src\Game\Engine\Explore.hh" />
+    <ClInclude Include="..\..\src\Game\Engine\Fight.hh" />
+    <ClInclude Include="..\..\src\Game\Engine\New.hh" />
+    <ClInclude Include="..\..\src\Game\Engine\Title.hh" />
+    <ClInclude Include="..\..\src\Map.hh" />
+    <ClInclude Include="..\..\src\Map\Cave.hh" />
+    <ClInclude Include="..\..\src\Map\Floor.hh" />
+    <ClInclude Include="..\..\src\Map\Object.hh" />
+    <ClInclude Include="..\..\src\Map\Tile.hh" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

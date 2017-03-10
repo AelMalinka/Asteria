@@ -22,9 +22,9 @@ Makefile
 /m4/lt*.m4
 
 #visual studio
-/win/*/Debug
-/win/*/Release
-/win/*/.vs
-/win/*/*.VC.db
-/win/*/*.VC.opendb
-/win/*/*.user
+Debug
+Release
+win/.vs
+win/*.VC.db
+win/*.VC.opendb
+win/*/*.user

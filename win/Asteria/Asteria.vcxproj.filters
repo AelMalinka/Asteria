@@ -10,28 +10,28 @@
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Header Files\Character">
-      <UniqueIdentifier>{420dbfce-c678-4bde-8753-d9c013847b1a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Game">
-      <UniqueIdentifier>{85b4f7d7-1cb8-43f4-a02a-f1df0fed0e4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Map">
-      <UniqueIdentifier>{a67b1262-bdc6-4532-9d33-01c2f9d456bb}</UniqueIdentifier>
+      <UniqueIdentifier>{922ba845-98a7-4d7d-85c1-e2bd3e0cc7ff}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Character">
-      <UniqueIdentifier>{2f4b2737-7193-4b51-a0be-1691d4261c7f}</UniqueIdentifier>
+      <UniqueIdentifier>{b0fd97f5-1aea-4aec-881c-16db6ee7fbcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{6f448b00-3c16-4edc-b279-a93d23d3820f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map">
+      <UniqueIdentifier>{12ab0805-52f5-4f2b-ae56-318bc4d08646}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Game">
-      <UniqueIdentifier>{fdca3860-06cd-4efe-8e57-e7eef9c7f1a4}</UniqueIdentifier>
+      <UniqueIdentifier>{13ec0043-f84c-4d32-acf4-baa535e41814}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Map">
-      <UniqueIdentifier>{9fab702c-1380-4417-a119-0e9017007377}</UniqueIdentifier>
+      <UniqueIdentifier>{5179e952-806d-41e0-882f-9d9c208799a1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Game\Engine">
-      <UniqueIdentifier>{ab700e7d-d7d7-49a9-9a70-c837349b8034}</UniqueIdentifier>
+      <UniqueIdentifier>{a9b8f007-ce4b-422b-b3ee-c981e556719f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Game\Engine">
-      <UniqueIdentifier>{5456cd70-1f9e-4896-83fe-d88b8542037a}</UniqueIdentifier>
+      <UniqueIdentifier>{5f43701d-69df-4f3c-8124-a949e5e658fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,18 +53,6 @@
     <ClCompile Include="..\..\src\Character\Weapon.cc">
       <Filter>Source Files\Character</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Map\Cave.cc">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Map\Floor.cc">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Map\Object.cc">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Map\Tile.cc">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Game\Application.cc">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -82,6 +70,18 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Game\Engine\Title.cc">
       <Filter>Source Files\Game\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Cave.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Floor.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Object.cc">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Map\Tile.cc">
+      <Filter>Source Files\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +103,9 @@
     <ClInclude Include="..\..\src\Character\Item.hh">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Character\Resources.hh">
+      <Filter>Header Files\Character</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\Character\Skills.hh">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
@@ -111,18 +114,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Character\Weapon.hh">
       <Filter>Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Map\Cave.hh">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Map\Floor.hh">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Map\Object.hh">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Map\Tile.hh">
-      <Filter>Header Files\Map</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Game\Application.hh">
       <Filter>Header Files\Game</Filter>
@@ -141,6 +132,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Game\Engine\Title.hh">
       <Filter>Header Files\Game\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Cave.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Floor.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Object.hh">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Map\Tile.hh">
+      <Filter>Header Files\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
