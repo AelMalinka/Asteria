@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_FLOOR_INC
 #	define ENTROPY_ASTERIA_FLOOR_INC
 
-#	include "Exception.hh"
+#	include "../Exception.hh"
 
 #	include <vector>
 
