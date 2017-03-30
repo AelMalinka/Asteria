@@ -50,7 +50,7 @@ namespace {
 		EXPECT_EQ(ch.Actor()->get(st).Value(), 5);
 		EXPECT_EQ(stuff_ch.Actor()->get(st).Value(), 5);
 
-		EXPECT_EQ(stuff.Loot()->size(), 1);
-		EXPECT_EQ(stuff_ch.Loot()->size(), 1);
+		EXPECT_EQ(stuff.Loot()->size(), 1ul);
+		EXPECT_EQ(stuff_ch.Loot()->size(), 1ul);
 	}
 }

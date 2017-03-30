@@ -13,7 +13,7 @@ namespace {
 	TEST(Cave, Create) {
 		Cave cave(100, 100);
 
-		EXPECT_EQ(cave.Tiles().size(), 100);
-		EXPECT_EQ(cave.Tiles().front().size(), 100);
+		EXPECT_EQ(cave.Tiles().size(), 100ul);
+		EXPECT_EQ(cave.Tiles().front().size(), 100ul);
 	}
 }

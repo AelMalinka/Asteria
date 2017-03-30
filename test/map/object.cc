@@ -31,9 +31,9 @@ namespace {
 		});
 
 
-		EXPECT_EQ(empty.size(), 0);
-		EXPECT_EQ(basic.size(), 2);
-		EXPECT_EQ(multiple.size(), 6);
+		EXPECT_EQ(empty.size(), 0ul);
+		EXPECT_EQ(basic.size(), 2ul);
+		EXPECT_EQ(multiple.size(), 6ul);
 	}
 
 	TEST(Object, Iterate) {

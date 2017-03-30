@@ -13,8 +13,8 @@ namespace {
 	TEST(Map, Create) {
 		Map map;
 
-		EXPECT_EQ(map.Height(), 0);
-		EXPECT_EQ(map.Width(), 0);
+		EXPECT_EQ(map.Height(), 0ul);
+		EXPECT_EQ(map.Width(), 0ul);
 	}
 
 	TEST(Map, Room) {
@@ -36,8 +36,8 @@ namespace {
 			}
 		};
 
-		EXPECT_EQ(map.Height(), 3);
-		EXPECT_EQ(map.Width(), 3);
+		EXPECT_EQ(map.Height(), 3ul);
+		EXPECT_EQ(map.Width(), 3ul);
 		EXPECT_TRUE(map[0][0].isWall());
 		EXPECT_TRUE(map[0][1].isWall());
 		EXPECT_TRUE(map[0][2].isWall());

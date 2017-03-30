@@ -49,8 +49,8 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
-			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2ul);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2ul);
 
 			auto i = a.Modifiers()[Untyped].begin();
 			auto j = b.Modifiers()[Untyped].begin();
@@ -77,8 +77,8 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
-			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2ul);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2ul);
 
 			auto i = a.Modifiers()[Untyped].begin();
 			auto j = b.Modifiers()[Untyped].begin();
@@ -106,8 +106,8 @@ namespace {
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
 
-			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2);
-			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2);
+			EXPECT_EQ(a.Modifiers()[Untyped].size(), 2ul);
+			EXPECT_EQ(b.Modifiers()[Untyped].size(), 2ul);
 
 			auto i = a.Modifiers()[Untyped].begin();
 			auto j = b.Modifiers()[Untyped].begin();
