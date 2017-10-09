@@ -168,6 +168,9 @@
     <ProjectReference Include="..\..\..\Hecate\win\Hecate\Hecate.vcxproj">
       <Project>{5178136e-9a3e-4e1a-a83e-38c2c8a21902}</Project>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\malinka\Source\Repos\Mnemosyne\win\Mnemosyne\Mnemosyne.vcxproj">
+      <Project>{980bd1a9-e8a4-4c0b-838c-2031fb379443}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
