@@ -79,8 +79,8 @@
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir);F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\flac\objs\release\lib;F:\Source\External\OpenAL\libs\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Hecate.lib;Asteria.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\flac\objs\release\lib;F:\Source\External\OpenAL\libs\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -93,8 +93,9 @@
       <ObjectFileName>$(IntDir)a\b\%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Hecate.lib;Asteria.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,8 +112,8 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir);F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\flac\objs\release\lib;F:\Source\External\OpenAL\libs\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Hecate.lib;Asteria.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>F:\Source\External\boost\stage\lib;F:\Source\External\libpng\projects\vstudio\Release Library;F:\Source\External\libuv\Release\lib;F:\Source\External\glfw\build\src\RelWithDebInfo;F:\Source\External\libepoxy\build\src;F:\Source\External\flac\objs\release\lib;F:\Source\External\OpenAL\libs\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -129,12 +130,18 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Entropy.lib;Hecate.lib;Asteria.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Game\Asteria.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Asteria\Asteria.vcxproj">
+      <Project>{58f7c734-261b-4783-8e41-5ea9ade830c5}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

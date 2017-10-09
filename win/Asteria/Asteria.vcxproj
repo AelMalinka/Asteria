@@ -161,6 +161,14 @@
     <ClInclude Include="..\..\src\Map\Object.hh" />
     <ClInclude Include="..\..\src\Map\Tile.hh" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Entropy\win\Entropy\Entropy.vcxproj">
+      <Project>{25b626b2-690c-4eee-a3a9-2aa486e31542}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Hecate\win\Hecate\Hecate.vcxproj">
+      <Project>{5178136e-9a3e-4e1a-a83e-38c2c8a21902}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
