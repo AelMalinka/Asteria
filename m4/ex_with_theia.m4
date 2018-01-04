@@ -12,19 +12,21 @@ AC_DEFUN([EX_WITH_THEIA], [
 		[with_theia=check]
 	)
 
+	EX_WITH_FREETYPE
+
 	THEIA_LIBS=
 	LDFLAGS_save="$LDFLAGS"
 	AS_IF([test "x$with_theia" != xcheck], [AS_IF([test "x$with_theia" != xyes], [
 		LDFLAGS="-L${with_theia}/lib"
 	])])
 	AC_CHECK_LIB([theia], [main], [
-			AC_SUBST([THEIA_LIBS], ["-ltheia"])
+			AC_SUBST([THEIA_LIBS], ["$FT2_LIBS -ltheia"])
 			AC_SUBST([THEIA_LDFLAGS], ["$LDFLAGS"])
 		],
 		AC_MSG_FAILURE(["--with-theia: theia not found"])
 	)
 	LDFLAGS="$LDFLAGS_save"
-	THEIA_CPPFLAGS="-std=c++14"
+	THEIA_CPPFLAGS="$FT2_CFLAGS -std=c++14"
 	test "x$with_theia" != xcheck && THEIA_CPPFLAGS="$THEIA_CPPFLAGS -I${with_theia}/include"
 	CPPFLAGS_save="$CPPFLAGS"
 	CPPFLAGS="$THEIA_CPPFLAGS"
