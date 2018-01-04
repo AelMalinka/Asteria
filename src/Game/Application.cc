@@ -4,15 +4,39 @@
 
 #include "Application.hh"
 
+#include "Modes/Fight.hh"
+#include "Modes/Menu.hh"
+#include "Modes/World.hh"
+
+using namespace std;
 using namespace Entropy::Asteria;
 
-Application::Application() = default;
-
-Application::Application(const int ArgC, char *ArgV[])
-	: Entropy::Application(ArgC, ArgV)
-{}
-
-void Application::operator () ()
+Application::Application() :
+	Entropy::Mnemosyne::Application(),
+	_menu(end()),
+	_world(end()),
+	_fight(end())
 {
-	_engine();
+	addSearchPath("data"s);
+
+	_menu = addMode(make_shared<Modes::Menu>(*this));
+	_world = addMode(make_shared<Modes::World>(*this));
+	_fight = addMode(make_shared<Modes::Fight>(*this));
+
+	setMode(_menu);
+}
+
+Application::Application(const int ArgC, char *ArgV[]) :
+	Entropy::Mnemosyne::Application(ArgC, ArgV),
+	_menu(end()),
+	_world(end()),
+	_fight(end())
+{
+	addSearchPath("data"s);
+
+	_menu = addMode(make_shared<Modes::Menu>(*this));
+	_world = addMode(make_shared<Modes::World>(*this));
+	_fight = addMode(make_shared<Modes::Fight>(*this));
+
+	setMode(_menu);
 }
