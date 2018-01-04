@@ -63,6 +63,9 @@ asteria_LDADD = libasteria.la
 
 check_PROGRAMS =
 
+all-local:
+	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
+
 if GTEST
 check_PROGRAMS += \
 	character-basic \
