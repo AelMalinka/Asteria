@@ -40,20 +40,20 @@ modesheaders_HEADERS = \
 lib_LTLIBRARIES = libasteria.la
 
 libasteria_la_SOURCES = \
-	src/Character.cc \
 	src/Character/Item.cc \
 	src/Character/Equipment.cc \
 	src/Character/Armor.cc \
 	src/Character/Weapon.cc \
-	src/Map.cc \
-	src/Map/Floor.cc \
-	src/Map/Cave.cc \
-	src/Map/Object.cc \
-	src/Map/Tile.cc \
 	src/Game/Modes/Fight.cc \
 	src/Game/Modes/Menu.cc \
 	src/Game/Modes/World.cc \
-	src/Game/Application.cc
+	src/Game/Application.cc \
+	src/Map/Cave.cc \
+	src/Map/Floor.cc \
+	src/Map/Object.cc \
+	src/Map/Tile.cc \
+	src/Character.cc \
+	src/Map.cc
 
 bin_PROGRAMS = \
 	asteria
