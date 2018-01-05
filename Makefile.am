@@ -53,6 +53,7 @@ libasteria_la_SOURCES = \
 	src/Map/Object.cc \
 	src/Map/Tile.cc \
 	src/Character.cc \
+	src/Logger.cc \
 	src/Map.cc
 
 bin_PROGRAMS = \
