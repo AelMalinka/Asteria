@@ -5,6 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_WORLD_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_WORLD_INC
 
+#	include "../../Exception.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy

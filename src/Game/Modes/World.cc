@@ -6,6 +6,7 @@
 
 using namespace Entropy::Asteria::Modes;
 using namespace Entropy::Mnemosyne;
+using namespace std;
 
 World::World(Mnemosyne::Application &app)
 	: Mode(app)
