@@ -6,12 +6,14 @@
 #	define ENTROPY_ASTERIA_EXCEPTION_INC
 
 #	include <Entropy/Exception.hh>
+#	include <Entropy/Log.hh>
 
 	namespace Entropy
 	{
 		namespace Asteria
 		{
 			ENTROPY_EXCEPTION_BASE(Exception, "Asteria Exception");
+			extern Log::Logger Log;
 		}
 	}
 

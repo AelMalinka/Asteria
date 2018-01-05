@@ -29,35 +29,32 @@ mapheaders_HEADERS = \
 
 gameheadersdir = $(includedir)/Entropy/Asteria/Game
 gameheaders_HEADERS = \
-	src/Game/Engine.hh \
 	src/Game/Application.hh
 
-engineheadersdir = $(includedir)/Entropy/Asteria/Game/Engine
-engineheaders_HEADERS = \
-	src/Game/Engine/Title.hh \
-	src/Game/Engine/New.hh \
-	src/Game/Engine/Explore.hh \
-	src/Game/Engine/Fight.hh
+modesheadersdir = $(includedir)/Entropy/Asteria/Game/Modes
+modesheaders_HEADERS = \
+	src/Game/Modes/Fight.hh \
+	src/Game/Modes/Menu.hh \
+	src/Game/Modes/World.hh
 
 lib_LTLIBRARIES = libasteria.la
 
 libasteria_la_SOURCES = \
-	src/Character.cc \
 	src/Character/Item.cc \
 	src/Character/Equipment.cc \
 	src/Character/Armor.cc \
 	src/Character/Weapon.cc \
-	src/Map.cc \
-	src/Map/Floor.cc \
+	src/Game/Modes/Fight.cc \
+	src/Game/Modes/Menu.cc \
+	src/Game/Modes/World.cc \
+	src/Game/Application.cc \
 	src/Map/Cave.cc \
+	src/Map/Floor.cc \
 	src/Map/Object.cc \
 	src/Map/Tile.cc \
-	src/Game/Engine/Title.cc \
-	src/Game/Engine/New.cc \
-	src/Game/Engine/Explore.cc \
-	src/Game/Engine/Fight.cc \
-	src/Game/Engine.cc \
-	src/Game/Application.cc
+	src/Character.cc \
+	src/Logger.cc \
+	src/Map.cc
 
 bin_PROGRAMS = \
 	asteria
@@ -66,6 +63,9 @@ asteria_SOURCES = src/Game/Asteria.cc
 asteria_LDADD = libasteria.la
 
 check_PROGRAMS =
+
+all-local:
+	test -d data || $(LN_S) $(top_srcdir)/data $(builddir)/data
 
 if GTEST
 check_PROGRAMS += \
@@ -109,7 +109,6 @@ TESTSUITE = $(srcdir)/test/testsuite
 TESTSUITE_FILES = \
 	test/character.at \
 	test/map.at \
-	test/game.at \
 	test/floor.at
 
 EXTRA_DIST = \
