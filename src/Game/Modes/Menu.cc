@@ -4,14 +4,40 @@
 
 #include "Menu.hh"
 
+#include <Entropy/Mnemosyne/Resources/Font.hh>
+
+using namespace Entropy::Asteria;
 using namespace Entropy::Asteria::Modes;
 using namespace Entropy::Mnemosyne;
+using namespace Entropy::Mnemosyne::Resources;
+using namespace Entropy::Theia::UI;
+using namespace Entropy::Theia;
+using namespace Entropy;
+using namespace std;
 
 Menu::Menu(Mnemosyne::Application &app)
-	: Mode(app)
-{}
+	: Mode(app), _play(), _quit()
+{
+	auto f = App().load("NotoSansUI-Regular.ttf"s, Font());
+
+	_play = make_shared<Text>("Play"s, f.shared());
+	_quit = make_shared<Text>("Quit"s, f.shared());
+
+	_play->setColor(Vertex(1.0, 1.0, 1.0));
+	_quit->setColor(Vertex(1.0, 1.0, 1.0));
+
+	Current().addDrawable(_play);
+	Current().addDrawable(_quit);
+}
 
 Menu::~Menu() = default;
 
-void Menu::onEvent(const Entropy::Event &)
-{}
+void Menu::onEvent(const Entropy::Event &ev)
+{
+	if(ev.Id() == Theia::Events::Show::Id) {
+		dynamic_cast<const Theia::Events::Show &>(ev).Window().Fullscreen();
+	} else if(ev.Id() == Theia::Events::Tick::Id) {
+		_play->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _play->Size().x / 2, App().Windows()->getScreen().Height() / 2 + 5));
+		_quit->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _quit->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _quit->Size().y + 5));
+	}
+}
