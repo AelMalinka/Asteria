@@ -31,6 +31,10 @@ gameheadersdir = $(includedir)/Entropy/Asteria/Game
 gameheaders_HEADERS = \
 	src/Game/Application.hh
 
+uiheadersdir = $(includedir)/Entropy/Asteria/Game/UI
+uiheaders_HEADERS = \
+	src/Game/UI/Button.hh
+
 modesheadersdir = $(includedir)/Entropy/Asteria/Game/Modes
 modesheaders_HEADERS = \
 	src/Game/Modes/Fight.hh \
@@ -47,6 +51,7 @@ libasteria_la_SOURCES = \
 	src/Game/Modes/Fight.cc \
 	src/Game/Modes/Menu.cc \
 	src/Game/Modes/World.cc \
+	src/Game/UI/Button.cc \
 	src/Game/Application.cc \
 	src/Map/Cave.cc \
 	src/Map/Floor.cc \
