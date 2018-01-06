@@ -17,6 +17,7 @@
 				public:
 					Application();
 					Application(const int, char *[]);
+					void Start();
 				private:
 					PolymorphicList<Mnemosyne::Mode>::iterator _menu;
 					PolymorphicList<Mnemosyne::Mode>::iterator _world;

@@ -8,8 +8,11 @@
 #include "Modes/Menu.hh"
 #include "Modes/World.hh"
 
+#include <Entropy/Mnemosyne/Resources/Json.hh>
+
 using namespace std;
 using namespace Entropy::Asteria;
+using namespace Entropy::Mnemosyne::Resources;
 
 Application::Application() :
 	Entropy::Mnemosyne::Application(),
@@ -39,4 +42,9 @@ Application::Application(const int ArgC, char *ArgV[]) :
 	_fight = addMode(make_shared<Modes::Fight>(*this));
 
 	setMode(_menu);
+}
+
+void Application::Start()
+{
+	setMode(_world);
 }
