@@ -6,13 +6,11 @@
 
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 
-using namespace Entropy::Asteria;
 using namespace Entropy::Asteria::Modes;
-using namespace Entropy::Mnemosyne;
+using namespace Entropy::Asteria;
+using namespace Entropy::Asteria::UI;
 using namespace Entropy::Mnemosyne::Resources;
-using namespace Entropy::Theia::UI;
 using namespace Entropy::Theia;
-using namespace Entropy;
 using namespace std;
 
 Menu::Menu(Mnemosyne::Application &app)
@@ -20,11 +18,11 @@ Menu::Menu(Mnemosyne::Application &app)
 {
 	auto f = App().load("NotoSansUI-Regular.ttf"s, Font());
 
-	_play = make_shared<Text>("Play"s, f.shared());
-	_quit = make_shared<Text>("Quit"s, f.shared());
+	_play = make_shared<Button>("Play"s, f.shared());
+	_quit = make_shared<Button>("Quit"s, f.shared());
 
-	_play->setColor(Vertex(1.0, 1.0, 1.0));
-	_quit->setColor(Vertex(1.0, 1.0, 1.0));
+	_play->setTextColor(Vertex(1.0, 1.0, 1.0));
+	_quit->setTextColor(Vertex(1.0, 1.0, 1.0));
 
 	Current().addDrawable(_play);
 	Current().addDrawable(_quit);

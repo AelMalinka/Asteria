@@ -6,8 +6,8 @@
 #	define ENTROPY_ASTERIA_GAME_MODES_MENU_INC
 
 #	include "../../Exception.hh"
+#	include "../UI/Button.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
-#	include <Entropy/Theia/UI/Text.hh>
 
 	namespace Entropy
 	{
@@ -23,8 +23,8 @@
 						~Menu();
 						void onEvent(const Event &);
 					private:
-						std::shared_ptr<Theia::UI::Text> _play;
-						std::shared_ptr<Theia::UI::Text> _quit;
+						std::shared_ptr<UI::Button> _play;
+						std::shared_ptr<UI::Button> _quit;
 				};
 			}
 		}
