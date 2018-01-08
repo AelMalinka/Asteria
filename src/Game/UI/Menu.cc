@@ -59,10 +59,18 @@ void Menu::onEvent(const Entropy::Event &ev)
 		const Key &k = dynamic_cast<const Key &>(ev);
 
 		if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
-			if(k.Code() == GLFW_KEY_UP && selected() != begin()) {
-				setSelected(--selected());
-			} else if(k.Code() == GLFW_KEY_DOWN && selected() != --end()) {
-				setSelected(++selected());
+			if(k.Code() == GLFW_KEY_UP) {
+				if(selected() == begin()) {
+					setSelected(--end());
+				} else {
+					setSelected(--selected());
+				}
+			} else if(k.Code() == GLFW_KEY_DOWN) {
+				if(selected() == --end()) {
+					setSelected(begin());
+				} else {
+					setSelected(++selected());
+				}
 			} else {
 				if(selected() != end())
 					selected()->second(ev);
