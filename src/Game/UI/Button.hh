@@ -5,6 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_UI_BUTTON_INC
 #	define ENTROPY_ASTERIA_GAME_UI_BUTTON_INC
 
+#	include "../../Exception.hh"
 #	include <Entropy/Theia/UI/Box.hh>
 #	include <Entropy/Theia/UI/Text.hh>
 
@@ -23,22 +24,23 @@
 				{
 					public:
 						Button(const std::string &, const std::shared_ptr<Theia::UI::FT::Font> &);
-						~Button();
 						void setPosition(const Theia::ScreenVertex &);
 						void setScale(const Theia::Dimension &);
 						void setTextColor(const Theia::Vertex &);
 						void setSelectColor(const Theia::Vertex &);
 						void setTransparency(const Theia::Dimension &);
+						void setValue(const std::string &);
+						void setValue(std::string &&);
 						void setSelected(const bool);
 						void toggleSelected();
-						const Theia::ScreenVertex &Position() const;
-						const Theia::Dimension &Scale() const;
+						Theia::ScreenVertex Position() const;
+						Theia::Dimension Scale() const;
 						Theia::Vertex TextColor() const;
 						Theia::Vertex SelectColor() const;
 						Theia::Dimension Transparency() const;
+						const std::string &Value() const;
 						bool isSelected() const;
-						const Theia::ScreenVertex Size() const;
-					protected:
+						Theia::ScreenVertex Size() const;
 						void Draw();
 						void UpdateScreen(const Theia::Screen &);
 					private:

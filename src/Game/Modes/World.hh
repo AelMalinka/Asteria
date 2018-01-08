@@ -19,7 +19,6 @@
 				{
 					public:
 						World(Mnemosyne::Application &);
-						~World();
 						void onEvent(const Event &);
 				};
 			}

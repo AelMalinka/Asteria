@@ -19,7 +19,6 @@
 				{
 					public:
 						Fight(Mnemosyne::Application &);
-						~Fight();
 						void onEvent(const Event &);
 				};
 			}

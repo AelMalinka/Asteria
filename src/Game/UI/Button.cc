@@ -20,12 +20,10 @@ Button::Button(const string &text, const shared_ptr<Font> &font) :
 	_selected.setTransparency(0.0);
 }
 
-Button::~Button() = default;
-
 void Button::setPosition(const ScreenVertex &v)
 {
 	_text.setPosition(v);
-	_selected.setPosition(v);
+	_selected.setPosition(_text.Position());
 }
 
 void Button::setTextColor(const Vertex &v)
@@ -49,6 +47,20 @@ void Button::setTransparency(const Dimension &v)
 	_text.setTransparency(v);
 }
 
+void Button::setValue(const string &v)
+{
+	_text.setValue(v);
+	_selected.setPosition(_text.Position());
+	_selected.setSize(_text.Size().x, _text.Size().y);
+}
+
+void Button::setValue(string &&v)
+{
+	_text.setValue(move(v));
+	_selected.setPosition(_text.Position());
+	_selected.setSize(_text.Size().x, _text.Size().y);
+}
+
 void Button::setSelected(const bool sel)
 {
 	_selected.setTransparency((sel) ? _selected_transparency : 0.0);
@@ -59,12 +71,12 @@ void Button::toggleSelected()
 	setSelected(!isSelected());
 }
 
-const ScreenVertex &Button::Position() const
+ScreenVertex Button::Position() const
 {
 	return _text.Position();
 }
 
-const Dimension &Button::Scale() const
+Dimension Button::Scale() const
 {
 	return _text.Scale();
 }
@@ -82,6 +94,11 @@ Vertex Button::SelectColor() const
 Dimension Button::Transparency() const
 {
 	return _text.Transparency();
+}
+
+const string &Button::Value() const
+{
+	return _text.Value();
 }
 
 bool Button::isSelected() const
@@ -107,7 +124,7 @@ void Button::UpdateScreen(const Theia::Screen &s)
 	b.UpdateScreen(s);
 }
 
-const ScreenVertex Button::Size() const
+ScreenVertex Button::Size() const
 {
 	return _text.Size();
 }

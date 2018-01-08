@@ -2,8 +2,8 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#if !defined ENTROPY_ASTERIA_GAME_MODES_MENU_INC
-#	define ENTROPY_ASTERIA_GAME_MODES_MENU_INC
+#if !defined ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
+#	define ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
 
 #	include "../../Exception.hh"
 #	include "../UI/Menu.hh"
@@ -15,11 +15,11 @@
 		{
 			namespace Modes
 			{
-				class Menu :
+				class Options :
 					public Entropy::Mnemosyne::Mode
 				{
 					public:
-						Menu(Mnemosyne::Application &);
+						Options(Mnemosyne::Application &);
 						void onEvent(const Event &);
 					private:
 						std::shared_ptr<UI::Menu> _menu;

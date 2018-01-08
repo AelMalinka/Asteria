@@ -11,7 +11,5 @@ Fight::Fight(Mnemosyne::Application &app)
 	: Mode(app)
 {}
 
-Fight::~Fight() = default;
-
 void Fight::onEvent(const Entropy::Event &)
 {}

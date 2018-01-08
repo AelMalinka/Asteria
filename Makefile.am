@@ -33,12 +33,14 @@ gameheaders_HEADERS = \
 
 uiheadersdir = $(includedir)/Entropy/Asteria/Game/UI
 uiheaders_HEADERS = \
-	src/Game/UI/Button.hh
+	src/Game/UI/Button.hh \
+	src/Game/UI/Menu.hh
 
 modesheadersdir = $(includedir)/Entropy/Asteria/Game/Modes
 modesheaders_HEADERS = \
 	src/Game/Modes/Fight.hh \
 	src/Game/Modes/Menu.hh \
+	src/Game/Modes/Options.hh \
 	src/Game/Modes/World.hh
 
 lib_LTLIBRARIES = libasteria.la
@@ -50,8 +52,10 @@ libasteria_la_SOURCES = \
 	src/Character/Weapon.cc \
 	src/Game/Modes/Fight.cc \
 	src/Game/Modes/Menu.cc \
+	src/Game/Modes/Options.cc \
 	src/Game/Modes/World.cc \
 	src/Game/UI/Button.cc \
+	src/Game/UI/Menu.cc \
 	src/Game/Application.cc \
 	src/Map/Cave.cc \
 	src/Map/Floor.cc \
