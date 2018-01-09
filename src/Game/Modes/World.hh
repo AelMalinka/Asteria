@@ -6,6 +6,8 @@
 #	define ENTROPY_ASTERIA_GAME_MODES_WORLD_INC
 
 #	include "../../Exception.hh"
+#	include "../../Character.hh"
+#	include "../Tile.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy
@@ -20,6 +22,10 @@
 					public:
 						World(Mnemosyne::Application &);
 						void onEvent(const Event &);
+					private:
+						std::shared_ptr<Character> _player;
+						std::vector<std::shared_ptr<Tile>> _floor;
+						std::vector<std::shared_ptr<Tile>> _wall;
 				};
 			}
 		}
