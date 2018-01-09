@@ -7,22 +7,22 @@
 using namespace Entropy::Asteria;
 using namespace std;
 
-Tile Entropy::Asteria::Wall(true);
+using Entropy::Theia::GL::Texture;
 
-Tile::Tile(const bool isWall)
-	: _is_wall(isWall), _actor(), _object()
+Tile::Tile(const shared_ptr<Texture> &t, const bool isWall)
+	: Sprite(t), _is_wall(isWall), _actor(), _object()
 {}
 
-Tile::Tile(const shared_ptr<Object> &obj)
-	: _is_wall(false), _actor(), _object(obj)
+Tile::Tile(const shared_ptr<Texture> &t, const shared_ptr<Asteria::Object> &obj)
+	: Sprite(t), _is_wall(false), _actor(), _object(obj)
 {}
 
-Tile::Tile(const shared_ptr<Character> &ch)
-	: _is_wall(false), _actor(ch), _object()
+Tile::Tile(const shared_ptr<Texture> &t, const shared_ptr<Character> &ch)
+	: Sprite(t), _is_wall(false), _actor(ch), _object()
 {}
 
-Tile::Tile(const shared_ptr<Object> &obj, const shared_ptr<Character> &ch)
-	: _is_wall(false), _actor(ch), _object(obj)
+Tile::Tile(const shared_ptr<Texture> &t, const shared_ptr<Asteria::Object> &obj, const shared_ptr<Character> &ch)
+	: Sprite(t), _is_wall(false), _actor(ch), _object(obj)
 {}
 
 Tile::Tile(const Tile &) = default;

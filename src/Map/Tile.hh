@@ -8,34 +8,35 @@
 #	include <memory>
 #	include "Object.hh"
 #	include "../Character.hh"
+#	include "../Game/Sprite.hh"
 
 	namespace Entropy
 	{
 		namespace Asteria
 		{
-			class Tile
+			class Tile :
+				public Sprite
 			{
 				public:
-					explicit Tile(const bool = false);
-					Tile(const std::shared_ptr<Object> &);
-					Tile(const std::shared_ptr<Character> &);
-					Tile(const std::shared_ptr<Object> &, const std::shared_ptr<Character> &);
+					explicit Tile(const std::shared_ptr<Theia::GL::Texture> &, const bool = false);
+					Tile(const std::shared_ptr<Theia::GL::Texture> &, const std::shared_ptr<Asteria::Object> &);
+					Tile(const std::shared_ptr<Theia::GL::Texture> &, const std::shared_ptr<Character> &);
+					Tile(const std::shared_ptr<Theia::GL::Texture> &, const std::shared_ptr<Asteria::Object> &, const std::shared_ptr<Character> &);
 					Tile(const Tile &);
+					Tile(Tile &&);
 					~Tile();
 					bool isWall() const;
 					bool hasActor() const;
 					bool hasObject() const;
 					std::shared_ptr<Character> &Actor();
-					std::shared_ptr<Object> &Loot();
+					std::shared_ptr<Asteria::Object> &Loot();
 					const std::shared_ptr<Character> &Actor() const;
-					const std::shared_ptr<Object> &Loot() const;
+					const std::shared_ptr<Asteria::Object> &Loot() const;
 				private:
 					bool _is_wall;
 					std::shared_ptr<Character> _actor;
-					std::shared_ptr<Object> _object;
+					std::shared_ptr<Asteria::Object> _object;
 			};
-
-			extern Tile Wall;
 		}
 	}
 

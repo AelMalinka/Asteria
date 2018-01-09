@@ -34,13 +34,13 @@ World::World(Mnemosyne::Application &app)
 
 	for(auto x = -width - 1; x <= width + 1; x++) {
 		{
-			auto t = make_shared<Tile>(wall.shared());
+			auto t = make_shared<Tile>(wall.shared(), true);
 
 			t->Translate(Vertex(x, height + 1, 0));
 			_wall.push_back(t);
 		}
 		{
-			auto t = make_shared<Tile>(wall.shared());
+			auto t = make_shared<Tile>(wall.shared(), true);
 
 			t->Translate(Vertex(x, -height - 1, 0));
 			_wall.push_back(t);
@@ -49,13 +49,13 @@ World::World(Mnemosyne::Application &app)
 
 	for(auto y = -height - 1; y <= height + 1; y++) {
 		{
-			auto t = make_shared<Tile>(wall.shared());
+			auto t = make_shared<Tile>(wall.shared(), true);
 
 			t->Translate(Vertex(width + 1, y, 0));
 			_wall.push_back(t);
 		}
 		{
-			auto t = make_shared<Tile>(wall.shared());
+			auto t = make_shared<Tile>(wall.shared(), true);
 
 			t->Translate(Vertex(-width - 1, y, 0));
 			_wall.push_back(t);

@@ -5,15 +5,18 @@ AT_BANNER([Map Tests])
 
 AT_SETUP([Object Tests])
 AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([ln -s ${BUILD}/data data], [])
 AT_CHECK([map-object], [], [ignore], [ignore])
 AT_CLEANUP
 
 AT_SETUP([Tile Tests])
 AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([ln -s ${BUILD}/data data], [])
 AT_CHECK([map-tile], [], [ignore], [ignore])
 AT_CLEANUP
 
 AT_SETUP([Map Tests])
 AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([ln -s ${BUILD}/data data], [])
 AT_CHECK([map-map], [], [ignore], [ignore])
 AT_CLEANUP

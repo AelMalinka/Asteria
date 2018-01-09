@@ -21,10 +21,11 @@
 					Object();
 					Object(std::initializer_list<std::shared_ptr<Item>>);
 					Object(const Object &);
+					Object(Object &&);
 					~Object();
 					std::size_t size() const;
-					std::vector<std::shared_ptr<Item>>::const_iterator begin() const;
-					std::vector<std::shared_ptr<Item>>::const_iterator end() const;
+					std::vector<std::shared_ptr<Item>>::iterator begin();
+					std::vector<std::shared_ptr<Item>>::iterator end();
 				private:
 					std::vector<std::shared_ptr<Item>> _loot;
 			};

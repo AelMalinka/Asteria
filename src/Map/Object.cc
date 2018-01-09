@@ -16,6 +16,7 @@ Object::Object(initializer_list<shared_ptr<Item>> il)
 {}
 
 Object::Object(const Object &) = default;
+Object::Object(Object &&) = default;
 Object::~Object() = default;
 
 size_t Object::size() const
@@ -23,12 +24,12 @@ size_t Object::size() const
 	return _loot.size();
 }
 
-vector<shared_ptr<Item>>::const_iterator Object::begin() const
+vector<shared_ptr<Item>>::iterator Object::begin()
 {
 	return _loot.begin();
 }
 
-vector<shared_ptr<Item>>::const_iterator Object::end() const
+vector<shared_ptr<Item>>::iterator Object::end()
 {
 	return _loot.end();
 }

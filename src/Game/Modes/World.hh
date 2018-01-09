@@ -7,7 +7,7 @@
 
 #	include "../../Exception.hh"
 #	include "../../Character.hh"
-#	include "../Tile.hh"
+#	include "../../Map/Tile.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy
