@@ -8,16 +8,37 @@
 
 using namespace Entropy::Asteria;
 using namespace std;
+using namespace Entropy::Theia;
 
 Map::Map() = default;
 
 Map::Map(const vector<vector<Tile>> &o)
 	: _tiles(o)
-{}
+{
+	auto x = 0.0;
+	auto y = 0.0;
+
+	for(auto &i : _tiles) {
+		for(auto &t : i) {
+			t.Translate(Vertex(x, y++, 0.0));
+		}
+		x++; y = 0.0;
+	}
+}
 
 Map::Map(vector<vector<Tile>> &&o)
 	: _tiles(move(o))
-{}
+{
+	auto x = 0.0;
+	auto y = 0.0;
+
+	for(auto &i : _tiles) {
+		for(auto &t : i) {
+			t.Translate(Vertex(x, y++, 0.0));
+		}
+		x++; y = 0.0;
+	}
+}
 
 Map::Map(initializer_list<vector<Tile>> o)
 	: _tiles(o)
@@ -34,6 +55,33 @@ size_t Map::Width() const
 		return 0;
 
 	return _tiles.front().size();
+}
+
+void Map::Update(const chrono::duration<double> &dt)
+{
+	for(auto &i : _tiles) {
+		for(auto &t : i) {
+			dynamic_cast<Drawable &>(t).Update(dt);
+		}
+	}
+}
+
+void Map::UpdateScreen(const Screen &s)
+{
+	for(auto &i : _tiles) {
+		for(auto &t : i) {
+			dynamic_cast<Drawable &>(t).UpdateScreen(s);
+		}
+	}
+}
+
+void Map::UpdateCamera(const Camera &c)
+{
+	for(auto &i : _tiles) {
+		for(auto &t : i) {
+			dynamic_cast<Drawable &>(t).UpdateCamera(c);
+		}
+	}
 }
 
 vector<vector<Tile>>::reference Map::operator [] (const size_t off)

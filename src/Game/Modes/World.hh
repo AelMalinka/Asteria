@@ -7,7 +7,7 @@
 
 #	include "../../Exception.hh"
 #	include "../../Character.hh"
-#	include "../../Map/Tile.hh"
+#	include "../../Map.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy
@@ -24,8 +24,7 @@
 						void onEvent(const Event &);
 					private:
 						std::shared_ptr<Character> _player;
-						std::vector<std::shared_ptr<Tile>> _floor;
-						std::vector<std::shared_ptr<Tile>> _wall;
+						std::shared_ptr<Map> _map;
 				};
 			}
 		}

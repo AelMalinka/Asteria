@@ -5,6 +5,7 @@
 #if !defined ENTROPY_ASTERIA_MAP
 #	define ENTROPY_ASTERIA_MAP
 
+#	include <Entropy/Theia/Drawable.hh>
 #	include <vector>
 #	include "Exception.hh"
 #	include "Map/Tile.hh"
@@ -13,7 +14,8 @@
 	{
 		namespace Asteria
 		{
-			class Map
+			class Map :
+				public Theia::Drawable
 			{
 				public:
 					Map();
@@ -22,6 +24,10 @@
 					Map(std::initializer_list<std::vector<Tile>>);
 					std::size_t Height() const;
 					std::size_t Width() const;
+				public:
+					void Update(const std::chrono::duration<double> &);
+					void UpdateScreen(const Theia::Screen &);
+					void UpdateCamera(const Theia::Camera &);
 				public:
 					std::vector<std::vector<Tile>>::reference operator [] (const std::size_t);
 					std::vector<std::vector<Tile>>::iterator begin();

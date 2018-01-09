@@ -15,64 +15,40 @@ using namespace Entropy;
 using namespace std;
 
 World::World(Mnemosyne::Application &app)
-	: Mode(app), _player(), _floor(), _wall()
+	: Mode(app), _player(), _map()
 {
 	auto player = App().load("Character.png", Resources::Texture(Texture::Texture2D));
 	auto floor = App().load("Grass.png", Resources::Texture(Texture::Texture2D));
 	auto wall = App().load("Mountain.png", Resources::Texture(Texture::Texture2D));
 
-	auto height = 7;
-	auto width = 13;
-	for(auto x = -width; x <= width; x++) {
-		for(auto y = -height; y <= height; y++) {
-			auto t = make_shared<Tile>(floor.shared());
+	auto height = 16;
+	auto width = 28;
 
-			t->Translate(Vertex(x, y, 0));
-			_floor.push_back(t);
+	const Tile Wall(wall.shared(), true);
+	const Tile Floor(floor.shared());
+
+	vector<vector<Tile>> v;
+
+	for(auto x = 0; x <= width; x++) {
+		vector<Tile> t;
+		for(auto y = 0; y <= height; y++) {
+			if(x == 0 || x == width || y == 0 || y == height)
+				t.push_back(Wall);
+			else
+				t.push_back(Floor);
 		}
+		v.push_back(t);
 	}
 
-	for(auto x = -width - 1; x <= width + 1; x++) {
-		{
-			auto t = make_shared<Tile>(wall.shared(), true);
-
-			t->Translate(Vertex(x, height + 1, 0));
-			_wall.push_back(t);
-		}
-		{
-			auto t = make_shared<Tile>(wall.shared(), true);
-
-			t->Translate(Vertex(x, -height - 1, 0));
-			_wall.push_back(t);
-		}
-	}
-
-	for(auto y = -height - 1; y <= height + 1; y++) {
-		{
-			auto t = make_shared<Tile>(wall.shared(), true);
-
-			t->Translate(Vertex(width + 1, y, 0));
-			_wall.push_back(t);
-		}
-		{
-			auto t = make_shared<Tile>(wall.shared(), true);
-
-			t->Translate(Vertex(-width - 1, y, 0));
-			_wall.push_back(t);
-		}
-	}
-
+	_map = make_shared<Map>(move(v));
 	_player = make_shared<Character>(player.shared(), 0, 0, 0, 0, 0, 0);
 
-	for(auto &t : _floor) {
-		Current().addDrawable(t);
-	}
-	for(auto &t : _wall) {
-		Current().addDrawable(t);
-	}
+	_player->Translate(Vertex(width / 2, height / 2, 0));
 
+	Current().addDrawable(_map);
 	Current().addDrawable(_player);
-	Current().getCamera().setPosition(Vertex(0, 0, 5));
+	Current().getCamera().setPosition(Vertex(width / 2, height / 2, 5));
+	Current().getCamera().setLookAt(Vertex(width / 2, height / 2, 0));
 }
 
 void World::onEvent(const Entropy::Event &ev)
