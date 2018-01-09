@@ -4,10 +4,16 @@
 
 #include <gtest/gtest.h>
 #include "Character.hh"
+#include <Entropy/Mnemosyne/Resources/Texture.hh>
+#include <Entropy/Mnemosyne/Application.hh>
 
 using namespace std;
 using namespace testing;
 using namespace Entropy::Asteria;
+using namespace Entropy::Mnemosyne;
+using namespace Entropy::Mnemosyne::Resources;
+
+using Tex = Entropy::Theia::GL::Texture;
 
 #define TEST_BEGIN try {
 #define TEST_END } catch(exception &e) { FAIL() << e << endl; }
@@ -15,7 +21,9 @@ using namespace Entropy::Asteria;
 namespace {
 	TEST(CharacterBasic, Stats) {
 		TEST_BEGIN
-			Character test(5, 10, 15, 20, 25, 30);
+			Application app;
+			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			Character test(t, 5, 10, 15, 20, 25, 30);
 
 			Strength str;
 			Agility agi;
@@ -39,8 +47,10 @@ namespace {
 
 	TEST(CharacterBasic, Unarmed) {
 		TEST_BEGIN
-			Character alice(0, 0, 0, 0, 0, 0);
-			Character bob(0, 0, 0, 0, 0, 0);
+			Application app;
+			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			Character alice(t, 0, 0, 0, 0, 0, 0);
+			Character bob(t, 0, 0, 0, 0, 0, 0);
 
 			Melee melee(bob.Stats());
 			Unarmed unarmed(0, bob.get(melee));
@@ -66,8 +76,10 @@ namespace {
 
 	TEST(CharacterBasic, Weapon) {
 		TEST_BEGIN
-			Character alice(0, 0, 0, 0, 0, 0);
-			Character bob(0, 0, 0, 0, 0, 0);
+			Application app;
+			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			Character alice(t, 0, 0, 0, 0, 0, 0);
+			Character bob(t, 0, 0, 0, 0, 0, 0);
 
 			Melee melee(bob.Stats());
 			Sword sword(0, bob.get(melee));
@@ -94,8 +106,10 @@ namespace {
 
 	TEST(CharacterBasic, Armor) {
 		TEST_BEGIN
-			Character alice(0, 0, 0, 0, 0, 0);
-			Character bob(0, 0, 0, 0, 0, 0);
+			Application app;
+			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			Character alice(t, 0, 0, 0, 0, 0, 0);
+			Character bob(t, 0, 0, 0, 0, 0, 0);
 
 			Strength str;
 			Unarmored unarmored(bob.Stats());

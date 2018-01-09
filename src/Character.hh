@@ -20,6 +20,8 @@
 #	include "Character/Weapon.hh"
 #	include "Character/Armor.hh"
 
+#	include "Game/Actor.hh"
+
 #	include <map>
 #	include <memory>
 
@@ -37,10 +39,11 @@
 			using Entropy::Hecate::CostType;
 
 			class Character :
-				public BaseCharacter
+				public BaseCharacter,
+				public Actor
 			{
 				public:
-					Character(const Strength &, const Agility &, const Endurance &, const Perception &, const Magic &, const Willpower &);
+					Character(const std::shared_ptr<Theia::GL::Texture> &, const Strength &, const Agility &, const Endurance &, const Perception &, const Magic &, const Willpower &);
 					Health &Hp();
 					const Health &Hp() const;
 					bool isAlive() const;

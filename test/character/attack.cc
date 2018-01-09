@@ -4,15 +4,23 @@
 
 #include <gtest/gtest.h>
 #include "Character.hh"
+#include <Entropy/Mnemosyne/Resources/Texture.hh>
+#include <Entropy/Mnemosyne/Application.hh>
 
 using namespace std;
 using namespace testing;
 using namespace Entropy::Asteria;
+using namespace Entropy::Mnemosyne;
+using namespace Entropy::Mnemosyne::Resources;
+
+using Tex = Entropy::Theia::GL::Texture;
 
 namespace {
 	TEST(CharacterAttack, Basic) {
-		Character a(10, 10, 10, 10, 10, 10);
-		Character b(10, 10, 10, 10, 10, 10);
+		Application app;
+		auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+		Character a(t, 10, 10, 10, 10, 10, 10);
+		Character b(t, 10, 10, 10, 10, 10, 10);
 		Check ab = a.Attack(b);
 
 		EXPECT_EQ(a.Hp().Current(), 100);
@@ -32,9 +40,11 @@ namespace {
 	}
 
 	TEST(CharacterAttack, Damage) {
+		Application app;
+		auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
 		for(auto x = 0; x < 10; x++) {
-			Character a(10, 10, 10, 10, 10, 10);
-			Character b(10, 10, 10, 10, 10, 10);
+			Character a(t, 10, 10, 10, 10, 10, 10);
+			Character b(t, 10, 10, 10, 10, 10, 10);
 			Check attack = a.Attack(b);
 
 			while(b.Hp().Current() > 0) {

@@ -7,7 +7,3 @@ AT_COPYRIGHT([Copyright 2016 (c) Michael Thomas (malinka) <malinka@entropy-devel
 Distributed under the terms of the GNU Lesser General Public License v3])
 
 m4_include([character.at])
-m4_include([map.at])
-
-# 2016-10-12 AMR TODO: cleanup "floor" tests, likely into map
-m4_include([floor.at])

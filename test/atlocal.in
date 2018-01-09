@@ -1,1 +1,2 @@
 GTEST="@GTEST@"
+BUILD=`pwd`

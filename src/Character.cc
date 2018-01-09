@@ -5,10 +5,15 @@
 #include "Character.hh"
 
 using namespace Entropy::Asteria;
+using namespace Entropy::Theia::GL;
 using namespace std;
 
-Character::Character(const Strength &s, const Agility &a, const Endurance &e, const Perception &p, const Magic &v, const Willpower &w)
-	: BaseCharacter(s, a, e, p, v, w), _health(Stats()), _weapon(), _armor(Armor::Type::None)
+Character::Character(const shared_ptr<Texture> &t, const Strength &s, const Agility &a, const Endurance &e, const Perception &p, const Magic &v, const Willpower &w) :
+	BaseCharacter(s, a, e, p, v, w),
+	Actor(t),
+	_health(Stats()),
+	_weapon(),
+	_armor(Armor::Type::None)
 {}
 
 Health &Character::Hp()
