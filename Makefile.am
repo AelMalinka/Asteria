@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU Affero General Public License v3
 
 ACLOCAL_AMFLAGS = -I m4
-#2013-10-11 AMR XXX: non-portable assignment
-AM_CXXFLAGS := -I$(srcdir)/src $(AM_CXXFLAGS)
+asteriaconfdir = $(sysconfdir)/asteria
+AM_CPPFLAGS = -I$(srcdir)/src -DDATADIR='"$(pkgdatadir)"' -DSYSCONFDIR='"$(asteriaconfdir)"' @CPPFLAGS@
 
 mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
@@ -71,6 +71,15 @@ libasteria_la_SOURCES = \
 
 bin_PROGRAMS = \
 	asteria
+
+pkgdata_DATA = \
+	data/Character.png \
+	data/Grass.png \
+	data/Mountain.png \
+	data/NotoSansUI-Regular.ttf
+
+asteriaconf_DATA = \
+	data/settings.json
 
 asteria_SOURCES = src/Game/Asteria.cc
 asteria_LDADD = libasteria.la

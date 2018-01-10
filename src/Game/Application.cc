@@ -25,6 +25,9 @@ Application::Application() :
 	_options(end()),
 	_settings()
 {
+	addSearchPath(DATADIR);
+	addSearchPath(SYSCONFDIR);
+	addSearchPath(getenv("HOME") + "/.asteria"s);
 	addSearchPath("data"s);
 
 	_settings = load("settings", Conf());
@@ -45,6 +48,9 @@ Application::Application(const int ArgC, char *ArgV[]) :
 	_options(end()),
 	_settings()
 {
+	addSearchPath(DATADIR);
+	addSearchPath(SYSCONFDIR);
+	addSearchPath(getenv("HOME") + "/.asteria"s);
 	addSearchPath("data"s);
 
 	_settings = load("settings", Conf());
