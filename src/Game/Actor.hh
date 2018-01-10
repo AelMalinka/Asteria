@@ -20,6 +20,7 @@
 					Actor(Actor &&);
 					virtual ~Actor();
 					virtual void Flip();
+					virtual void Translate(const Theia::Vertex &);
 					const Theia::Vertex &Position() const;
 				private:
 					Theia::Vertex _position;

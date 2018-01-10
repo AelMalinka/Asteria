@@ -59,13 +59,17 @@ void World::onEvent(const Entropy::Event &ev)
 			if(k.Code() == GLFW_KEY_ESCAPE) {
 				dynamic_cast<Application &>(App()).Menu();
 			} else if(k.Code() == GLFW_KEY_LEFT) {
-				_player->Translate(Vertex(-1.0, 0.0, 0.0));
+				if(!(*_map)[_player->Position().x - 1][_player->Position().y].isWall())
+					_player->Translate(Vertex(-1.0, 0.0, 0.0));
 			} else if(k.Code() == GLFW_KEY_RIGHT) {
-				_player->Translate(Vertex(1.0, 0.0, 0.0));
+				if(!(*_map)[_player->Position().x + 1][_player->Position().y].isWall())
+					_player->Translate(Vertex(1.0, 0.0, 0.0));
 			} else if(k.Code() == GLFW_KEY_DOWN) {
-				_player->Translate(Vertex(0.0, -1.0, 0.0));
+				if(!(*_map)[_player->Position().x][_player->Position().y - 1].isWall())
+					_player->Translate(Vertex(0.0, -1.0, 0.0));
 			} else if(k.Code() == GLFW_KEY_UP) {
-				_player->Translate(Vertex(0.0, 1.0, 0.0));
+				if(!(*_map)[_player->Position().x][_player->Position().y + 1].isWall())
+					_player->Translate(Vertex(0.0, 1.0, 0.0));
 			}
 		}
 	}

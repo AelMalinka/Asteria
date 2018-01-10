@@ -20,6 +20,13 @@ void Actor::Flip()
 	Rotate(180.0, Vertex(0.0, 1.0, 0.0));
 }
 
+void Actor::Translate(const Vertex &offset)
+{
+	_position += offset;
+
+	Sprite::Translate(offset);
+}
+
 const Vertex &Actor::Position() const
 {
 	return _position;
