@@ -65,7 +65,7 @@ Application::Application(const int ArgC, char *ArgV[]) :
 
 Application::~Application()
 {
-	write("settings", _settings, Conf());
+	write(getenv("HOME") + "/.asteria/settings"s, _settings, Conf());
 }
 
 void Application::Menu()
