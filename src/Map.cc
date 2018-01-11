@@ -44,12 +44,12 @@ Map::Map(initializer_list<vector<Tile>> o)
 	: _tiles(o)
 {}
 
-size_t Map::Height() const
+size_t Map::Width() const
 {
 	return _tiles.size();
 }
 
-size_t Map::Width() const
+size_t Map::Height() const
 {
 	if(_tiles.begin() == _tiles.end())
 		return 0;
