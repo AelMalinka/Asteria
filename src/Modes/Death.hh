@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
 
-#	include "../../Exception.hh"
+#	include "../Exception.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 #	include <Entropy/Theia/UI/Text.hh>
 

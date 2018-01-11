@@ -5,9 +5,9 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_FIGHT_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_FIGHT_INC
 
-#	include "../../Exception.hh"
-#	include "../../Character.hh"
-#	include "../../Map.hh"
+#	include "../Exception.hh"
+#	include "../Character.hh"
+#	include "../Map.hh"
 #	include "../UI/Menu.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 

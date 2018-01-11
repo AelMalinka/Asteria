@@ -2,11 +2,12 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#if !defined ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
-#	define ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
+#if !defined ENTROPY_ASTERIA_GAME_MODES_WORLD_INC
+#	define ENTROPY_ASTERIA_GAME_MODES_WORLD_INC
 
-#	include "../../Exception.hh"
-#	include "../UI/Menu.hh"
+#	include "../Exception.hh"
+#	include "../Character.hh"
+#	include "../Map.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy
@@ -15,14 +16,15 @@
 		{
 			namespace Modes
 			{
-				class Options :
+				class World :
 					public Entropy::Mnemosyne::Mode
 				{
 					public:
-						Options(Mnemosyne::Application &);
+						World(Mnemosyne::Application &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
 						void onEvent(const Event &);
 					private:
-						std::shared_ptr<UI::Menu> _menu;
+						std::shared_ptr<Character> _player;
+						std::shared_ptr<Map> _map;
 				};
 			}
 		}

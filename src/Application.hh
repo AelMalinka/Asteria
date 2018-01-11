@@ -5,9 +5,9 @@
 #if !defined ENTROPY_ASTERIA_GAME_MAIN_INC
 #	define ENTROPY_ASTERIA_GAME_MAIN_INC
 
-#	include "../Exception.hh"
-#	include "../Character.hh"
-#	include "../Map.hh"
+#	include "Exception.hh"
+#	include "Character.hh"
+#	include "Map.hh"
 
 #	include <Entropy/Mnemosyne/Application.hh>
 #	include <Entropy/Mnemosyne/Handle.hh>

@@ -7,9 +7,12 @@ AM_CPPFLAGS = -I$(srcdir)/src -DDATADIR='"$(pkgdatadir)"' -DSYSCONFDIR='"$(aster
 
 mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
-	src/Exception.hh \
+	src/Actor.hh \
+	src/Application.hh \
 	src/Character.hh \
-	src/Map.hh
+	src/Exception.hh \
+	src/Map.hh \
+	src/Sprite.hh
 
 characterheadersdir = $(includedir)/Entropy/Asteria/Character
 characterheaders_HEADERS = \
@@ -27,24 +30,18 @@ mapheaders_HEADERS = \
 	src/Map/Object.hh \
 	src/Map/Tile.hh
 
-gameheadersdir = $(includedir)/Entropy/Asteria/Game
-gameheaders_HEADERS = \
-	src/Game/Actor.hh \
-	src/Game/Application.hh \
-	src/Game/Sprite.hh
-
-uiheadersdir = $(includedir)/Entropy/Asteria/Game/UI
+uiheadersdir = $(includedir)/Entropy/Asteria/UI
 uiheaders_HEADERS = \
-	src/Game/UI/Button.hh \
-	src/Game/UI/Menu.hh
+	src/UI/Button.hh \
+	src/UI/Menu.hh
 
-modesheadersdir = $(includedir)/Entropy/Asteria/Game/Modes
+modesheadersdir = $(includedir)/Entropy/Asteria/Modes
 modesheaders_HEADERS = \
-	src/Game/Modes/Death.hh \
-	src/Game/Modes/Fight.hh \
-	src/Game/Modes/Menu.hh \
-	src/Game/Modes/Options.hh \
-	src/Game/Modes/World.hh
+	src/Modes/Death.hh \
+	src/Modes/Fight.hh \
+	src/Modes/Menu.hh \
+	src/Modes/Options.hh \
+	src/Modes/World.hh
 
 lib_LTLIBRARIES = libasteria.la
 
@@ -53,23 +50,23 @@ libasteria_la_SOURCES = \
 	src/Character/Equipment.cc \
 	src/Character/Armor.cc \
 	src/Character/Weapon.cc \
-	src/Game/Modes/Death.cc \
-	src/Game/Modes/Fight.cc \
-	src/Game/Modes/Menu.cc \
-	src/Game/Modes/Options.cc \
-	src/Game/Modes/World.cc \
-	src/Game/UI/Button.cc \
-	src/Game/UI/Menu.cc \
-	src/Game/Actor.cc \
-	src/Game/Application.cc \
-	src/Game/Sprite.cc \
 	src/Map/Cave.cc \
 	src/Map/Floor.cc \
 	src/Map/Object.cc \
 	src/Map/Tile.cc \
+	src/Modes/Death.cc \
+	src/Modes/Fight.cc \
+	src/Modes/Menu.cc \
+	src/Modes/Options.cc \
+	src/Modes/World.cc \
+	src/UI/Button.cc \
+	src/UI/Menu.cc \
+	src/Actor.cc \
+	src/Application.cc \
 	src/Character.cc \
 	src/Logger.cc \
-	src/Map.cc
+	src/Map.cc \
+	src/Sprite.cc
 
 bin_PROGRAMS = \
 	asteria
@@ -84,7 +81,7 @@ pkgdata_DATA = \
 asteriaconf_DATA = \
 	data/settings.json
 
-asteria_SOURCES = src/Game/Asteria.cc
+asteria_SOURCES = src/Asteria.cc
 asteria_LDADD = libasteria.la
 
 check_PROGRAMS =

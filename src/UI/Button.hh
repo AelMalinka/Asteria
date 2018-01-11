@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_UI_BUTTON_INC
 #	define ENTROPY_ASTERIA_GAME_UI_BUTTON_INC
 
-#	include "../../Exception.hh"
+#	include "../Exception.hh"
 #	include <Entropy/Theia/UI/Box.hh>
 #	include <Entropy/Theia/UI/Text.hh>
 

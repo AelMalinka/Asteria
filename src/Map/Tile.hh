@@ -8,7 +8,7 @@
 #	include <memory>
 #	include "Object.hh"
 #	include "../Character.hh"
-#	include "../Game/Sprite.hh"
+#	include "../Sprite.hh"
 
 	namespace Entropy
 	{

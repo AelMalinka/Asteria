@@ -20,7 +20,7 @@
 #	include "Character/Weapon.hh"
 #	include "Character/Armor.hh"
 
-#	include "Game/Actor.hh"
+#	include "Actor.hh"
 
 #	include <map>
 #	include <memory>
