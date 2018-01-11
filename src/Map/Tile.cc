@@ -88,7 +88,9 @@ void Tile::setWall(const bool v)
 void Tile::setActor(const shared_ptr<Character> &v)
 {
 	_actor = v;
-	_actor->Translate(Position());
+
+	if(hasActor())
+		_actor->Translate(Position());
 }
 
 void Tile::setLoot(const shared_ptr<Asteria::Object> &v)
