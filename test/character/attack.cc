@@ -61,4 +61,24 @@ namespace {
 			}
 		}
 	}
+
+	TEST(CharacterAttack, Flee) {
+		Application app;
+		auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+
+		Character a(t, 10, 10, 10, 10, 10, 10);
+		Character b(t, 10, 10, 10, 10, 10, 10);
+
+		Check flee = a.Flee(b);
+		bool fled = false;
+
+		for(auto x = 0; x < 100; x++) {
+			auto res = flee();
+
+			if(res)
+				fled = true;
+		}
+
+		EXPECT_TRUE(fled);
+	}
 }

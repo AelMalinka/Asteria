@@ -49,6 +49,8 @@
 					bool isAlive() const;
 					Check Attack(Character &);
 					Check Defend();
+					Check Flee(Character &);
+					Check Chase();
 					void Equip(const Weapon &);
 					void Equip(const Armor &);
 					void Equip(const Equipment &);

@@ -119,6 +119,23 @@ Check Character::Defend()
 	}
 }
 
+Check Character::Flee(Character &other)
+{
+	Agility agi;
+
+	return _check(
+		Modifier(get(agi)),
+		Modifier(other.Chase(), negative)
+	);
+}
+
+Check Character::Chase()
+{
+	Agility agi;
+
+	return _check(Modifier(get(agi)));
+}
+
 void Character::Equip(const Weapon &weapon)
 {
 	Unequip(weapon.Where());
