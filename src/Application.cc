@@ -32,6 +32,7 @@ Application::Application() :
 	_fight(end()),
 	_options(end()),
 	_death(end()),
+	_enemy(),
 	_settings()
 {
 	addSearchPath(DATADIR);
@@ -53,6 +54,7 @@ Application::Application(const int ArgC, char *ArgV[]) :
 	_fight(end()),
 	_options(end()),
 	_death(end()),
+	_enemy(),
 	_settings()
 {
 	addSearchPath(DATADIR);
@@ -87,11 +89,13 @@ void Application::Options()
 
 void Application::Restart()
 {
+	_enemy = load("Monster.png", Texture(GL::Texture::Texture2D));
+
 	auto player = load("Character.png", Texture(GL::Texture::Texture2D));
-	auto enemy = load("Monster.png", Texture(GL::Texture::Texture2D));
 	auto floor = load("Grass.png", Texture(GL::Texture::Texture2D));
 	auto wall = load("Mountain.png", Texture(GL::Texture::Texture2D));
 
+	// 2018-01-11 AMR NOTE: calculated with the super scientific method of trial and error
 	auto height = 16;
 	auto width = 28;
 
@@ -112,10 +116,10 @@ void Application::Restart()
 	}
 
 	_map = make_shared<Map>(move(v));
-	_player = make_shared<Character>(player.shared(), 1, 1, 1, 1, 1, 1);
+	_player = make_shared<Character>(player.shared(), 10, 10, 10, 10, 10, 10);
 
 	_player->Translate(Vertex(width / 2, height / 2, 0));
-	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(enemy.shared(), 1, 1, 1, 1, 1, 1));
+	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(_enemy.shared(), 1, 1, 1, 1, 1, 1));
 
 	_menu = addMode(make_shared<Modes::Menu>(*this));
 	_world = addMode(make_shared<Modes::World>(*this, _player, _map));
@@ -136,14 +140,20 @@ void Application::Fight(const shared_ptr<Character> &a, const shared_ptr<Charact
 
 void Application::Win(const shared_ptr<Character> &w)
 {
-	// 2018-01-11 AMR FIXME: seriously though fix this
-	auto height = 16;
-	auto width = 28;
+	auto height = _map->Height();
+	auto width = _map->Width();
 
 	if(w != _player) {
 		setMode(_death);
 	} else {
-		(*_map)[width / 2 - width / 4][height / 2].setActor(shared_ptr<Character>());
+		(*_map)[_player->Position().x][_player->Position().y].setActor(shared_ptr<Character>());
+
+		if(_player->Position().x == width / 2 - width / 4 && _player->Position().y == height / 2) {
+			(*_map)[width / 2 + width / 4][height / 2].setActor(make_shared<Character>(_enemy.shared(), 1, 1, 1, 1, 1, 1));
+		} else {
+			(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(_enemy.shared(), 1, 1, 1, 1, 1, 1));
+		}
+
 		setMode(_world);
 	}
 }

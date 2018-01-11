@@ -11,6 +11,7 @@
 
 #	include <Entropy/Mnemosyne/Application.hh>
 #	include <Entropy/Mnemosyne/Handle.hh>
+#	include <Entropy/Theia/GL/Texture.hh>
 #	include <json/json.h>
 
 	namespace Entropy
@@ -40,6 +41,7 @@
 					PolymorphicList<Mnemosyne::Mode>::iterator _fight;
 					PolymorphicList<Mnemosyne::Mode>::iterator _options;
 					PolymorphicList<Mnemosyne::Mode>::iterator _death;
+					Mnemosyne::Handle<Theia::GL::Texture> _enemy;
 					Mnemosyne::Handle<Json::Value> _settings;
 			};
 		}
