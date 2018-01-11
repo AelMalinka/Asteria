@@ -27,14 +27,18 @@
 					void Menu();
 					void World();
 					void Options();
+					void Restart();
 					void Fight(const std::shared_ptr<Character> &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
+					void Win(const std::shared_ptr<Character> &);
 					Json::Value &Settings();
 					const Json::Value &Settings() const;
 				private:
+					std::shared_ptr<Character> _player;
 					PolymorphicList<Mnemosyne::Mode>::iterator _menu;
 					PolymorphicList<Mnemosyne::Mode>::iterator _world;
 					PolymorphicList<Mnemosyne::Mode>::iterator _fight;
 					PolymorphicList<Mnemosyne::Mode>::iterator _options;
+					PolymorphicList<Mnemosyne::Mode>::iterator _death;
 					Mnemosyne::Handle<Json::Value> _settings;
 			};
 		}

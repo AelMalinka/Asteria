@@ -40,6 +40,7 @@ uiheaders_HEADERS = \
 
 modesheadersdir = $(includedir)/Entropy/Asteria/Game/Modes
 modesheaders_HEADERS = \
+	src/Game/Modes/Death.hh \
 	src/Game/Modes/Fight.hh \
 	src/Game/Modes/Menu.hh \
 	src/Game/Modes/Options.hh \
@@ -52,6 +53,7 @@ libasteria_la_SOURCES = \
 	src/Character/Equipment.cc \
 	src/Character/Armor.cc \
 	src/Character/Weapon.cc \
+	src/Game/Modes/Death.cc \
 	src/Game/Modes/Fight.cc \
 	src/Game/Modes/Menu.cc \
 	src/Game/Modes/Options.cc \

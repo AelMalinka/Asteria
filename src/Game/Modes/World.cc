@@ -14,10 +14,9 @@ using namespace Entropy::Mnemosyne;
 using namespace Entropy;
 using namespace std;
 
-World::World(Mnemosyne::Application &app)
-	: Mode(app), _player(), _map()
+World::World(Mnemosyne::Application &app, const shared_ptr<Character> &p)
+	: Mode(app), _player(p), _map()
 {
-	auto player = App().load("Character.png", Resources::Texture(Texture::Texture2D));
 	auto enemy = App().load("Monster.png", Resources::Texture(Texture::Texture2D));
 	auto floor = App().load("Grass.png", Resources::Texture(Texture::Texture2D));
 	auto wall = App().load("Mountain.png", Resources::Texture(Texture::Texture2D));
@@ -42,10 +41,9 @@ World::World(Mnemosyne::Application &app)
 	}
 
 	_map = make_shared<Map>(move(v));
-	_player = make_shared<Character>(player.shared(), 0, 0, 0, 0, 0, 0);
 
 	_player->Translate(Vertex(width / 2, height / 2, 0));
-	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(enemy.shared(), 0, 0, 0, 0, 0, 0));
+	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(enemy.shared(), 1, 1, 1, 1, 1, 1));
 
 	Current().addDrawable(_map);
 	Current().addDrawable(_player);

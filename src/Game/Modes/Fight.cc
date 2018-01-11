@@ -29,6 +29,66 @@ Fight::Fight(Mnemosyne::Application &a)
 	auto bg = App().load("Grass.png"s, Texture(GL::Texture::Texture2D));
 
 	vector<pair<string, UI::Menu::callback>> v = {
+		make_pair("Fight!"s, [&app, this](const Event &ev) {
+			if(ev.Id() == Theia::Events::Key::Id) {
+				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
+				Check ab = _a->Attack(*_b);
+				Check ba = _b->Attack(*_a);
+				Agility aagi, bagi;
+
+				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
+					Check::Result a, b;
+
+					auto alast = _a->Hp().Current();
+					auto blast = _b->Hp().Current();
+
+					if(_a->get(aagi).Value() > _b->get(bagi).Value()) {
+						a = ab();
+
+						if(_b->Hp().Current() >= 0) {
+							b = ba();
+						}
+					} else {
+						b = ba();
+
+						if(_a->Hp().Current() >= 0) {
+							a = ab();
+						}
+					}
+
+					auto admg = blast - _b->Hp().Current();
+					auto bdmg = alast - _a->Hp().Current();
+
+					if(_a->Hp().Current() <= 0) {
+						app.Win(_b);
+						return;
+					}
+
+					if(_b->Hp().Current() <= 0) {
+						app.Win(_a);
+						return;
+					}
+
+					auto s = ""s;
+					if(a) {
+						s += "You Attacked for "s + lexical_cast<string>(admg) + " damage"s;
+					} else {
+						s += "You Missed!"s;
+					}
+
+					if(b) {
+						s += " They Attacked for "s + lexical_cast<string>(bdmg) + " damage"s;
+					} else {
+						s += " They Missed!"s;
+					}
+
+					s += " You now have "s + lexical_cast<string>(_a->Hp().Current()) + " health, They now have "s + lexical_cast<string>(_b->Hp().Current()) + " health"s;
+
+					_info->setValue(s);
+					_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
+				}
+			}
+		}),
 		make_pair("Run!"s, [&app, this](const Event &ev) {
 			if(ev.Id() == Theia::Events::Key::Id) {
 				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
@@ -72,6 +132,10 @@ Fight::Fight(Mnemosyne::Application &a)
 						auto res = attack();
 						auto dmg = last - _a->Hp().Current();
 
+						if(_a->Hp().Current() <= 0) {
+							app.Win(_b);
+						}
+
 						if(res) {
 							s += " Enemey Attacked for "s + lexical_cast<string>(dmg) + " damage, you now have "s + lexical_cast<string>(_a->Hp().Current()) + " health"s;
 						} else {
@@ -93,7 +157,6 @@ Fight::Fight(Mnemosyne::Application &a)
 	_bg = make_shared<Sprite>(bg.shared());
 
 	_info->setScale(.5);
-	_info->setColor(Vertex(1, 1, 1));
 	_bg->Scale(Vertex(100, 100, 1));
 
 	Current().getCamera().setPosition(Vertex(0, 0, 0.1));
