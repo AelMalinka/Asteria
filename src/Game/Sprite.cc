@@ -14,7 +14,8 @@ using namespace std;
 Sprite::Sprite(const shared_ptr<Texture> &t) :
 	SharedData<detail::sprite_data>(),
 	Object(),
-	_texture(t)
+	_texture(t),
+	_position(0, 0, 0)
 {
 	// 2018-01-08 AMR TODO: is this always necessary?
 	// 2018-01-08 AMR TODO: is this where we want to do this?
@@ -24,6 +25,18 @@ Sprite::Sprite(const shared_ptr<Texture> &t) :
 Sprite::Sprite(const Sprite &) = default;
 Sprite::Sprite(Sprite &&) = default;
 Sprite::~Sprite() = default;
+
+void Sprite::Translate(const Vertex &offset)
+{
+	_position += offset;
+
+	Object::Translate(offset);
+}
+
+const Vertex &Sprite::Position() const
+{
+	return _position;
+}
 
 void Sprite::Draw()
 {

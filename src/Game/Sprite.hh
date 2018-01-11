@@ -37,13 +37,15 @@
 					Sprite(const Sprite &);
 					Sprite(Sprite &&);
 					virtual ~Sprite();
-				protected:
 					virtual void Draw();
 					virtual void UpdateModel();
 					virtual void UpdateScreen(const Theia::Screen &);
 					virtual void UpdateCamera(const Theia::Camera &);
+					virtual void Translate(const Theia::Vertex &);
+					const Theia::Vertex &Position() const;
 				private:
 					std::shared_ptr<Theia::GL::Texture> _texture;
+					Theia::Vertex _position;
 			};
 		}
 	}
