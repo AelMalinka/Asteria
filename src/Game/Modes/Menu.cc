@@ -26,7 +26,7 @@ Menu::Menu(Mnemosyne::Application &a)
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
-					app.Start();
+					app.World();
 				}
 			}
 		}),
@@ -61,9 +61,8 @@ void Menu::onEvent(const Event &ev)
 		}
 	} else if(ev.Id() == Mnemosyne::Events::ModeChange::Id) {
 		_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x, App().Windows()->getScreen().Height() / 2 - _menu->Size().y));
-	}else if(ev.Id() == Theia::Events::Resize::Id) {
+	} else if(ev.Id() == Theia::Events::Resize::Id) {
 		const Theia::Events::Resize &rz = dynamic_cast<const Theia::Events::Resize &>(ev);
-
 		_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x, rz.Height() / 2 - _menu->Size().y));
 	}
 
