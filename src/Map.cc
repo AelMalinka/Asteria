@@ -61,7 +61,7 @@ void Map::Update(const chrono::duration<double> &dt)
 {
 	for(auto &i : _tiles) {
 		for(auto &t : i) {
-			dynamic_cast<Drawable &>(t).Update(dt);
+			t.Update(dt);
 		}
 	}
 }
@@ -70,7 +70,7 @@ void Map::UpdateScreen(const Screen &s)
 {
 	for(auto &i : _tiles) {
 		for(auto &t : i) {
-			dynamic_cast<Drawable &>(t).UpdateScreen(s);
+			t.UpdateScreen(s);
 		}
 	}
 }
@@ -79,7 +79,7 @@ void Map::UpdateCamera(const Camera &c)
 {
 	for(auto &i : _tiles) {
 		for(auto &t : i) {
-			dynamic_cast<Drawable &>(t).UpdateCamera(c);
+			t.UpdateCamera(c);
 		}
 	}
 }
