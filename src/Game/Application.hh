@@ -5,6 +5,10 @@
 #if !defined ENTROPY_ASTERIA_GAME_MAIN_INC
 #	define ENTROPY_ASTERIA_GAME_MAIN_INC
 
+#	include "../Exception.hh"
+#	include "../Character.hh"
+#	include "../Map.hh"
+
 #	include <Entropy/Mnemosyne/Application.hh>
 #	include <Entropy/Mnemosyne/Handle.hh>
 #	include <json/json.h>
@@ -21,8 +25,9 @@
 					Application(const int, char *[]);
 					~Application();
 					void Menu();
-					void Start();
+					void World();
 					void Options();
+					void Fight(const std::shared_ptr<Character> &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
 					Json::Value &Settings();
 					const Json::Value &Settings() const;
 				private:

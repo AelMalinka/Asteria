@@ -73,7 +73,7 @@ void Application::Menu()
 	setMode(_menu);
 }
 
-void Application::Start()
+void Application::World()
 {
 	setMode(_world);
 }
@@ -81,6 +81,14 @@ void Application::Start()
 void Application::Options()
 {
 	setMode(_options);
+}
+
+void Application::Fight(const shared_ptr<Character> &a, const shared_ptr<Character> &b, const shared_ptr<Map> &m)
+{
+	dynamic_pointer_cast<Modes::Fight>(_fight.shared())->setMap(m);
+	dynamic_pointer_cast<Modes::Fight>(_fight.shared())->setCombatants(a, b);
+
+	setMode(_fight);
 }
 
 Value &Application::Settings()
