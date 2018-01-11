@@ -17,14 +17,10 @@ using namespace std;
 World::World(Mnemosyne::Application &app, const shared_ptr<Character> &p, const shared_ptr<Map> &m)
 	: Mode(app), _player(p), _map(m)
 {
-	// 2018-01-11 AMR FIXME: get from App or set in App or something
-	auto height = 16;
-	auto width = 28;
-
 	Current().addDrawable(_map);
 	Current().addDrawable(_player);
-	Current().getCamera().setPosition(Vertex(width / 2, height / 2, 5));
-	Current().getCamera().setLookAt(Vertex(width / 2, height / 2, 0));
+	Current().getCamera().setPosition(Vertex(_player->Position().x, _player->Position().y, 5));
+	Current().getCamera().setLookAt(_player->Position());
 }
 
 void World::onEvent(const Entropy::Event &ev)
