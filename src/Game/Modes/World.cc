@@ -14,36 +14,12 @@ using namespace Entropy::Mnemosyne;
 using namespace Entropy;
 using namespace std;
 
-World::World(Mnemosyne::Application &app, const shared_ptr<Character> &p)
-	: Mode(app), _player(p), _map()
+World::World(Mnemosyne::Application &app, const shared_ptr<Character> &p, const shared_ptr<Map> &m)
+	: Mode(app), _player(p), _map(m)
 {
-	auto enemy = App().load("Monster.png", Resources::Texture(Texture::Texture2D));
-	auto floor = App().load("Grass.png", Resources::Texture(Texture::Texture2D));
-	auto wall = App().load("Mountain.png", Resources::Texture(Texture::Texture2D));
-
+	// 2018-01-11 AMR FIXME: get from App or set in App or something
 	auto height = 16;
 	auto width = 28;
-
-	const Tile Wall(wall.shared(), true);
-	const Tile Floor(floor.shared());
-
-	vector<vector<Tile>> v;
-
-	for(auto x = 0; x <= width; x++) {
-		vector<Tile> t;
-		for(auto y = 0; y <= height; y++) {
-			if(x == 0 || x == width || y == 0 || y == height)
-				t.push_back(Wall);
-			else
-				t.push_back(Floor);
-		}
-		v.push_back(t);
-	}
-
-	_map = make_shared<Map>(move(v));
-
-	_player->Translate(Vertex(width / 2, height / 2, 0));
-	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(enemy.shared(), 1, 1, 1, 1, 1, 1));
 
 	Current().addDrawable(_map);
 	Current().addDrawable(_player);

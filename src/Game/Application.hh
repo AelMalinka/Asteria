@@ -34,6 +34,7 @@
 					const Json::Value &Settings() const;
 				private:
 					std::shared_ptr<Character> _player;
+					std::shared_ptr<Map> _map;
 					PolymorphicList<Mnemosyne::Mode>::iterator _menu;
 					PolymorphicList<Mnemosyne::Mode>::iterator _world;
 					PolymorphicList<Mnemosyne::Mode>::iterator _fight;

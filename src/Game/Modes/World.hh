@@ -20,7 +20,7 @@
 					public Entropy::Mnemosyne::Mode
 				{
 					public:
-						World(Mnemosyne::Application &, const std::shared_ptr<Character> &);
+						World(Mnemosyne::Application &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
 						void onEvent(const Event &);
 					private:
 						std::shared_ptr<Character> _player;

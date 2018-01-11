@@ -17,14 +17,16 @@ using namespace std;
 using namespace Entropy::Asteria;
 using namespace Json;
 
-using Entropy::Mnemosyne::Resources::Texture;
 using Conf = Entropy::Mnemosyne::Resources::Json;
-
 namespace GL = Entropy::Theia::GL;
+
+using Entropy::Mnemosyne::Resources::Texture;
+using Entropy::Theia::Vertex;
 
 Application::Application() :
 	Entropy::Mnemosyne::Application(),
 	_player(),
+	_map(),
 	_menu(end()),
 	_world(end()),
 	_fight(end()),
@@ -44,6 +46,8 @@ Application::Application() :
 
 Application::Application(const int ArgC, char *ArgV[]) :
 	Entropy::Mnemosyne::Application(ArgC, ArgV),
+	_player(),
+	_map(),
 	_menu(end()),
 	_world(end()),
 	_fight(end()),
@@ -84,11 +88,37 @@ void Application::Options()
 void Application::Restart()
 {
 	auto player = load("Character.png", Texture(GL::Texture::Texture2D));
+	auto enemy = load("Monster.png", Texture(GL::Texture::Texture2D));
+	auto floor = load("Grass.png", Texture(GL::Texture::Texture2D));
+	auto wall = load("Mountain.png", Texture(GL::Texture::Texture2D));
 
+	auto height = 16;
+	auto width = 28;
+
+	const Tile Wall(wall.shared(), true);
+	const Tile Floor(floor.shared());
+
+	vector<vector<Tile>> v;
+
+	for(auto x = 0; x <= width; x++) {
+		vector<Tile> t;
+		for(auto y = 0; y <= height; y++) {
+			if(x == 0 || x == width || y == 0 || y == height)
+				t.push_back(Wall);
+			else
+				t.push_back(Floor);
+		}
+		v.push_back(t);
+	}
+
+	_map = make_shared<Map>(move(v));
 	_player = make_shared<Character>(player.shared(), 1, 1, 1, 1, 1, 1);
 
+	_player->Translate(Vertex(width / 2, height / 2, 0));
+	(*_map)[width / 2 - width / 4][height / 2].setActor(make_shared<Character>(enemy.shared(), 1, 1, 1, 1, 1, 1));
+
 	_menu = addMode(make_shared<Modes::Menu>(*this));
-	_world = addMode(make_shared<Modes::World>(*this, _player));
+	_world = addMode(make_shared<Modes::World>(*this, _player, _map));
 	_fight = addMode(make_shared<Modes::Fight>(*this));
 	_options = addMode(make_shared<Modes::Options>(*this));
 	_death = addMode(make_shared<Modes::Death>(*this));
@@ -106,8 +136,15 @@ void Application::Fight(const shared_ptr<Character> &a, const shared_ptr<Charact
 
 void Application::Win(const shared_ptr<Character> &w)
 {
+	// 2018-01-11 AMR FIXME: seriously though fix this
+	auto height = 16;
+	auto width = 28;
+
 	if(w != _player) {
 		setMode(_death);
+	} else {
+		(*_map)[width / 2 - width / 4][height / 2].setActor(shared_ptr<Character>());
+		setMode(_world);
 	}
 }
 
