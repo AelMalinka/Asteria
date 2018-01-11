@@ -32,6 +32,11 @@
 					std::shared_ptr<Asteria::Object> &Loot();
 					const std::shared_ptr<Character> &Actor() const;
 					const std::shared_ptr<Asteria::Object> &Loot() const;
+					void setWall(const bool);
+					void setActor(const std::shared_ptr<Character> &);
+					void setLoot(const std::shared_ptr<Asteria::Object> &);
+					void Translate(const Theia::Vertex &);
+					void Draw();
 				private:
 					bool _is_wall;
 					std::shared_ptr<Character> _actor;

@@ -8,6 +8,7 @@ using namespace Entropy::Asteria;
 using namespace std;
 
 using Entropy::Theia::GL::Texture;
+using Entropy::Theia::Vertex;
 
 Tile::Tile(const shared_ptr<Texture> &t, const bool isWall)
 	: Sprite(t), _is_wall(isWall), _actor(), _object()
@@ -27,6 +28,22 @@ Tile::Tile(const shared_ptr<Texture> &t, const shared_ptr<Asteria::Object> &obj,
 
 Tile::Tile(const Tile &) = default;
 Tile::~Tile() = default;
+
+void Tile::Translate(const Vertex &v)
+{
+	if(hasActor())
+		Actor()->Translate(v);
+
+	Sprite::Translate(v);
+}
+
+void Tile::Draw()
+{
+	Sprite::Draw();
+
+	if(hasActor())
+		_actor->Draw();
+}
 
 bool Tile::isWall() const
 {
@@ -61,4 +78,20 @@ const shared_ptr<Character> &Tile::Actor() const
 const shared_ptr<Object> &Tile::Loot() const
 {
 	return _object;
+}
+
+void Tile::setWall(const bool v)
+{
+	_is_wall = v;
+}
+
+void Tile::setActor(const shared_ptr<Character> &v)
+{
+	_actor = v;
+	_actor->Translate(Position());
+}
+
+void Tile::setLoot(const shared_ptr<Asteria::Object> &v)
+{
+	_object = v;
 }
