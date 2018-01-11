@@ -77,6 +77,7 @@ bin_PROGRAMS = \
 pkgdata_DATA = \
 	data/Character.png \
 	data/Grass.png \
+	data/Monster.png \
 	data/Mountain.png \
 	data/NotoSansUI-Regular.ttf
 
