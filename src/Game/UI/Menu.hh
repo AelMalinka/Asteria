@@ -37,10 +37,9 @@
 						iterator begin();
 						iterator end();
 						iterator selected();
-					protected:
 						void Draw();
-						void UpdateScreen(const Theia::Screen &);
 					protected:
+						void UpdateScreen(const Theia::Screen &);
 						void Update();
 					private:
 						container _menus;
