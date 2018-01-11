@@ -23,12 +23,12 @@
 			}
 
 			// 2016-09-22 AMR TODO: balance stats
-			using Strength = Entropy::Hecate::Stat<detail::strength, Entropy::Hecate::Linear<11>>;
-			using Agility = Entropy::Hecate::Stat<detail::agility, Entropy::Hecate::Linear<11>>;
-			using Endurance = Entropy::Hecate::Stat<detail::endurance, Entropy::Hecate::Linear<6>>;
+			using Strength = Entropy::Hecate::Stat<detail::strength, Entropy::Hecate::Linear<10>>;
+			using Agility = Entropy::Hecate::Stat<detail::agility, Entropy::Hecate::Linear<10>>;
+			using Endurance = Entropy::Hecate::Stat<detail::endurance, Entropy::Hecate::Linear<4>>;
 			using Perception = Entropy::Hecate::Stat<detail::perception, Entropy::Hecate::Linear<3>>;
 			using Magic = Entropy::Hecate::Stat<detail::magic, Entropy::Hecate::Linear<5>>;
-			using Willpower = Entropy::Hecate::Stat<detail::willpower, Entropy::Hecate::Linear<2>>;
+			using Willpower = Entropy::Hecate::Stat<detail::willpower, Entropy::Hecate::Linear<1>>;
 		}
 	}
 

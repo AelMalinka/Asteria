@@ -24,8 +24,6 @@
 				struct bow {};
 				struct thrown {};
 
-				struct find {};
-
 				struct unarmored {};
 				struct light {};
 				struct heavy {};
@@ -34,6 +32,8 @@
 				struct alteration {};
 				struct healing {};
 				struct destruction {};
+
+				struct find {};
 			}
 
 			using Melee = Entropy::Hecate::Skill<detail::melee, Entropy::Hecate::Linear<4>, Strength, Strength, Agility>;
@@ -45,8 +45,6 @@
 			using Bow = Entropy::Hecate::Skill<detail::bow, Entropy::Hecate::Linear<1>, Ranged>;
 			using Thrown = Entropy::Hecate::Skill<detail::thrown, Entropy::Hecate::Linear<1>, Ranged>;
 
-			using Find = Entropy::Hecate::Skill<detail::find, Entropy::Hecate::Linear<1>, Perception>;
-
 			using Unarmored = Entropy::Hecate::Skill<detail::unarmed, Entropy::Hecate::Linear<3>, Agility, Agility, Endurance>;
 			using LightArmor = Entropy::Hecate::Skill<detail::light, Entropy::Hecate::Linear<1>, Unarmored, Strength>;
 			using HeavyArmor = Entropy::Hecate::Skill<detail::heavy, Entropy::Hecate::Linear<1>, Unarmored, Strength, Endurance>;
@@ -55,6 +53,8 @@
 			using Alteration = Entropy::Hecate::Skill<detail::alteration, Entropy::Hecate::Linear<1>, Magic, Willpower>;
 			using Healing = Entropy::Hecate::Skill<detail::healing, Entropy::Hecate::Linear<1>, Magic, Endurance>;
 			using Destruction = Entropy::Hecate::Skill<detail::destruction, Entropy::Hecate::Linear<1>, Magic, Strength>;
+
+			using Find = Entropy::Hecate::Skill<detail::find, Entropy::Hecate::Linear<1>, Perception, Perception, Divination>;
 		}
 	}
 
