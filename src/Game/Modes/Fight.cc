@@ -32,6 +32,7 @@ Fight::Fight(Mnemosyne::Application &a)
 		make_pair("Run!"s, [&app, this](const Event &ev) {
 			if(ev.Id() == Theia::Events::Key::Id) {
 				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
+				Check attack = _b->Attack(*_a);
 				Check flee = _a->Flee(*_b);
 
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
@@ -62,10 +63,23 @@ Fight::Fight(Mnemosyne::Application &a)
 						app.World();
 					} else {
 						auto s = "Failed to run"s;
+
 #						ifdef DEBUG
 							 s +=  " rolled: "s + lexical_cast<string>(res.Value()) + " chance: "s + lexical_cast<string>(res.Chance());
 #						endif
+
+						auto last = _a->Hp().Current();
+						auto res = attack();
+						auto dmg = last - _a->Hp().Current();
+
+						if(res) {
+							s += " Enemey Attacked for "s + lexical_cast<string>(dmg) + " damage, you now have "s + lexical_cast<string>(_a->Hp().Current()) + " health"s;
+						} else {
+							s += " Enemy Attack Missed"s;
+						}
+
 						_info->setValue(s);
+						_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
 					}
 				}
 			}
@@ -103,8 +117,8 @@ void Fight::setMap(const shared_ptr<Map> &m)
 void Fight::onEvent(const Entropy::Event &ev)
 {
 	if(ev.Id() == Mnemosyne::Events::ModeChange::Id) {
-		_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x, App().Windows()->getScreen().Height() / 2 - _menu->Size().y - App().Windows()->getScreen().Height() / 4));
-		_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
+		_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _menu->Size().y - App().Windows()->getScreen().Height() / 4));
+		_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
 
 		// 2018-01-10 AMR TODO: should we verify we're the new mode?
 		if(!_map) {
@@ -121,8 +135,8 @@ void Fight::onEvent(const Entropy::Event &ev)
 		}
 	} else if(ev.Id() == Theia::Events::Resize::Id) {
 		const Theia::Events::Resize &rz = dynamic_cast<const Theia::Events::Resize &>(ev);
-		_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x, rz.Height() / 2 - _menu->Size().y - rz.Height() / 4));
-		_info->setPosition(ScreenVertex(rz.Width() / 2 - _info->Size().x, rz.Height() / 2 - _info->Size().y + rz.Height() / 4));
+		_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x / 2, rz.Height() / 2 - _menu->Size().y - rz.Height() / 4));
+		_info->setPosition(ScreenVertex(rz.Width() / 2 - _info->Size().x / 2, rz.Height() / 2 - _info->Size().y + rz.Height() / 4));
 	}
 
 	_menu->onEvent(ev);
