@@ -25,7 +25,9 @@
 				{
 					public:
 						Fight(Application &);
-						void onEvent(const Event &);
+						void onEvent(const Entropy::Event &);
+						void onEvent(const Mnemosyne::Events::ModeChange &);
+						void onEvent(const Theia::Events::Resize &);
 						void setMap(const std::shared_ptr<Map> &);
 						// 2018-01-10 AMR TODO: how should we handle multiple enemies?
 						void setCombatants(const std::shared_ptr<Character> &, const std::shared_ptr<Character> &);

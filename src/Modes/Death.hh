@@ -20,7 +20,9 @@
 				{
 					public:
 						Death(Application &);
-						void onEvent(const Event &);
+						void onEvent(const Mnemosyne::Events::ModeChange &);
+						void onEvent(const Theia::Events::Resize &);
+						void onEvent(const Theia::Events::Key &);
 					private:
 						std::shared_ptr<Theia::UI::Text> _message;
 				};

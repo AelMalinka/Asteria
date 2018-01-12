@@ -9,7 +9,9 @@
 using namespace Entropy::Asteria::Modes;
 using namespace Entropy::Asteria;
 using namespace Entropy::Mnemosyne::Resources;
+using namespace Entropy::Mnemosyne::Events;
 using namespace Entropy::Theia;
+using namespace Entropy::Theia::Events;
 using namespace Entropy;
 using namespace std;
 
@@ -52,16 +54,24 @@ Menu::Menu(Application &a)
 
 void Menu::onEvent(const Event &ev)
 {
-	if(ev.Id() == Theia::Events::Show::Id) {
-		if(dynamic_cast<const Application &>(App()).Settings()["fullscreen"].asBool()) {
-			App().Windows()->Fullscreen();
-		}
-	} else if(ev.Id() == Mnemosyne::Events::ModeChange::Id) {
-		_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x, App().Windows()->getScreen().Height() / 2 - _menu->Size().y));
-	} else if(ev.Id() == Theia::Events::Resize::Id) {
-		const Theia::Events::Resize &rz = dynamic_cast<const Theia::Events::Resize &>(ev);
-		_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x, rz.Height() / 2 - _menu->Size().y));
-	}
-
 	_menu->onEvent(ev);
+
+	Mode<Asteria::Application>::onEvent(ev);
+}
+
+void Menu::onEvent(const ModeChange &)
+{
+	_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x, App().Windows()->getScreen().Height() / 2 - _menu->Size().y));
+}
+
+void Menu::onEvent(const Show &)
+{
+	if(dynamic_cast<const Application &>(App()).Settings()["fullscreen"].asBool()) {
+		App().Windows()->Fullscreen();
+	}
+}
+
+void Menu::onEvent(const Resize &rz)
+{
+	_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x, rz.Height() / 2 - _menu->Size().y));
 }

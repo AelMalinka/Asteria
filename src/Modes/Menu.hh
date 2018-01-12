@@ -20,7 +20,10 @@
 				{
 					public:
 						Menu(Application &);
-						void onEvent(const Event &);
+						void onEvent(const Entropy::Event &);
+						void onEvent(const Mnemosyne::Events::ModeChange &);
+						void onEvent(const Theia::Events::Show &);
+						void onEvent(const Theia::Events::Resize &);
 					private:
 						std::shared_ptr<UI::Menu> _menu;
 				};

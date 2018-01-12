@@ -9,6 +9,7 @@ using namespace Entropy::Asteria::Modes;
 using namespace Entropy::Asteria;
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::GL;
+using namespace Entropy::Theia::Events;
 using namespace Entropy::Mnemosyne;
 using namespace Entropy;
 using namespace std;
@@ -22,50 +23,47 @@ World::World(Application &app, const shared_ptr<Character> &p, const shared_ptr<
 	Current().getCamera().setLookAt(_player->Position());
 }
 
-void World::onEvent(const Entropy::Event &ev)
+void World::onEvent(const Key &k)
 {
-	if(ev.Id() == Theia::Events::Key::Id) {
-		const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
-		if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
-			if(k.Code() == GLFW_KEY_ESCAPE) {
-				App().Menu();
-			} else if(k.Code() == GLFW_KEY_LEFT) {
-				if(!(*_map)[_player->Position().x - 1][_player->Position().y].isWall()) {
-					if(_player->isFlipped()) {
-						_player->Flip();
-					}
-					_player->Translate(Vertex(-1.0, 0.0, 0.0));
-					auto &t = (*_map)[_player->Position().x][_player->Position().y];
-					if(t.hasActor()) {
-						App().Fight(_player, t.Actor(), _map);
-					}
+	if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
+		if(k.Code() == GLFW_KEY_ESCAPE) {
+			App().Menu();
+		} else if(k.Code() == GLFW_KEY_LEFT) {
+			if(!(*_map)[_player->Position().x - 1][_player->Position().y].isWall()) {
+				if(_player->isFlipped()) {
+					_player->Flip();
 				}
-			} else if(k.Code() == GLFW_KEY_RIGHT) {
-				if(!(*_map)[_player->Position().x + 1][_player->Position().y].isWall()) {
-					if(!_player->isFlipped()) {
-						_player->Flip();
-					}
-					_player->Translate(Vertex(1.0, 0.0, 0.0));
-					auto &t = (*_map)[_player->Position().x][_player->Position().y];
-					if(t.hasActor()) {
-						App().Fight(_player, t.Actor(), _map);
-					}
+				_player->Translate(Vertex(-1.0, 0.0, 0.0));
+				auto &t = (*_map)[_player->Position().x][_player->Position().y];
+				if(t.hasActor()) {
+					App().Fight(_player, t.Actor(), _map);
 				}
-			} else if(k.Code() == GLFW_KEY_DOWN) {
-				if(!(*_map)[_player->Position().x][_player->Position().y - 1].isWall()) {
-					_player->Translate(Vertex(0.0, -1.0, 0.0));
-					auto &t = (*_map)[_player->Position().x][_player->Position().y];
-					if(t.hasActor()) {
-						App().Fight(_player, t.Actor(), _map);
-					}
+			}
+		} else if(k.Code() == GLFW_KEY_RIGHT) {
+			if(!(*_map)[_player->Position().x + 1][_player->Position().y].isWall()) {
+				if(!_player->isFlipped()) {
+					_player->Flip();
 				}
-			} else if(k.Code() == GLFW_KEY_UP) {
-				if(!(*_map)[_player->Position().x][_player->Position().y + 1].isWall()) {
-					_player->Translate(Vertex(0.0, 1.0, 0.0));
-					auto &t = (*_map)[_player->Position().x][_player->Position().y];
-					if(t.hasActor()) {
-						App().Fight(_player, t.Actor(), _map);
-					}
+				_player->Translate(Vertex(1.0, 0.0, 0.0));
+				auto &t = (*_map)[_player->Position().x][_player->Position().y];
+				if(t.hasActor()) {
+					App().Fight(_player, t.Actor(), _map);
+				}
+			}
+		} else if(k.Code() == GLFW_KEY_DOWN) {
+			if(!(*_map)[_player->Position().x][_player->Position().y - 1].isWall()) {
+				_player->Translate(Vertex(0.0, -1.0, 0.0));
+				auto &t = (*_map)[_player->Position().x][_player->Position().y];
+				if(t.hasActor()) {
+					App().Fight(_player, t.Actor(), _map);
+				}
+			}
+		} else if(k.Code() == GLFW_KEY_UP) {
+			if(!(*_map)[_player->Position().x][_player->Position().y + 1].isWall()) {
+				_player->Translate(Vertex(0.0, 1.0, 0.0));
+				auto &t = (*_map)[_player->Position().x][_player->Position().y];
+				if(t.hasActor()) {
+					App().Fight(_player, t.Actor(), _map);
 				}
 			}
 		}

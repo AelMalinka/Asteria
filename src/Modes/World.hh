@@ -21,7 +21,7 @@
 				{
 					public:
 						World(Application &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
-						void onEvent(const Event &);
+						void onEvent(const Theia::Events::Key &);
 					private:
 						std::shared_ptr<Character> _player;
 						std::shared_ptr<Map> _map;

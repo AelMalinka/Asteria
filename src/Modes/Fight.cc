@@ -13,8 +13,10 @@ using namespace Entropy::Asteria;
 using namespace Entropy::Asteria::UI;
 using namespace Entropy::Mnemosyne;
 using namespace Entropy::Mnemosyne::Resources;
+using namespace Entropy::Mnemosyne::Events;
 using namespace Entropy::Theia;
 using namespace Entropy::Theia::UI;
+using namespace Entropy::Theia::Events;
 using namespace std;
 
 using boost::lexical_cast;
@@ -176,28 +178,33 @@ void Fight::setMap(const shared_ptr<Map> &m)
 
 void Fight::onEvent(const Entropy::Event &ev)
 {
-	if(ev.Id() == Mnemosyne::Events::ModeChange::Id) {
-		_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _menu->Size().y - App().Windows()->getScreen().Height() / 4));
-		_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
-
-		// 2018-01-10 AMR TODO: should we verify we're the new mode?
-		if(!_map) {
-			ENTROPY_THROW(Exception("Failed to set field of batlle"));
-		} else if(!_a || !_b) {
-			// 2018-01-10 AMR TODO: should we really crash on this condition?
-			ENTROPY_THROW(Exception("Failed to set combantants"));
-		} else if(_a->Position() != _b->Position()) {
-			// 2018-01-10 AMR TODO: should we really crash on this condition?
-			ENTROPY_THROW(Exception("Combantants are not in position to fight") <<
-				APositionInfo(_a->Position()) <<
-				BPositionInfo(_b->Position())
-			);
-		}
-	} else if(ev.Id() == Theia::Events::Resize::Id) {
-		const Theia::Events::Resize &rz = dynamic_cast<const Theia::Events::Resize &>(ev);
-		_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x / 2, rz.Height() / 2 - _menu->Size().y - rz.Height() / 4));
-		_info->setPosition(ScreenVertex(rz.Width() / 2 - _info->Size().x / 2, rz.Height() / 2 - _info->Size().y + rz.Height() / 4));
-	}
-
 	_menu->onEvent(ev);
+
+	Mode<Asteria::Application>::onEvent(ev);
+}
+
+void Fight::onEvent(const ModeChange &)
+{
+	_menu->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _menu->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _menu->Size().y - App().Windows()->getScreen().Height() / 4));
+	_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
+
+	// 2018-01-10 AMR TODO: should we verify we're the new mode?
+	if(!_map) {
+		ENTROPY_THROW(Exception("Failed to set field of batlle"));
+	} else if(!_a || !_b) {
+		// 2018-01-10 AMR TODO: should we really crash on this condition?
+		ENTROPY_THROW(Exception("Failed to set combantants"));
+	} else if(_a->Position() != _b->Position()) {
+		// 2018-01-10 AMR TODO: should we really crash on this condition?
+		ENTROPY_THROW(Exception("Combantants are not in position to fight") <<
+			APositionInfo(_a->Position()) <<
+			BPositionInfo(_b->Position())
+		);
+	}
+}
+
+void Fight::onEvent(const Resize &rz)
+{
+	_menu->setPosition(ScreenVertex(rz.Width() / 2 - _menu->Size().x / 2, rz.Height() / 2 - _menu->Size().y - rz.Height() / 4));
+	_info->setPosition(ScreenVertex(rz.Width() / 2 - _info->Size().x / 2, rz.Height() / 2 - _info->Size().y + rz.Height() / 4));
 }
