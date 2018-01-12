@@ -15,7 +15,8 @@ Sprite::Sprite(const shared_ptr<Texture> &t) :
 	SharedData<detail::sprite_data>(),
 	Object(),
 	_texture(t),
-	_position(0, 0, 0)
+	_position(0, 0, 0),
+	_is_flipped(false)
 {
 	// 2018-01-08 AMR TODO: is this always necessary?
 	// 2018-01-08 AMR TODO: is this where we want to do this?
@@ -30,12 +31,28 @@ void Sprite::Translate(const Vertex &offset)
 {
 	_position += offset;
 
-	Object::Translate(offset);
+	Vertex v = offset;
+	if(_is_flipped) {
+		v.x = -v.x;
+	}
+
+	Object::Translate(v);
 }
 
 const Vertex &Sprite::Position() const
 {
 	return _position;
+}
+
+void Sprite::Flip()
+{
+	_is_flipped = !_is_flipped;
+	Rotate(180, Vertex(0, 1, 0));
+}
+
+bool Sprite::isFlipped() const
+{
+	return _is_flipped;
 }
 
 void Sprite::Draw()

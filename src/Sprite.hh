@@ -43,9 +43,12 @@
 					virtual void UpdateCamera(const Theia::Camera &);
 					virtual void Translate(const Theia::Vertex &);
 					const Theia::Vertex &Position() const;
+					virtual void Flip();
+					virtual bool isFlipped() const;
 				private:
 					std::shared_ptr<Theia::GL::Texture> _texture;
 					Theia::Vertex _position;
+					bool _is_flipped;
 			};
 		}
 	}

@@ -14,9 +14,3 @@ Actor::Actor(const shared_ptr<Texture> &t)
 {}
 
 Actor::~Actor() = default;
-
-void Actor::Flip()
-{
-	Rotate(180.0, Vertex(0.0, 1.0, 0.0));
-}
-

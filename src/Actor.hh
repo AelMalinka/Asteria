@@ -11,6 +11,7 @@
 	{
 		namespace Asteria
 		{
+			// 2018-01-11 AMR TODO: with moving everything to sprite, do we really want actor still?
 			class Actor :
 				public Sprite
 			{
@@ -19,7 +20,6 @@
 					Actor(const Actor &);
 					Actor(Actor &&);
 					virtual ~Actor();
-					virtual void Flip();
 			};
 		}
 	}
