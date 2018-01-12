@@ -3,7 +3,6 @@
 */
 
 #include "Options.hh"
-#include "../Application.hh"
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 #include <Entropy/Mnemosyne/Events.hh>
 
@@ -14,34 +13,29 @@ using namespace Entropy::Theia;
 using namespace Entropy;
 using namespace std;
 
-Options::Options(Mnemosyne::Application &a)
+Options::Options(Application &a)
 	: Mode(a), _menu()
 {
-	Application &app = dynamic_cast<Application &>(App());
-
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Fullscreen: "s + app.Settings()["fullscreen"].asString(), [&app, this](const Event &ev) {
+		make_pair("Fullscreen: "s + App().Settings()["fullscreen"].asString(), [this](const Event &ev) {
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
 					if(k.Code() == GLFW_KEY_ENTER || k.Code() == GLFW_KEY_RIGHT || k.Code() == GLFW_KEY_LEFT) {
-						ENTROPY_LOG(Log, Severity::Debug) << !app.Settings()["fullscreen"].asBool();
+						App().Windows()->Fullscreen();
+						App().Settings()["fullscreen"] = !App().Settings()["fullscreen"].asBool();
 
-						app.Windows()->Fullscreen();
-						app.Settings()["fullscreen"] = !app.Settings()["fullscreen"].asBool();
-						ENTROPY_LOG(Log, Severity::Debug) << app.Settings()["fullscreen"].asString();
-
-						_menu->selected()->first.setValue("Fullscreen: "s + app.Settings()["fullscreen"].asString());
+						_menu->selected()->first.setValue("Fullscreen: "s + App().Settings()["fullscreen"].asString());
 					}
 				}
 			}
 		}),
-		make_pair("Back"s, [&app](const Event &ev) {
+		make_pair("Back"s, [this](const Event &ev) {
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
 					if(k.Code() == GLFW_KEY_ENTER) {
-						app.Menu();
+						App().Menu();
 					}
 				}
 			}

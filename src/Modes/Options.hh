@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_OPTIONS_INC
 
-#	include "../Exception.hh"
+#	include "../Application.hh"
 #	include "../UI/Menu.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
@@ -16,10 +16,10 @@
 			namespace Modes
 			{
 				class Options :
-					public Entropy::Mnemosyne::Mode
+					public Entropy::Mnemosyne::Mode<Application>
 				{
 					public:
-						Options(Mnemosyne::Application &);
+						Options(Application &);
 						void onEvent(const Event &);
 					private:
 						std::shared_ptr<UI::Menu> _menu;

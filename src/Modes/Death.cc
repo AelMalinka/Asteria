@@ -3,7 +3,6 @@
 */
 
 #include "Death.hh"
-#include "../Application.hh"
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 #include <Entropy/Mnemosyne/Events.hh>
 
@@ -17,7 +16,7 @@ using namespace Entropy::Mnemosyne::Events;
 using namespace Entropy::Theia::Events;
 using namespace std;
 
-Death::Death(Mnemosyne::Application &a)
+Death::Death(Application &a)
 	: Mode(a), _message()
 {
 	_message = make_shared<Text>("You Died"s, App().load("NotoSansUI-Regular.ttf"s, Font()).shared());
@@ -29,8 +28,6 @@ Death::Death(Mnemosyne::Application &a)
 
 void Death::onEvent(const Event &ev)
 {
-	Application &app = dynamic_cast<Application &>(App());
-
 	if(ev.Id() == ModeChange::Id) {
 		_message->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _message->Size().x / 2, App().Windows()->getScreen().Height() / 2));
 	} else if(ev.Id() == Resize::Id) {
@@ -39,7 +36,7 @@ void Death::onEvent(const Event &ev)
 	} else if(ev.Id() == Key::Id) {
 		const Key &k = dynamic_cast<const Key &>(ev);
 		if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
-			app.Restart();
+			App().Restart();
 		}
 	}
 }

@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
 
-#	include "../Exception.hh"
+#	include "../Application.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 #	include <Entropy/Theia/UI/Text.hh>
 
@@ -16,10 +16,10 @@
 			namespace Modes
 			{
 				class Death :
-					public Entropy::Mnemosyne::Mode
+					public Entropy::Mnemosyne::Mode<Application>
 				{
 					public:
-						Death(Mnemosyne::Application &);
+						Death(Application &);
 						void onEvent(const Event &);
 					private:
 						std::shared_ptr<Theia::UI::Text> _message;

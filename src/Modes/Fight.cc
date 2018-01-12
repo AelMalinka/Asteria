@@ -3,7 +3,6 @@
 */
 
 #include "Fight.hh"
-#include "../Application.hh"
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 #include <Entropy/Mnemosyne/Resources/Texture.hh>
 #include <Entropy/Mnemosyne/Events.hh>
@@ -20,16 +19,14 @@ using namespace std;
 
 using boost::lexical_cast;
 
-Fight::Fight(Mnemosyne::Application &a)
+Fight::Fight(Application &a)
 	: Mode(a), _menu(), _info(), _bg(), _map(), _a(), _b()
 {
-	Application &app = dynamic_cast<Application &>(a);
-
 	auto font = App().load("NotoSansUI-Regular.ttf"s, Font());
 	auto bg = App().load("Grass.png"s, Texture(GL::Texture::Texture2D));
 
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Fight!"s, [&app, this](const Event &ev) {
+		make_pair("Fight!"s, [this](const Event &ev) {
 			if(ev.Id() == Theia::Events::Key::Id) {
 				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
 				Check ab = _a->Attack(*_b);
@@ -60,12 +57,12 @@ Fight::Fight(Mnemosyne::Application &a)
 					auto bdmg = alast - _a->Hp().Current();
 
 					if(_a->Hp().Current() <= 0) {
-						app.Win(_b);
+						App().Win(_b);
 						return;
 					}
 
 					if(_b->Hp().Current() <= 0) {
-						app.Win(_a);
+						App().Win(_a);
 						return;
 					}
 
@@ -89,7 +86,7 @@ Fight::Fight(Mnemosyne::Application &a)
 				}
 			}
 		}),
-		make_pair("Run!"s, [&app, this](const Event &ev) {
+		make_pair("Run!"s, [this](const Event &ev) {
 			if(ev.Id() == Theia::Events::Key::Id) {
 				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
 				Check attack = _b->Attack(*_a);
@@ -120,7 +117,7 @@ Fight::Fight(Mnemosyne::Application &a)
 					if(res) {
 						_info->setValue("Encounter!"s);
 						_a->Translate(to);
-						app.World();
+						App().World();
 					} else {
 						auto s = "Failed to run"s;
 
@@ -133,7 +130,7 @@ Fight::Fight(Mnemosyne::Application &a)
 						auto dmg = last - _a->Hp().Current();
 
 						if(_a->Hp().Current() <= 0) {
-							app.Win(_b);
+							App().Win(_b);
 						}
 
 						if(res) {

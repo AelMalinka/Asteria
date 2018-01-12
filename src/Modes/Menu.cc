@@ -3,7 +3,6 @@
 */
 
 #include "Menu.hh"
-#include "../Application.hh"
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 #include <Entropy/Mnemosyne/Events.hh>
 
@@ -16,33 +15,31 @@ using namespace std;
 
 using Entropy::Event;
 
-Menu::Menu(Mnemosyne::Application &a)
+Menu::Menu(Application &a)
 	: Mode(a), _menu()
 {
-	Application &app = dynamic_cast<Application &>(App());
-
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Play"s, [&app](const Event &ev) {
+		make_pair("Play"s, [this](const Event &ev) {
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
-					app.World();
+					App().World();
 				}
 			}
 		}),
-		make_pair("Options"s, [&app](const Event &ev) {
+		make_pair("Options"s, [this](const Event &ev) {
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
-					app.Options();
+					App().Options();
 				}
 			}
 		}),
-		make_pair("Quit"s, [&app](const Event &ev) {
+		make_pair("Quit"s, [this](const Event &ev) {
 			if(ev.Id() == Events::Key::Id) {
 				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
-					app.Windows()->Close();
+					App().Windows()->Close();
 				}
 			}
 		})

@@ -36,11 +36,11 @@
 				private:
 					std::shared_ptr<Character> _player;
 					std::shared_ptr<Map> _map;
-					PolymorphicList<Mnemosyne::Mode>::iterator _menu;
-					PolymorphicList<Mnemosyne::Mode>::iterator _world;
-					PolymorphicList<Mnemosyne::Mode>::iterator _fight;
-					PolymorphicList<Mnemosyne::Mode>::iterator _options;
-					PolymorphicList<Mnemosyne::Mode>::iterator _death;
+					PolymorphicList<Mnemosyne::ModeBase>::iterator _menu;
+					PolymorphicList<Mnemosyne::ModeBase>::iterator _world;
+					PolymorphicList<Mnemosyne::ModeBase>::iterator _fight;
+					PolymorphicList<Mnemosyne::ModeBase>::iterator _options;
+					PolymorphicList<Mnemosyne::ModeBase>::iterator _death;
 					Mnemosyne::Handle<Theia::GL::Texture> _enemy;
 					Mnemosyne::Handle<Json::Value> _settings;
 			};

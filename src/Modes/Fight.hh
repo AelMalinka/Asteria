@@ -5,7 +5,7 @@
 #if !defined ENTROPY_ASTERIA_GAME_MODES_FIGHT_INC
 #	define ENTROPY_ASTERIA_GAME_MODES_FIGHT_INC
 
-#	include "../Exception.hh"
+#	include "../Application.hh"
 #	include "../Character.hh"
 #	include "../Map.hh"
 #	include "../UI/Menu.hh"
@@ -21,10 +21,10 @@
 				ENTROPY_ERROR_INFO(BPositionInfo, Theia::Vertex);
 
 				class Fight :
-					public Entropy::Mnemosyne::Mode
+					public Entropy::Mnemosyne::Mode<Application>
 				{
 					public:
-						Fight(Mnemosyne::Application &);
+						Fight(Application &);
 						void onEvent(const Event &);
 						void setMap(const std::shared_ptr<Map> &);
 						// 2018-01-10 AMR TODO: how should we handle multiple enemies?
