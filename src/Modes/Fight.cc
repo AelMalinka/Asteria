@@ -28,9 +28,8 @@ Fight::Fight(Application &a)
 	auto bg = App().load("Grass.png"s, Texture(GL::Texture::Texture2D));
 
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Fight!"s, [this](const Event &ev) {
-			if(ev.Id() == Theia::Events::Key::Id) {
-				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
+		make_pair("Fight!"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				Check ab = _a->Attack(*_b);
 				Check ba = _b->Attack(*_a);
 				Agility aagi, bagi;
@@ -87,10 +86,9 @@ Fight::Fight(Application &a)
 					_info->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _info->Size().x / 2, App().Windows()->getScreen().Height() / 2 - _info->Size().y + App().Windows()->getScreen().Height() / 4));
 				}
 			}
-		}),
-		make_pair("Run!"s, [this](const Event &ev) {
-			if(ev.Id() == Theia::Events::Key::Id) {
-				const Theia::Events::Key &k = dynamic_cast<const Theia::Events::Key &>(ev);
+		)),
+		make_pair("Run!"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				Check attack = _b->Attack(*_a);
 				Check flee = _a->Flee(*_b);
 
@@ -146,7 +144,7 @@ Fight::Fight(Application &a)
 					}
 				}
 			}
-		})
+		))
 	};
 
 	// 2018-01-10 AMR TODO: cleanup interface

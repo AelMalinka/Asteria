@@ -19,9 +19,8 @@ Options::Options(Application &a)
 	: Mode(a), _menu()
 {
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Fullscreen: "s + App().Settings()["fullscreen"].asString(), [this](const Event &ev) {
-			if(ev.Id() == Events::Key::Id) {
-				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+		make_pair("Fullscreen: "s + App().Settings()["fullscreen"].asString(), Mnemosyne::onEvent(
+			[this](const Key &k) {
 				if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
 					if(k.Code() == GLFW_KEY_ENTER || k.Code() == GLFW_KEY_RIGHT || k.Code() == GLFW_KEY_LEFT) {
 						App().Windows()->Fullscreen();
@@ -31,17 +30,16 @@ Options::Options(Application &a)
 					}
 				}
 			}
-		}),
-		make_pair("Back"s, [this](const Event &ev) {
-			if(ev.Id() == Events::Key::Id) {
-				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+		)),
+		make_pair("Back"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				if(k.Action() == GLFW_PRESS || k.Action() == GLFW_REPEAT) {
 					if(k.Code() == GLFW_KEY_ENTER) {
 						App().Menu();
 					}
 				}
 			}
-		})
+		))
 	};
 
 	_menu = make_shared<UI::Menu>(v, App().load("NotoSansUI-Regular.ttf"s, Font()).shared());

@@ -21,30 +21,27 @@ Menu::Menu(Application &a)
 	: Mode(a), _menu()
 {
 	vector<pair<string, UI::Menu::callback>> v = {
-		make_pair("Play"s, [this](const Event &ev) {
-			if(ev.Id() == Events::Key::Id) {
-				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+		make_pair("Play"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
 					App().World();
 				}
 			}
-		}),
-		make_pair("Options"s, [this](const Event &ev) {
-			if(ev.Id() == Events::Key::Id) {
-				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+		)),
+		make_pair("Options"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
 					App().Options();
 				}
 			}
-		}),
-		make_pair("Quit"s, [this](const Event &ev) {
-			if(ev.Id() == Events::Key::Id) {
-				const Events::Key &k = dynamic_cast<const Events::Key &>(ev);
+		)),
+		make_pair("Quit"s, Mnemosyne::onEvent(
+			[this](const Key &k) {
 				if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
 					App().Windows()->Close();
 				}
 			}
-		})
+		))
 	};
 
 	_menu = make_shared<UI::Menu>(v, App().load("NotoSansUI-Regular.ttf"s, Font()).shared());
