@@ -72,11 +72,13 @@ bin_PROGRAMS = \
 	asteria
 
 pkgdata_DATA = \
+	data/Armor.png \
 	data/Character.png \
 	data/Grass.png \
 	data/Monster.png \
 	data/Mountain.png \
-	data/NotoSansUI-Regular.ttf
+	data/NotoSansUI-Regular.ttf \
+	data/Sword.png
 
 asteriaconf_DATA = \
 	data/settings.json
