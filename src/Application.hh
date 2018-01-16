@@ -36,6 +36,8 @@
 				private:
 					std::shared_ptr<Character> _player;
 					std::shared_ptr<Map> _map;
+					std::shared_ptr<Weapon> _weapon;
+					std::shared_ptr<Armor> _armor;
 					PolymorphicList<Mnemosyne::ModeBase>::iterator _menu;
 					PolymorphicList<Mnemosyne::ModeBase>::iterator _world;
 					PolymorphicList<Mnemosyne::ModeBase>::iterator _fight;
