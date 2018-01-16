@@ -68,9 +68,19 @@ namespace {
 			Character alice(t, 0, 0, 0, 0, 0, 0);
 			Character bob(t, 0, 0, 0, 0, 0, 0);
 
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_FALSE(bob.hasWeapon());
+			EXPECT_FALSE(bob.hasArmor());
+
 			Melee melee(bob.Stats());
 			Unarmed unarmed(0, bob.get(melee));
 			bob.get(unarmed).Raw() = 10;
+
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_FALSE(bob.hasWeapon());
+			EXPECT_FALSE(bob.hasArmor());
 
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
@@ -99,10 +109,20 @@ namespace {
 			Character bob(t, 0, 0, 0, 0, 0, 0);
 			Weapon BasicSword("Basic Sword", s, Weapon::Type::Sword, None);
 
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_FALSE(bob.hasWeapon());
+			EXPECT_FALSE(bob.hasArmor());
+
 			Melee melee(bob.Stats());
 			Sword sword(0, bob.get(melee));
 			bob.get(sword).Raw() = 10;
 			bob.Equip(BasicSword);
+
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_TRUE(bob.hasWeapon());
+			EXPECT_FALSE(bob.hasArmor());
 
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);
@@ -131,11 +151,21 @@ namespace {
 			Character bob(t, 0, 0, 0, 0, 0, 0);
 			Armor BasicLight("Basic Light Armor", r, Armor::Type::Light, None);
 
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_FALSE(bob.hasWeapon());
+			EXPECT_FALSE(bob.hasArmor());
+
 			Strength str;
 			Unarmored unarmored(bob.Stats());
 			LightArmor armor(0, bob.get(unarmored), bob.get(str));
 			bob.get(armor).Raw() = 10;
 			bob.Equip(BasicLight);
+
+			EXPECT_FALSE(alice.hasWeapon());
+			EXPECT_FALSE(alice.hasArmor());
+			EXPECT_FALSE(bob.hasWeapon());
+			EXPECT_TRUE(bob.hasArmor());
 
 			auto a = alice.Attack(bob);
 			auto b = bob.Attack(alice);

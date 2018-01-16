@@ -48,6 +48,16 @@ bool Character::hasPoints() const
 	return _points;
 }
 
+bool Character::hasWeapon() const
+{
+	return _equipment.find(Equipment::Slot::Weapon) != _equipment.end() && _equipment.find(Equipment::Slot::Weapon)->second;
+}
+
+bool Character::hasArmor() const
+{
+	return _equipment.find(Equipment::Slot::Armor) != _equipment.end() && _equipment.find(Equipment::Slot::Armor)->second;
+}
+
 void Character::giveXp(const CostType &x)
 {
 	_xp += x;
@@ -195,7 +205,7 @@ void Character::Equip(const Equipment &equip)
 
 void Character::Unequip(const Equipment::Slot &where)
 {
-	if(_equipment.find(where) != _equipment.end())
+	if(_equipment.find(where) != _equipment.end() && _equipment[where])
 		_equipment[where]->Value().Remove(*this);
 
 	_equipment.erase(where);

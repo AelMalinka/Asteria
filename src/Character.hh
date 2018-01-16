@@ -50,6 +50,8 @@
 					const Health &Hp() const;
 					bool isAlive() const;
 					bool hasPoints() const;
+					bool hasWeapon() const;
+					bool hasArmor() const;
 					void giveXp(const CostType &);
 					Check Attack(Character &);
 					Check Defend();
