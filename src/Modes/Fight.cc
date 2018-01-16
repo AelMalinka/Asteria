@@ -43,13 +43,13 @@ Fight::Fight(Application &a)
 					if(_a->get(aagi).Value() > _b->get(bagi).Value()) {
 						a = ab();
 
-						if(_b->Hp().Current() >= 0) {
+						if(_b->isAlive()) {
 							b = ba();
 						}
 					} else {
 						b = ba();
 
-						if(_a->Hp().Current() >= 0) {
+						if(_a->isAlive()) {
 							a = ab();
 						}
 					}
@@ -57,12 +57,12 @@ Fight::Fight(Application &a)
 					auto admg = blast - _b->Hp().Current();
 					auto bdmg = alast - _a->Hp().Current();
 
-					if(_a->Hp().Current() <= 0) {
+					if(!_a->isAlive()) {
 						App().Win(_b);
 						return;
 					}
 
-					if(_b->Hp().Current() <= 0) {
+					if(!_b->isAlive()) {
 						App().Win(_a);
 						return;
 					}
@@ -129,7 +129,7 @@ Fight::Fight(Application &a)
 						auto res = attack();
 						auto dmg = last - _a->Hp().Current();
 
-						if(_a->Hp().Current() <= 0) {
+						if(!_a->isAlive()) {
 							App().Win(_b);
 						}
 
