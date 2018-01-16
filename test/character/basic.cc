@@ -41,6 +41,24 @@ namespace {
 		TEST_END
 	}
 
+	TEST(CharacterBasic, Xp) {
+		TEST_BEGIN
+			Application app;
+			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			Character test(t, 0, 0, 0, 0, 0, 0);
+
+			EXPECT_EQ(test.Xp(), 0);
+			EXPECT_EQ(test.Points(), 0);
+			EXPECT_FALSE(test.hasPoints());
+
+			test.giveXp(10);
+
+			EXPECT_EQ(test.Xp(), 0);
+			EXPECT_EQ(test.Points(), 10);
+			EXPECT_TRUE(test.hasPoints());
+		TEST_END
+	}
+
 	Template None("Empty Template", {});
 
 	TEST(CharacterBasic, Unarmed) {

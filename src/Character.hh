@@ -45,8 +45,12 @@
 				public:
 					Character(const std::shared_ptr<Theia::GL::Texture> &, const Strength &, const Agility &, const Endurance &, const Perception &, const Magic &, const Willpower &);
 					Health &Hp();
+					const CostType &Points() const;
+					const CostType &Xp() const;
 					const Health &Hp() const;
 					bool isAlive() const;
+					bool hasPoints() const;
+					void giveXp(const CostType &);
 					Check Attack(Character &);
 					Check Defend();
 					Check Flee(Character &);
@@ -61,6 +65,8 @@
 					void UpdateScreen(const Theia::Screen &);
 				private:
 					Health _health;
+					CostType _xp;
+					CostType _points;
 					std::shared_ptr<Weapon> _weapon;
 					Armor::Type _armor;
 					std::map<Equipment::Slot, std::shared_ptr<Equipment>> _equipment;

@@ -12,6 +12,8 @@ Character::Character(const shared_ptr<Texture> &t, const Strength &s, const Agil
 	BaseCharacter(s, a, e, p, v, w),
 	Actor(t),
 	_health(Stats()),
+	_xp(0),
+	_points(0),
 	_weapon(),
 	_armor(Armor::Type::None)
 {}
@@ -19,6 +21,16 @@ Character::Character(const shared_ptr<Texture> &t, const Strength &s, const Agil
 Health &Character::Hp()
 {
 	return _health;
+}
+
+const CostType &Character::Points() const
+{
+	return _points;
+}
+
+const CostType &Character::Xp() const
+{
+	return _xp;
 }
 
 const Health &Character::Hp() const
@@ -29,6 +41,25 @@ const Health &Character::Hp() const
 bool Character::isAlive() const
 {
 	return _health.Current() > 0;
+}
+
+bool Character::hasPoints() const
+{
+	return _points;
+}
+
+void Character::giveXp(const CostType &x)
+{
+	_xp += x;
+
+	// 2018-01-16 AMR TODO: tune this
+	CostType c = Cost();
+	if(c == 0) c = 1;
+
+	while(_xp >= c) {
+		_xp -= c;
+		++_points;
+	}
 }
 
 Check Character::Attack(Character &target)
