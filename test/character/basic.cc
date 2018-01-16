@@ -42,8 +42,6 @@ namespace {
 	}
 
 	Template None("Empty Template", {});
-	Weapon BasicSword("Basic Sword", Weapon::Type::Sword, None);
-	Armor BasicLight("Basic Light Armor", Armor::Type::Light, None);
 
 	TEST(CharacterBasic, Unarmed) {
 		TEST_BEGIN
@@ -78,8 +76,10 @@ namespace {
 		TEST_BEGIN
 			Application app;
 			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			auto s = app.load("data/Sword.png"s, Texture(Tex::Texture2D)).shared();
 			Character alice(t, 0, 0, 0, 0, 0, 0);
 			Character bob(t, 0, 0, 0, 0, 0, 0);
+			Weapon BasicSword("Basic Sword", s, Weapon::Type::Sword, None);
 
 			Melee melee(bob.Stats());
 			Sword sword(0, bob.get(melee));
@@ -108,8 +108,10 @@ namespace {
 		TEST_BEGIN
 			Application app;
 			auto t = app.load("data/Character.png"s, Texture(Tex::Texture2D)).shared();
+			auto r = app.load("data/Armor.png"s, Texture(Tex::Texture2D)).shared();
 			Character alice(t, 0, 0, 0, 0, 0, 0);
 			Character bob(t, 0, 0, 0, 0, 0, 0);
+			Armor BasicLight("Basic Light Armor", r, Armor::Type::Light, None);
 
 			Strength str;
 			Unarmored unarmored(bob.Stats());

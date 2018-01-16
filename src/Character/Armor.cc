@@ -6,9 +6,10 @@
 
 using namespace Entropy::Asteria;
 using namespace std;
+using namespace Entropy::Theia::GL;
 
-Armor::Armor(const string &name, const Armor::Type &type, const Template &templ)
-	: Equipment(name, Equipment::Slot::Armor, templ), _type(type)
+Armor::Armor(const string &name, const shared_ptr<Texture> &t, const Armor::Type &type, const Template &templ)
+	: Equipment(name, t, Equipment::Slot::Armor, templ), _type(type)
 {}
 
 Armor::Armor(const Armor &) = default;

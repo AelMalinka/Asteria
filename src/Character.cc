@@ -169,3 +169,33 @@ void Character::Unequip(const Equipment::Slot &where)
 
 	_equipment.erase(where);
 }
+
+void Character::Draw()
+{
+	Actor::Draw();
+
+	// 2018-01-16 AMR NOTE: draw them in this order for stacking purposes
+	if(_equipment[Equipment::Slot::Accessory]) _equipment[Equipment::Slot::Accessory]->Draw();
+	if(_equipment[Equipment::Slot::Armor]) _equipment[Equipment::Slot::Armor]->Draw();
+	if(_equipment[Equipment::Slot::Weapon]) _equipment[Equipment::Slot::Weapon]->Draw();
+}
+
+void Character::UpdateCamera(const Theia::Camera &c)
+{
+	Actor::UpdateCamera(c);
+
+	for(auto &&p : _equipment) {
+		if(p.second)
+			p.second->UpdateCamera(c);
+	}
+}
+
+void Character::UpdateScreen(const Theia::Screen &s)
+{
+	Actor::UpdateScreen(s);
+
+	for(auto &&p : _equipment) {
+		if(p.second)
+			p.second->UpdateScreen(s);
+	}
+}

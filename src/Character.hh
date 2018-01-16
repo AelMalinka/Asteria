@@ -55,6 +55,10 @@
 					void Equip(const Armor &);
 					void Equip(const Equipment &);
 					void Unequip(const Equipment::Slot &);
+				public:
+					void Draw();
+					void UpdateCamera(const Theia::Camera &);
+					void UpdateScreen(const Theia::Screen &);
 				private:
 					Health _health;
 					std::shared_ptr<Weapon> _weapon;

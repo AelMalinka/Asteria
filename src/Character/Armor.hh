@@ -22,7 +22,7 @@
 						Heavy
 					};
 				public:
-					Armor(const std::string &, const Type &, const Template &);
+					Armor(const std::string &, const std::shared_ptr<Theia::GL::Texture> &, const Type &, const Template &);
 					Armor(const Armor &);
 					Armor(Armor &&);
 					virtual ~Armor();

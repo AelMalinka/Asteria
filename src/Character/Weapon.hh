@@ -24,7 +24,7 @@
 						Thrown
 					};
 				public:
-					Weapon(const std::string &, const Type &, const Template &);
+					Weapon(const std::string &, const std::shared_ptr<Theia::GL::Texture> &, const Type &, const Template &);
 					Weapon(const Weapon &);
 					Weapon(Weapon &&);
 					virtual ~Weapon();

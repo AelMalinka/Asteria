@@ -5,10 +5,11 @@
 #include "Equipment.hh"
 
 using namespace Entropy::Asteria;
+using namespace Entropy::Theia::GL;
 using namespace std;
 
-Equipment::Equipment(const string &name, const Equipment::Slot &where, const Template &templ)
-	: Item(name, templ), _where(where)
+Equipment::Equipment(const string &name, const shared_ptr<Texture> &t, const Equipment::Slot &where, const Template &templ)
+	: Item(name, templ), Sprite(t), _where(where)
 {}
 
 Equipment::Equipment(const Equipment &) = default;
