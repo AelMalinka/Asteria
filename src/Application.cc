@@ -10,6 +10,8 @@
 #include "Modes/Options.hh"
 #include "Modes/Death.hh"
 
+#include "Map/Cave.hh"
+
 #include <Entropy/Mnemosyne/Resources/Texture.hh>
 #include <Entropy/Mnemosyne/Resources/Json.hh>
 
@@ -105,18 +107,18 @@ void Application::Restart()
 	_armor = make_shared<Armor>("Basic Light Armor"s, armor.shared(), Armor::Type::Light, None);
 
 	// 2018-01-11 AMR NOTE: calculated with the super scientific method of trial and error
-	auto height = 16;
-	auto width = 28;
+	auto height = 17;
+	auto width = 29;
 
 	const Tile Wall(wall.shared(), true);
 	const Tile Floor(floor.shared());
 
 	vector<vector<Tile>> v;
 
-	for(auto x = 0; x <= width; x++) {
+	for(auto x = 0; x < width; x++) {
 		vector<Tile> t;
-		for(auto y = 0; y <= height; y++) {
-			if(x == 0 || x == width || y == 0 || y == height)
+		for(auto y = 0; y < height; y++) {
+			if(x == 0 || x == width  - 1|| y == 0 || y == height - 1)
 				t.push_back(Wall);
 			else
 				t.push_back(Floor);
