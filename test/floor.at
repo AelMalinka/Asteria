@@ -5,5 +5,6 @@ AT_BANNER([Floor Generation Tests])
 
 AT_SETUP([Cave Tests])
 AT_SKIP_IF([test -z $GTEST])
+AT_CHECK([ln -s ${BUILD}/data data], [])
 AT_CHECK([floor-cave], [], [ignore], [ignore])
 AT_CLEANUP

@@ -8,46 +8,59 @@ using namespace Entropy::Asteria;
 using namespace std;
 
 using Entropy::Hecate::Roll;
+using Entropy::Theia::GL::Texture;
 
-Cave::Cave(const size_t height, const size_t width)
-	: Floor(height, width)
+Cave::Cave(const size_t height, const size_t width, const shared_ptr<Texture> &floor, const shared_ptr<Texture> &wall)
+	: Floor(height, width, floor, wall)
 {}
 
 Cave::~Cave() = default;
 
 void Cave::operator () ()
 {
-	for(auto &&j : Tiles()) {
+	generateFloor();
+}
+
+void Cave::generateFloor()
+{
+	for(auto &&j : tiles()) {
 		for(auto &&i : j) {
 			if(Roll() < _first_fill) {
-				i = true;
+				i.setWall(true);
+				i.setTexture(Wall());
 			}
 		}
 	}
 
 	for(size_t x = 0; x < _openness_passes; x++) {
-		step([](auto tile, auto count) {
-			if(count[0] >= _smoothing_threshold || count[1] <= _openness_threshold)
-				tile = true;
-			else
-				tile = false;
+		step([this](auto &tile, auto count) {
+			if(count[0] >= _smoothing_threshold || count[1] <= _openness_threshold) {
+				tile.setWall(true);
+				tile.setTexture(Wall());
+			} else {
+				tile.setWall(false);
+				tile.setTexture(Blank());
+			}
 		}, {_smoothing_distance, _openness_distance});
 	}
 
 	for(size_t x = 0; x < _smoothing_passes; x++) {
-		step([](auto tile, auto count) {
-			if(count[0] >= _smoothing_threshold)
-				tile = true;
-			else
-				tile = false;
+		step([this](auto &tile, auto count) {
+			if(count[0] >= _smoothing_threshold) {
+				tile.setWall(true);
+				tile.setTexture(Wall());
+			} else {
+				tile.setWall(false);
+				tile.setTexture(Blank());
+			}
 		}, {_smoothing_distance});
 	}
 }
 
-void Cave::step(const function<void(vector<bool>::reference, const vector<size_t> &)> &f, const std::vector<size_t> &distances)
+void Cave::step(const function<void(Tile &, const vector<size_t> &)> &f, const std::vector<size_t> &distances)
 {
-	for(size_t i = 0; i < Height(); i++) {
-		for(size_t j = 0; j < Width(); j++) {
+	for(size_t i = 0; i < Width(); i++) {
+		for(size_t j = 0; j < Height(); j++) {
 			vector<size_t> counts;
 
 			for(auto &&x : distances) {
@@ -64,7 +77,7 @@ void Cave::step(const function<void(vector<bool>::reference, const vector<size_t
 							count += 3 * x * (0 - jj);
 							continue;
 						}
-						if(tiles()[ii][jj])
+						if(tiles()[ii][jj].isWall())
 							++count;
 					}
 				}

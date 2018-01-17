@@ -27,6 +27,13 @@ Sprite::Sprite(const Sprite &) = default;
 Sprite::Sprite(Sprite &&) = default;
 Sprite::~Sprite() = default;
 
+void Sprite::setTexture(const shared_ptr<Texture> &t)
+{
+	// 2018-01-16 AMR TODO: avoid doing this here
+	t->generateMipmaps();
+	_texture = t;
+}
+
 void Sprite::Translate(const Vertex &offset)
 {
 	_position += offset;

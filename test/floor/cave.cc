@@ -4,16 +4,26 @@
 
 #include <gtest/gtest.h>
 #include "Map/Cave.hh"
+#include <Entropy/Mnemosyne/Resources/Texture.hh>
+#include <Entropy/Mnemosyne/Application.hh>
 
 using namespace std;
 using namespace testing;
 using namespace Entropy::Asteria;
+using namespace Entropy::Mnemosyne;
+using namespace Entropy::Theia::GL;
 
 namespace {
 	TEST(Cave, Create) {
-		Cave cave(100, 100);
+		Application app;
+		auto f = app.load("data/Grass.png", Resources::Texture(Texture::Texture2D));
+		auto w = app.load("data/Mountain.png", Resources::Texture(Texture::Texture2D));
 
-		EXPECT_EQ(cave.Tiles().size(), 100ul);
-		EXPECT_EQ(cave.Tiles().front().size(), 100ul);
+		Cave cave(100, 100, f.shared(), w.shared());
+
+		cave();
+
+		EXPECT_EQ(cave.Height(), 100ul);
+		EXPECT_EQ(cave.Width(), 100ul);
 	}
 }

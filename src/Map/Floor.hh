@@ -6,8 +6,7 @@
 #	define ENTROPY_ASTERIA_FLOOR_INC
 
 #	include "../Exception.hh"
-
-#	include <vector>
+#	include "../Map.hh"
 
 	namespace Entropy
 	{
@@ -16,16 +15,20 @@
 			class Floor
 			{
 				public:
-					Floor(const std::size_t, const std::size_t);
+					Floor(const std::size_t, const std::size_t, const std::shared_ptr<Theia::GL::Texture> &, const std::shared_ptr<Theia::GL::Texture> &);
 					virtual ~Floor();
 					virtual void operator () () = 0;
 					std::size_t Height() const;
 					std::size_t Width() const;
-					const std::vector<std::vector<bool>> &Tiles() const;
+					const Map &Tiles() const;
 				protected:
-					std::vector<std::vector<bool>> &tiles();
+					Map &tiles();
+					const std::shared_ptr<Theia::GL::Texture> &Blank() const;
+					const std::shared_ptr<Theia::GL::Texture> &Wall() const;
 				private:
-					std::vector<std::vector<bool>> _tiles;
+					std::shared_ptr<Theia::GL::Texture> _floor;
+					std::shared_ptr<Theia::GL::Texture> _wall;
+					Map _map;
 			};
 		}
 	}

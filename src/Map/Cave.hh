@@ -19,11 +19,13 @@
 				public Floor
 			{
 				public:
-					Cave(const std::size_t, const std::size_t);
+					// 2018-01-16 AMR TODO: cleanup
+					Cave(const std::size_t, const std::size_t, const std::shared_ptr<Theia::GL::Texture> &, const std::shared_ptr<Theia::GL::Texture> &);
 					virtual ~Cave();
 					virtual void operator () ();
 				protected:
-					void step(const std::function<void(std::vector<bool>::reference, const std::vector<std::size_t> &)> &, const std::vector<std::size_t> &);
+					virtual void generateFloor();
+					virtual void step(const std::function<void(Tile &, const std::vector<std::size_t> &)> &, const std::vector<std::size_t> &);
 				private:
 					// 2016-09-22 AMR TODO: abstract some, cleanup interface, make runtime parameters
 					static constexpr PercentType _first_fill = 45;

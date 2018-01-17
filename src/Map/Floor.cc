@@ -6,29 +6,47 @@
 
 using namespace Entropy::Asteria;
 using namespace std;
+using namespace Entropy::Theia::GL;
 
-Floor::Floor(const size_t height, const size_t width)
-	: _tiles(height, vector<bool>(width, false))
+Floor::Floor(
+	const size_t height,
+	const size_t width,
+	const shared_ptr<Texture> &f,
+	const shared_ptr<Texture> &w
+) :
+	_floor(f),
+	_wall(w),
+	_map(vector<vector<Tile>>(width, vector<Tile>(height, Tile(f))))
 {}
 
 Floor::~Floor() = default;
 
 size_t Floor::Height() const
 {
-	return _tiles.size();
+	return _map.Height();
 }
 
 size_t Floor::Width() const
 {
-	return _tiles.front().size();
+	return _map.Width();
 }
 
-const vector<vector<bool>> &Floor::Tiles() const
+const Map &Floor::Tiles() const
 {
-	return _tiles;
+	return _map;
 }
 
-vector<vector<bool>> &Floor::tiles()
+const shared_ptr<Texture> &Floor::Blank() const
 {
-	return _tiles;
+	return _floor;
+}
+
+const shared_ptr<Texture> &Floor::Wall() const
+{
+	return _wall;
+}
+
+Map &Floor::tiles()
+{
+	return _map;
 }
