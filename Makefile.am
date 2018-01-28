@@ -9,6 +9,7 @@ mainheadersdir = $(includedir)/Entropy/Asteria
 mainheaders_HEADERS = \
 	src/Actor.hh \
 	src/Application.hh \
+	src/Camera.hh \
 	src/Character.hh \
 	src/Exception.hh \
 	src/Map.hh \
@@ -63,6 +64,7 @@ libasteria_la_SOURCES = \
 	src/UI/Menu.cc \
 	src/Actor.cc \
 	src/Application.cc \
+	src/Camera.cc \
 	src/Character.cc \
 	src/Logger.cc \
 	src/Map.cc \

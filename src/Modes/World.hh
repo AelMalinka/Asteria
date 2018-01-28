@@ -8,6 +8,7 @@
 #	include "../Application.hh"
 #	include "../Character.hh"
 #	include "../Map.hh"
+#	include "../Camera.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
 
 	namespace Entropy
@@ -21,10 +22,12 @@
 				{
 					public:
 						World(Application &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
+						void onEvent(const Entropy::Event &);
 						void onEvent(const Theia::Events::Key &);
 					private:
 						std::shared_ptr<Character> _player;
 						std::shared_ptr<Map> _map;
+						Camera _camera;
 				};
 			}
 		}

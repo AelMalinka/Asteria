@@ -15,12 +15,18 @@ using namespace Entropy;
 using namespace std;
 
 World::World(Application &app, const shared_ptr<Character> &p, const shared_ptr<Map> &m)
-	: Mode(app), _player(p), _map(m)
+	: Mode(app), _player(p), _map(m), _camera(Current().getCamera(), p, m)
 {
 	Current().addDrawable(_map);
 	Current().addDrawable(_player);
-	Current().getCamera().setPosition(Vertex(_player->Position().x, _player->Position().y, 5));
-	Current().getCamera().setLookAt(_player->Position());
+}
+
+void World::onEvent(const Event &ev)
+{
+	Mode<Application>::onEvent(ev);
+
+	// 2018-01-27 AMR TODO: why?
+	dynamic_cast<EventHandler &>(_camera).onEvent(ev);
 }
 
 void World::onEvent(const Key &k)
