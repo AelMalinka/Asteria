@@ -28,6 +28,7 @@ characterheaders_HEADERS = \
 mapheadersdir = $(includedir)/Entropy/Asteria/Map
 mapheaders_HEADERS = \
 	src/Map/Cave.hh \
+	src/Map/Cellular.hh \
 	src/Map/Floor.hh \
 	src/Map/Object.hh \
 	src/Map/Tile.hh
@@ -53,6 +54,7 @@ libasteria_la_SOURCES = \
 	src/Character/Item.cc \
 	src/Character/Weapon.cc \
 	src/Map/Cave.cc \
+	src/Map/Cellular.cc \
 	src/Map/Floor.cc \
 	src/Map/Object.cc \
 	src/Map/Tile.cc \
@@ -72,7 +74,8 @@ libasteria_la_SOURCES = \
 	src/Sprite.cc
 
 bin_PROGRAMS = \
-	asteria
+	asteria \
+	generate-caves
 
 pkgdata_DATA = \
 	data/Armor.png \
@@ -88,6 +91,9 @@ asteriaconf_DATA = \
 
 asteria_SOURCES = src/Asteria.cc
 asteria_LDADD = libasteria.la
+
+generate_caves_SOURCES = src/GenerateCave.cc
+generate_caves_LDADD = libasteria.la
 
 check_PROGRAMS =
 
