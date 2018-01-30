@@ -17,24 +17,20 @@ mainheaders_HEADERS = \
 
 characterheadersdir = $(includedir)/Entropy/Asteria/Character
 characterheaders_HEADERS = \
-	src/Character/Stats.hh \
-	src/Character/Skills.hh \
-	src/Character/Item.hh \
-	src/Character/Equipment.hh \
 	src/Character/Armor.hh \
+	src/Character/Equipment.hh \
+	src/Character/Item.hh \
+	src/Character/Resources.hh \
+	src/Character/Skills.hh \
+	src/Character/Stats.hh \
 	src/Character/Weapon.hh
 
 mapheadersdir = $(includedir)/Entropy/Asteria/Map
 mapheaders_HEADERS = \
-	src/Map/Floor.hh \
 	src/Map/Cave.hh \
+	src/Map/Floor.hh \
 	src/Map/Object.hh \
 	src/Map/Tile.hh
-
-uiheadersdir = $(includedir)/Entropy/Asteria/UI
-uiheaders_HEADERS = \
-	src/UI/Button.hh \
-	src/UI/Menu.hh
 
 modesheadersdir = $(includedir)/Entropy/Asteria/Modes
 modesheaders_HEADERS = \
@@ -44,12 +40,17 @@ modesheaders_HEADERS = \
 	src/Modes/Options.hh \
 	src/Modes/World.hh
 
+uiheadersdir = $(includedir)/Entropy/Asteria/UI
+uiheaders_HEADERS = \
+	src/UI/Button.hh \
+	src/UI/Menu.hh
+
 lib_LTLIBRARIES = libasteria.la
 
 libasteria_la_SOURCES = \
-	src/Character/Item.cc \
-	src/Character/Equipment.cc \
 	src/Character/Armor.cc \
+	src/Character/Equipment.cc \
+	src/Character/Item.cc \
 	src/Character/Weapon.cc \
 	src/Map/Cave.cc \
 	src/Map/Floor.cc \
