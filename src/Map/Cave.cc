@@ -93,6 +93,7 @@ void Cave::fillGaps()
 
 	bool swapped = false;
 
+	ENTROPY_LOG(Log, Severity::Debug) << "Finding gaps";
 	for(size_t x = 0; x < Width(); x++) {
 		for(size_t y = 0; y < Height(); y++) {
 			if(!swapped && tiles()[x][y].isWall())
@@ -100,7 +101,6 @@ void Cave::fillGaps()
 
 			if(swapped && !tiles()[x][y].isWall()) {
 				flood(*next, x, y);
-				ENTROPY_LOG(Log, Severity::Debug) << next->size() << " entires in this block " << _largest->size() << " entries in largest block";
 				if(next->size() > _largest->size()) {
 					ENTROPY_LOG(Log, Severity::Debug) << "Swapping Largest: " << _largest->size() << " and " << next->size();
 					_largest = next;
@@ -112,9 +112,9 @@ void Cave::fillGaps()
 		}
 	}
 
+	ENTROPY_LOG(Log, Severity::Debug) << "Filling smaller gaps";
 	for(auto &q : _open_areas) {
 		if(q.size() < _largest->size()) {
-			ENTROPY_LOG(Log, Severity::Debug) << "filling in " << q.size() << " tiles";
 			for(auto &&t : q) {
 				t->setWall(true);
 				t->setTexture(Wall());
