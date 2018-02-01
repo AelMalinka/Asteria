@@ -27,7 +27,7 @@
 					private:
 						std::shared_ptr<Character> _player;
 						std::shared_ptr<Map> _map;
-						Camera _camera;
+						std::shared_ptr<Camera> _camera;
 				};
 			}
 		}

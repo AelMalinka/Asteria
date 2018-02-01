@@ -18,11 +18,18 @@
 	{
 		namespace Asteria
 		{
+			// 2018-01-31 AMR TODO: this being drawable feels horribly counter intuitive 
 			class Camera :
-				public Mnemosyne::EventHandler
+				public Mnemosyne::EventHandler,
+				public Theia::Drawable
 			{
 				public:
 					Camera(Theia::Camera &, const std::shared_ptr<Character> &, const std::shared_ptr<Map> &);
+					void Update(const std::chrono::duration<double> &);
+					void UpdateScreen(const Theia::Screen &);
+					void UpdateCamera(const Theia::Camera &);
+					constexpr Theia::Dimension Height() const;
+					constexpr Theia::Dimension Width() const;
 				protected:
 					void Update();
 					void onEvent(const Theia::Events::Key &);

@@ -20,6 +20,20 @@ Camera::Camera(Theia::Camera &camera, const shared_ptr<Character> &player, const
 	Update();
 }
 
+constexpr Dimension Camera::Height() const
+{
+	// 2018-01-31 AMR FIXME:
+	static_assert(_zoom_level == 5, "Currently only functions at zoom level 5");
+	return 18;
+}
+
+constexpr Dimension Camera::Width() const
+{
+	// 2018-01-31 AMR FIXME:
+	static_assert(_zoom_level == 5, "Currently only functions at zoom level 5");
+	return 30;
+}
+
 void Camera::Update()
 {
 	// 2018-01-27 AMR TODO: currently locks character into center unless edge of map
@@ -29,25 +43,37 @@ void Camera::Update()
 	Dimension x = _player->Position().x;
 	Dimension y = _player->Position().y;
 
-	// 2018-01-27 AMR FIXME:
-	static_assert(_zoom_level == 5, "Currently only functions at zoom level 5");
-	Dimension magic_width = 30 / 2;
-	Dimension magic_height = 18 / 2;
-
-	if(x < magic_width) {
-		x = magic_width - 1;
-	} else if(x > w - magic_width) {
-		x = w - magic_width;
+	if(x < Width() / 2) {
+		x = Width() / 2 - 1;
+	} else if(x > w - Width() / 2) {
+		x = w - Width() / 2;
 	}
 
-	if(y < magic_height) {
-		y = magic_height - 1;
-	} else if(y > h - magic_height) {
-		y = h - magic_height;
+	if(y < Height() / 2) {
+		y = Height() / 2 - 1;
+	} else if(y > h - Height() / 2) {
+		y = h - Height() / 2;
 	}
 
 	_camera.setPosition(Vertex(x, y, _zoom_level));
 	_camera.setLookAt(Vertex(x, y, 0));
+}
+
+void Camera::Update(const chrono::duration<double> &dt)
+{
+	for(
+		auto x = _camera.Position().x - Width() / 2 + 1;
+		x < _camera.Position().x + Width() / 2;
+		x++
+	) {
+		for(
+			auto y = _camera.Position().y - Height() / 2 + 1;
+			y < _camera.Position().y + Height() / 2;
+			y++
+		) {
+			(*_map)[x][y].Update(dt);
+		}
+	}
 }
 
 void Camera::onEvent(const Key &k)
@@ -57,4 +83,14 @@ void Camera::onEvent(const Key &k)
 			Update();
 		}
 	}
+}
+
+void Camera::UpdateScreen(const Theia::Screen &s)
+{
+	_map->UpdateScreen(s);
+}
+
+void Camera::UpdateCamera(const Theia::Camera &c)
+{
+	_map->UpdateCamera(c);
 }
