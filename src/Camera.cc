@@ -22,16 +22,14 @@ Camera::Camera(Theia::Camera &camera, const shared_ptr<Character> &player, const
 
 constexpr Dimension Camera::Height() const
 {
-	// 2018-01-31 AMR FIXME:
-	static_assert(_zoom_level == 5, "Currently only functions at zoom level 5");
-	return 18;
+	// 2018-02-01 AMR TODO: actually calculate these correctly
+	return _zoom_level * 4 - 2;
 }
 
 constexpr Dimension Camera::Width() const
 {
-	// 2018-01-31 AMR FIXME:
-	static_assert(_zoom_level == 5, "Currently only functions at zoom level 5");
-	return 30;
+	// 2018-02-01 AMR TODO: actually calculate these correctly
+	return _zoom_level * 6;
 }
 
 void Camera::Update()

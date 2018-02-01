@@ -10,6 +10,7 @@
 #	include <Entropy/Theia/Camera.hh>
 #	include "Map.hh"
 
+	// 2018-02-01 AMR NOTE: currently only works well near 5
 #	ifndef ENTROPY_ASTERIA_ZOOM_LEVEL
 #		define ENTROPY_ASTERIA_ZOOM_LEVEL 5
 #	endif
