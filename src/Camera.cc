@@ -8,6 +8,7 @@ using namespace Entropy::Asteria;
 using namespace std;
 using namespace Entropy;
 
+using Entropy::Mnemosyne::Events::ModeChange;
 using Entropy::Theia::Events::Key;
 using Entropy::Theia::Vertex;
 using Entropy::Theia::Dimension;
@@ -72,6 +73,11 @@ void Camera::Update(const chrono::duration<double> &dt)
 			(*_map)[x][y].Update(dt);
 		}
 	}
+}
+
+void Camera::onEvent(const ModeChange &)
+{
+	Update();
 }
 
 void Camera::onEvent(const Key &k)

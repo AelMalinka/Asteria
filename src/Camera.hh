@@ -33,6 +33,7 @@
 					constexpr Theia::Dimension Width() const;
 				protected:
 					void Update();
+					void onEvent(const Mnemosyne::Events::ModeChange &);
 					void onEvent(const Theia::Events::Key &);
 				private:
 					Theia::Camera &_camera;
