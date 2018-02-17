@@ -8,7 +8,7 @@
 #include "Modes/Menu.hh"
 #include "Modes/World.hh"
 #include "Modes/Options.hh"
-#include "Modes/Death.hh"
+#include "Modes/Message.hh"
 
 #include "Map/Cave.hh"
 
@@ -140,7 +140,7 @@ void Application::Restart()
 	_world = addMode(make_shared<Modes::World>(*this, _player, _map));
 	_fight = addMode(make_shared<Modes::Fight>(*this));
 	_options = addMode(make_shared<Modes::Options>(*this));
-	_death = addMode(make_shared<Modes::Death>(*this));
+	_death = addMode(make_shared<Modes::Message>(*this, "You Died!", Vertex(1, 0, 0)));
 
 	setMode(_menu);
 }

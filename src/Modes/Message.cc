@@ -2,7 +2,7 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#include "Death.hh"
+#include "Message.hh"
 #include <Entropy/Mnemosyne/Resources/Font.hh>
 #include <Entropy/Mnemosyne/Events.hh>
 
@@ -16,27 +16,27 @@ using namespace Entropy::Mnemosyne::Events;
 using namespace Entropy::Theia::Events;
 using namespace std;
 
-Death::Death(Application &a)
+Message::Message(Application &a, const string &t, const Vertex &c)
 	: Mode(a), _message()
 {
-	_message = make_shared<Text>("You Died"s, App().load("NotoSansUI-Regular.ttf"s, Font()).shared());
-	_message->setColor(Vertex(1, 0, 0));
+	_message = make_shared<Text>(t, App().load("NotoSansUI-Regular.ttf"s, Font()).shared());
+	_message->setColor(c);
 	_message->setScale(3);
 
 	Current().addDrawable(_message);
 }
 
-void Death::onEvent(const ModeChange &)
+void Message::onEvent(const ModeChange &)
 {
 	_message->setPosition(ScreenVertex(App().Windows()->getScreen().Width() / 2 - _message->Size().x / 2, App().Windows()->getScreen().Height() / 2));
 }
 
-void Death::onEvent(const Resize &rz)
+void Message::onEvent(const Resize &rz)
 {
 	_message->setPosition(ScreenVertex(rz.Width() / 2 - _message->Size().x / 2, rz.Height() / 2));
 }
 
-void Death::onEvent(const Key &k)
+void Message::onEvent(const Key &k)
 {
 	if(k.Action() == GLFW_PRESS && k.Code() == GLFW_KEY_ENTER) {
 		App().Restart();

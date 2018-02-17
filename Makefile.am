@@ -35,8 +35,8 @@ mapheaders_HEADERS = \
 
 modesheadersdir = $(includedir)/Entropy/Asteria/Modes
 modesheaders_HEADERS = \
-	src/Modes/Death.hh \
 	src/Modes/Fight.hh \
+	src/Modes/Message.hh \
 	src/Modes/Menu.hh \
 	src/Modes/Options.hh \
 	src/Modes/World.hh
@@ -58,9 +58,9 @@ libasteria_la_SOURCES = \
 	src/Map/Floor.cc \
 	src/Map/Object.cc \
 	src/Map/Tile.cc \
-	src/Modes/Death.cc \
 	src/Modes/Fight.cc \
 	src/Modes/Menu.cc \
+	src/Modes/Message.cc \
 	src/Modes/Options.cc \
 	src/Modes/World.cc \
 	src/UI/Button.cc \

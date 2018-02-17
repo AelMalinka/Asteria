@@ -2,8 +2,8 @@
 	Distributed under the terms of the GNU Affero General Public License v3
 */
 
-#if !defined ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
-#	define ENTROPY_ASTERIA_GAME_MODES_DEATH_INC
+#if !defined ENTROPY_ASTERIA_GAME_MODES_MESSAGE_INC
+#	define ENTROPY_ASTERIA_GAME_MODES_MESSAGE_INC
 
 #	include "../Application.hh"
 #	include <Entropy/Mnemosyne/Mode.hh>
@@ -15,11 +15,11 @@
 		{
 			namespace Modes
 			{
-				class Death :
+				class Message :
 					public Entropy::Mnemosyne::Mode<Application>
 				{
 					public:
-						Death(Application &);
+						Message(Application &, const std::string &, const Theia::Vertex &);
 						void onEvent(const Mnemosyne::Events::ModeChange &);
 						void onEvent(const Theia::Events::Resize &);
 						void onEvent(const Theia::Events::Key &);
