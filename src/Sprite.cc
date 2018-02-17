@@ -34,6 +34,11 @@ void Sprite::setTexture(const shared_ptr<Texture> &t)
 	_texture = t;
 }
 
+const shared_ptr<Texture> &Sprite::getTexture() const
+{
+	return _texture;
+}
+
 void Sprite::Translate(const Vertex &offset)
 {
 	_position += offset;

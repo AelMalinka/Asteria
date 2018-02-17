@@ -46,6 +46,8 @@
 					virtual void UpdateScreen(const Theia::Screen &);
 					virtual void UpdateCamera(const Theia::Camera &);
 					virtual void Translate(const Theia::Vertex &);
+				protected:
+					const std::shared_ptr<Theia::GL::Texture> &getTexture() const;
 				private:
 					std::shared_ptr<Theia::GL::Texture> _texture;
 					Theia::Vertex _position;
