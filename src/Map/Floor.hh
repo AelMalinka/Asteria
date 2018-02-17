@@ -21,6 +21,7 @@
 					std::size_t Height() const;
 					std::size_t Width() const;
 					const Map &Tiles() const;
+					const std::shared_ptr<Map> &getMap() const;
 				protected:
 					Map &tiles();
 					const std::shared_ptr<Theia::GL::Texture> &Blank() const;
@@ -28,7 +29,7 @@
 				private:
 					std::shared_ptr<Theia::GL::Texture> _floor;
 					std::shared_ptr<Theia::GL::Texture> _wall;
-					Map _map;
+					std::shared_ptr<Map> _map;
 			};
 		}
 	}

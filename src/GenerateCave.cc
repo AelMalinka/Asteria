@@ -85,7 +85,7 @@ void MyMode::Reset()
 
 	c();
 
-	_map = make_shared<Map>(c.Tiles());
+	_map = c.getMap();
 	Current().addDrawable(_map);
 }
 

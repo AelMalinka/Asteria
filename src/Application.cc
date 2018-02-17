@@ -113,7 +113,7 @@ void Application::Restart()
 	auto height = c.Height();
 	auto width = c.Width();
 
-	_map = make_shared<Map>(c.Tiles());
+	_map = c.getMap();
 	_player = make_shared<Character>(player.shared(), 10, 10, 10, 10, 10, 10);
 
 	auto px = width / 2;

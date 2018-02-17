@@ -16,22 +16,35 @@ Floor::Floor(
 ) :
 	_floor(f),
 	_wall(w),
-	_map(vector<vector<Tile>>(width, vector<Tile>(height, Tile(f))))
+	_map(make_shared<Map>(
+		vector<vector<Tile>>(
+			width,
+			vector<Tile>(
+				height,
+				Tile(_floor)
+			)
+		)
+	))
 {}
 
 Floor::~Floor() = default;
 
 size_t Floor::Height() const
 {
-	return _map.Height();
+	return _map->Height();
 }
 
 size_t Floor::Width() const
 {
-	return _map.Width();
+	return _map->Width();
 }
 
 const Map &Floor::Tiles() const
+{
+	return *_map;
+}
+
+const shared_ptr<Map> &Floor::getMap() const
 {
 	return _map;
 }
@@ -48,5 +61,5 @@ const shared_ptr<Texture> &Floor::Wall() const
 
 Map &Floor::tiles()
 {
-	return _map;
+	return *_map;
 }
