@@ -23,7 +23,7 @@
 				protected:
 					virtual void init(const PercentType);
 					virtual void step(const std::function<void(Tile &, const std::vector<std::size_t> &)> &, const std::vector<std::size_t> &);
-					virtual void flood(std::set<Tile *> &, const std::size_t, const std::size_t, const bool = false);
+					virtual std::set<Tile *> flood(const std::size_t, const std::size_t, const bool = false);
 			};
 		}
 	}

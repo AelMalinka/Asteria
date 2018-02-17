@@ -3,6 +3,7 @@
 */
 
 #include "Cellular.hh"
+#include <queue>
 
 using namespace Entropy::Asteria;
 using namespace std;
@@ -72,26 +73,41 @@ void Cellular::step(
 	}
 }
 
-// 2018-01-30 AMR FIXME: implementation does not correctly return whole area
-void Cellular::flood(
-	set<Tile *> &ret,
+set<Tile *> Cellular::flood(
 	const size_t x,
 	const size_t y,
 	const bool wall
 ) {
-	if(tiles()[x][y].isWall() == wall && ret.find(&tiles()[x][y]) == ret.end()) {
-		ret.insert(&tiles()[x][y]);
-		if(x + 1 < Width() && tiles()[x + 1][y].isWall() == wall) {
-			flood(ret, x + 1, y, wall);
-		}
-		if(static_cast<long long>(x) - 1 >= 0 && tiles()[x - 1][y].isWall() == wall) {
-			flood(ret, x - 1, y, wall);
-		}
-		if(y + 1 < Height() && tiles()[x][y + 1].isWall() == wall) {
-			flood(ret, x, y + 1, wall);
-		}
-		if(static_cast<long long>(y) - 1 >= 0 && tiles()[x][y - 1].isWall() == wall) {
-			flood(ret, x, y - 1, wall);
+	set<Tile *> ret;
+	if(tiles()[x][y].isWall() == wall) {
+		queue<Tile *> q;
+
+		q.push(&tiles()[x][y]);
+		while(!q.empty()) {
+			Tile *t = q.front();
+			q.pop();
+
+			if(ret.find(t) == ret.end()) {
+				ret.insert(t);
+
+				auto i = static_cast<long long>(t->Position().x);
+				auto j = static_cast<long long>(t->Position().y);
+				auto w = static_cast<long long>(t->Position().x) - 1;
+				auto e = static_cast<long long>(t->Position().x) + 1;
+				auto s = static_cast<long long>(t->Position().y) - 1;
+				auto n = static_cast<long long>(t->Position().y) + 1;
+
+				if(w >= 0 && tiles()[w][j].isWall() == wall)
+					q.push(&tiles()[w][j]);
+				if(e <= static_cast<long long>(Width()) && tiles()[e][j].isWall() == wall)
+					q.push(&tiles()[e][j]);
+				if(s >= 0 && tiles()[i][s].isWall() == wall)
+					q.push(&tiles()[i][s]);
+				if(n <= static_cast<long long>(Height()) && tiles()[i][n].isWall() == wall)
+					q.push(&tiles()[i][n]);
+			}
 		}
 	}
+
+	return ret;
 }

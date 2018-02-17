@@ -87,26 +87,21 @@ void Cave::generateFloor()
 
 void Cave::fillGaps()
 {
-	_open_areas.emplace_back();
-	auto next = _open_areas.begin();
-	_largest = next;
-
 	bool swapped = false;
 
 	ENTROPY_LOG(Log, Severity::Debug) << "Finding gaps";
+	// 2018-02-17 AMR TODO: improve, dont redundantly add gaps
 	for(size_t x = 0; x < Width(); x++) {
 		for(size_t y = 0; y < Height(); y++) {
 			if(!swapped && tiles()[x][y].isWall())
 				swapped = true;
 
 			if(swapped && !tiles()[x][y].isWall()) {
-				flood(*next, x, y);
-				if(next->size() > _largest->size()) {
-					ENTROPY_LOG(Log, Severity::Debug) << "Swapping Largest: " << _largest->size() << " and " << next->size();
-					_largest = next;
+				_open_areas.push_back(flood(x, y));
+				if(_largest == _open_areas.end() || _open_areas.back().size() > _largest->size()) {
+					ENTROPY_LOG(Log, Severity::Debug) << "Swapping Largest: " << (_largest == _open_areas.end() ? 0 : _largest->size()) << " and " << _open_areas.back().size();
+					_largest = --_open_areas.end();
 				}
-				_open_areas.emplace_back();
-				next = --_open_areas.end();
 				swapped = false;
 			}
 		}
@@ -118,8 +113,8 @@ void Cave::fillGaps()
 			for(auto &&t : q) {
 				t->setWall(true);
 				t->setTexture(Wall());
-				q.erase(t);
 			}
+			q.clear();
 		}
 	}
 }
