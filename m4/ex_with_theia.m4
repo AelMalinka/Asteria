@@ -26,7 +26,7 @@ AC_DEFUN([EX_WITH_THEIA], [
 		AC_MSG_FAILURE(["--with-theia: theia not found"])
 	)
 	LDFLAGS="$LDFLAGS_save"
-	THEIA_CPPFLAGS="$FT2_CFLAGS -std=c++14"
+	THEIA_CPPFLAGS="$FT2_CFLAGS"
 	test "x$with_theia" != xcheck && THEIA_CPPFLAGS="$THEIA_CPPFLAGS -I${with_theia}/include"
 	CPPFLAGS_save="$CPPFLAGS"
 	CPPFLAGS="$THEIA_CPPFLAGS"

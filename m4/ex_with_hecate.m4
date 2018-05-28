@@ -24,7 +24,6 @@ AC_DEFUN([EX_WITH_HECATE], [
 		AC_MSG_FAILURE(["--with-hecate: hecate not found"])
 	)
 	LDFLAGS="$LDFLAGS_save"
-	HECATE_CPPFLAGS="-std=c++14"
 	test "x$with_hecate" != xcheck && HECATE_CPPFLAGS="$HECATE_CPPFLAGS -I${with_hecate}/include"
 	CPPFLAGS_save="$CPPFLAGS"
 	CPPFLAGS="$HECATE_CPPFLAGS"
